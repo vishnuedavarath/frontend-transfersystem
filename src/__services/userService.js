@@ -6,7 +6,7 @@ export const userService = {
     login,
 	logout,
 	chngpass,
-    getAll
+    getStations
 };
 
 function login(penNum, password) {
