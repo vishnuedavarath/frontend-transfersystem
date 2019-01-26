@@ -46,8 +46,6 @@ function chngpass(newpassword) {
         headers: authHeader(), 
         body: JSON.stringify({ "password" : newpassword })
 	};
-	// requestOptions.headers = requestOptions.headers.merge(authHeader());
-	// console.log(requestOptions);
 
 	return fetch(`http://68.183.86.24:3000/user/setpassword`, requestOptions)
         .then(handleResponse)
@@ -64,13 +62,13 @@ function chngpass(newpassword) {
         });
 }
 
-function getAll() {
+function getStations() {
     const requestOptions = {
         method: 'GET',
         headers: authHeader()
     };
 
-    return fetch(`68.183.86.24/users`, requestOptions).then(handleResponse);
+    return fetch(`68.183.86.24/stations`, requestOptions).then(handleResponse);
 }
 
 function handleResponseLogin(response) {

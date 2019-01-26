@@ -121,26 +121,26 @@ function submitStations(opt1, opt2, opt3,user) {
     }
 }
 
-function getAll() {
+function getAllStation() {
     return dispatch => {
-        dispatch(request());
+        dispatch(getAllStationRequest());
 
-        userService.getAll().then(
-            users => dispatch(success(users)),
+        userService.getStations().then(
+            stations => dispatch(getAllStationSuccess(stations)),
             error => {
-                dispatch(failure(error));
+                dispatch(getAllStationFailure(error));
                 dispatch(alertActions.error(error));
             }
         );
     };
 
-    function request() {
+    function getAllStationRequest() {
         return { type: userConstants.GETALL_REQUEST };
     }
-    function success(users) {
-        return { type: userConstants.GETALL_SUCCESS, users };
+    function getAllStationSuccess(stations) {
+        return { type: userConstants.GETALL_SUCCESS, stations };
     }
-    function failure(error) {
+    function getAllStationFailure(error) {
         return { type: userConstants.GETALL_FAILURE, error };
     }
 }
