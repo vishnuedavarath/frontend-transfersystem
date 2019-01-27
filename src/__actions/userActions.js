@@ -8,7 +8,8 @@ export const userActions = {
     logout,
 	getAllStation,
     passchng,
-    submitStations
+    submitStations,
+    getfirst
 };
 
 function login(penNum, password) {
@@ -18,11 +19,20 @@ function login(penNum, password) {
         userService.login(penNum, password).then(
             user => {
                 dispatch(success(user));
-                if(!localStorage.getItem('firsttime')){
+                var p = localStorage.getItem('firsttime');
+                var first;
+                switch(p){
+                    case 'true': first = true;break;
+                    case 'false' : first = false;break;
+                    default: break;
+                }
+                if(first){
+                    console.log("Reached Passchange")
                     history.push('/passchng');
                 }
                 else{
-                    history.push('./profile');
+                    console.log("Reached Profile")
+                    history.push('/profile');
                 }
                 
             },
@@ -77,22 +87,31 @@ function passchng(newpassword) {
     }
 }
 
-// function getfirst() {
-//     return dispatch => {
-//         dispatch(getfirstrequest());
+function getfirst() {
+    return dispatch => {
+        dispatch(getfirstrequest());
 
-//         userService.getisfirst().then(
-//         /*todo*/    user => {
-//                 dispatch(getfirstsuccess(user));
-//                 history.push('/profile');
-//             },
-//             error => {
-//                 dispatch(getfirstfailure(error));
-//                 dispatch(alertActions.error(error));
-//             }
-//         );
-//     };
-// }
+        userService.getisfirst().then(
+        /*todo*/    user => {
+                dispatch(getfirstsuccess());
+                history.push('/profile');
+            },
+            error => {
+                dispatch(getfirstfailure(error));
+                dispatch(alertActions.error(error));
+            }
+        );
+    };
+    function getfirstrequest(){
+        return{type : userConstants.GET_FIRST_REQUEST}
+    }
+    function getfirstsuccess(){
+        return{type : userConstants.GET_FIRST_SUCCESS}
+    }
+    function getfirstfailure(error){
+        return{type : userConstants.GET_FIRST_FAILURE,error}
+    }
+}
 
 function submitStations(opt1, opt2, opt3,user) {
     return dispatch => {

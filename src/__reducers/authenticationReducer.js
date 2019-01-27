@@ -21,16 +21,17 @@ export function authentication(state = initialState, action) {
       return {};
     case userConstants.CHANGE_PASSWORD_REQUEST:
       return {
-		  changingpw: true,
-		  user : action.user
-	  };
-	case userConstants.CHANGE_PASSWORD_SUCCESS:
-	  return{
-		  changedpw:true,
-		  user : action.user
-	  };
-	case userConstants.CHANGE_PASSWORD_FAILURE:
-	  return{};
+        changingpw: true,
+        user: action.user
+      };
+    case userConstants.CHANGE_PASSWORD_SUCCESS:
+      return {
+        changedpw: true,
+        user: action.user
+      };
+    case userConstants.CHANGE_PASSWORD_FAILURE:
+      return {};
+
     default:
       return state;
   }

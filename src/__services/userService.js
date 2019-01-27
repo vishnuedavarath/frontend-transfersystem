@@ -1,12 +1,14 @@
 // import config from 'config';
-import { authHeader } from '../__helpers/AuthHeader';
+import { authHeaderPost } from '../__helpers/AuthHeaderPost';
+import { authHeaderGet } from "../__helpers/AuthHeaderGet";
 var jwt_decode = require('jwt-decode')
 
 export const userService = {
     login,
 	logout,
 	chngpass,
-    getStations
+    getStations,
+    getisfirst
 };
 
 function login(penNum, password) {
@@ -27,7 +29,8 @@ function login(penNum, password) {
             if (user.token) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
 				localStorage.setItem('user', JSON.stringify(user));
-				localStorage.setItem('firsttime', decoded.isFirstTime);
+                localStorage.setItem('firsttime', decoded.isFirstTime);
+                console.log(typeof(decoded.isFirstTime))
 				console.log(localStorage.getItem('user'));
 				console.log(localStorage.getItem('firsttime'))
             }
@@ -43,7 +46,7 @@ function logout() {
 function chngpass(newpassword) {
     const requestOptions = {
         method: 'POST',
-        headers: authHeader(), 
+        headers: authHeaderPost(), 
         body: JSON.stringify({ "password" : newpassword })
 	};
 
@@ -62,10 +65,19 @@ function chngpass(newpassword) {
         });
 }
 
+function getisfirst(){
+    const requestOptions = {
+        method : 'GET',
+        headers : authHeaderGet()
+    };
+
+    return fetch(`68.183.86.24/stations`, requestOptions)
+}
+
 function getStations() {
     const requestOptions = {
         method: 'GET',
-        headers: authHeader()
+        headers: authHeaderGet()
     };
 
     return fetch(`68.183.86.24/stations`, requestOptions).then(handleResponse);
