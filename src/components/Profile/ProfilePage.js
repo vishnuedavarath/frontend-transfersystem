@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { userActions } from "../../__actions/userActions";
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 
 class ProfilePage extends Component {
   constructor(props) {
@@ -69,12 +70,12 @@ class ProfilePage extends Component {
           <span>1.{this.state.prevstations.opt1}</span>
           <span>2.{this.state.prevstations.opt2}</span>
           <span>3.{this.state.prevstations.opt3}</span>
-		  <button Link To = '/previousstation'>Select Previous Stations</button>
+		  <button> <Link To = '/previousstation'>Select Previous Stations</Link></button>
         </div>
         <span>LAST TRANSFER DATE:{this.state.lasttransfer}</span>
         <span>Name :</span>
-		<button Link To = '/optionpage'>GENERAL TRANSFER</button>
-		<button Link To = '/optionpage'>REQUEST TRANSFER</button>
+		<button>< Link To = '/optionpage'>GENERAL TRANSFER</ Link></button>
+		<button> <Link To = '/optionpage'>REQUEST TRANSFER</Link></button>
       </div>
     );
   }
