@@ -8,8 +8,10 @@ export const userActions = {
     logout,
 	getAllStation,
     passchng,
+    getfirst,
+    getProfile,
+    submitPrevStations,
     submitStations,
-    getfirst
 };
 
 function login(penNum, password) {
@@ -64,7 +66,7 @@ function passchng(newpassword) {
         dispatch(pwrequest({ newpassword }));
 
         userService.chngpass(newpassword).then(
-        /*todo*/    user => {
+            user => {
             console.log(user);
                 dispatch(pwsuccess(user));
                 history.push('/profile');
@@ -92,9 +94,8 @@ function getfirst() {
         dispatch(getfirstrequest());
 
         userService.getisfirst().then(
-        /*todo*/    user => {
+            user => {
                 dispatch(getfirstsuccess());
-                history.push('/profile');
             },
             error => {
                 dispatch(getfirstfailure(error));
@@ -113,30 +114,54 @@ function getfirst() {
     }
 }
 
-function submitStations(opt1, opt2, opt3,user) {
+function submitPrevStations(opt1, opt2, opt3,user) {
     return dispatch => {
-        dispatch(pwrequest({ opt1, opt2, opt3 }));
+        dispatch(submitprevstationrequest({ opt1, opt2, opt3 }));
         
         userService.chngpass(opt1, opt2, opt3, user).then(
-        /*todo*/    user => {
-                dispatch(pwsuccess(user));
-                history.push('/');
+            user => {
+                dispatch(submitprevstationsuccess(user));
             },
             error => {
-                dispatch(pwfailure(error));
+                dispatch(submitprevstationfailure(error));
                 // dispatch(alertActions.error(error));
             }
         );
     };
 
-    function pwrequest(user) {
-        return { type: userConstants.CHANGE_PASSWORD_REQUEST, user };
+    function submitprevstationrequest(user) {
+        return { type: userConstants.SUBMIT_STATION_REQUEST, user };
     }
-    function pwsuccess(user) {
-        return { type: userConstants.CHANGE_PASSWORD_SUCCESS, user };
+    function submitprevstationsuccess(user) {
+        return { type: userConstants.SUBMIT_STATION_SUCCESS, user };
     }
-    function pwfailure(error) {
-        return { type: userConstants.CHANGE_PASSWORD_FAILURE, error };
+    function submitprevstationfailure(error) {
+        return { type: userConstants.SUBMTI_STATION_FAILURE, error };
+    }
+}
+function submitStations(opt1, opt2, opt3,user) {
+    return dispatch => {
+        dispatch(submitstationrequest({ opt1, opt2, opt3 }));
+        
+        userService.chngpass(opt1, opt2, opt3, user).then(
+            user => {
+                dispatch(submitstationsuccess(user));
+            },
+            error => {
+                dispatch(submitstationfailure(error));
+                // dispatch(alertActions.error(error));
+            }
+        );
+    };
+
+    function submitstationrequest(user) {
+        return { type: userConstants.SUBMIT_STATION_REQUEST, user };
+    }
+    function submitstationsuccess(user) {
+        return { type: userConstants.SUBMIT_STATION_SUCCESS, user };
+    }
+    function submitstationfailure(error) {
+        return { type: userConstants.SUBMTI_STATION_FAILURE, error };
     }
 }
 
@@ -161,5 +186,29 @@ function getAllStation() {
     }
     function getAllStationFailure(error) {
         return { type: userConstants.GETALL_FAILURE, error };
+    }
+}
+
+function getProfile() {
+    return dispatch => {
+        dispatch(getProfileRequest());
+
+        userService.getStations().then(
+            profile => dispatch(getProfileSuccess(profile)),
+            error => {
+                dispatch(getProfileFailure(error));
+                dispatch(alertActions.error(error));
+            }
+        );
+    };
+
+    function getProfileRequest() {
+        return { type: userConstants.GET_PROFILE_REQUEST };
+    }
+    function getProfileSuccess(profile) {
+        return { type: userConstants.GET_PROFILE_SUCCESS, profile };
+    }
+    function getProfileFailure(error) {
+        return { type: userConstants.GET_PROFILE_FAILURE, error };
     }
 }

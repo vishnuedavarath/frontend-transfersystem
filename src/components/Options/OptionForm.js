@@ -19,7 +19,7 @@ export default class OptionForm extends Component {
     dispatch(userActions.getAllStation());
     const toState = (data) => {
 		let teamsFromApi = data.map(team => { return {value: team, display: team} })
-		this.setState({ teams: [{value: '', display: '(Select your favourite team)'}].concat(teamsFromApi) });
+		this.setState({ teams: [{value: '', display: '(Select your Previous station)'}].concat(teamsFromApi) });
 	  };
 	toState(this.data);
   }

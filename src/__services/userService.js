@@ -8,7 +8,8 @@ export const userService = {
 	logout,
 	chngpass,
     getStations,
-    getisfirst
+    getisfirst,
+    getProfile
 };
 
 function login(penNum, password) {
@@ -51,18 +52,7 @@ function chngpass(newpassword) {
 	};
 
 	return fetch(`http://68.183.86.24:3000/user/setpassword`, requestOptions)
-        .then(handleResponse)
-        .then(user => {
-			
-            
-            if (user.token) {
-                
-				localStorage.setItem('user', JSON.stringify(user));
-				// console.log(localStorage.getItem(user));
-            }
-
-            return user;
-        });
+        .then(handleResponse);
 }
 
 function getisfirst(){
@@ -72,6 +62,15 @@ function getisfirst(){
     };
 
     return fetch(`68.183.86.24/stations`, requestOptions)
+}
+
+function getProfile() {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeaderGet()
+    };
+
+    return fetch(`68.183.86.24/stations`, requestOptions).then(handleResponse);
 }
 
 function getStations() {
@@ -90,10 +89,11 @@ function handleResponseLogin(response) {
 		// console.log(response.token);
 		// console.log(data);
         if (!response.ok) {
+
             if (response.status === 401) {
                 // auto logout if 401 response returned from api
-                
-                // Location.reload(true);
+                logout();
+                Location.reload(true);
             }
 
             const error = (data && data.message) || response.statusText;
