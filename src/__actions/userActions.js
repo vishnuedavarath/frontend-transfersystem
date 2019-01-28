@@ -121,6 +121,7 @@ function submitPrevStations(opt1, opt2, opt3,user) {
         userService.chngpass(opt1, opt2, opt3, user).then(
             user => {
                 dispatch(submitprevstationsuccess(user));
+                history.push('/')
             },
             error => {
                 dispatch(submitprevstationfailure(error));
@@ -143,7 +144,7 @@ function submitStations(opt1, opt2, opt3,user) {
     return dispatch => {
         dispatch(submitstationrequest({ opt1, opt2, opt3 }));
         
-        userService.chngpass(opt1, opt2, opt3, user).then(
+        userService.submitStations(opt1, opt2, opt3).then(
             user => {
                 dispatch(submitstationsuccess(user));
             },

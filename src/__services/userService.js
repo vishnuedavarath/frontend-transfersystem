@@ -9,7 +9,9 @@ export const userService = {
 	chngpass,
     getStations,
     getisfirst,
-    getProfile
+    getProfile,
+    submitStation,
+    submitPrevStation
 };
 
 function login(penNum, password) {
@@ -61,7 +63,7 @@ function getisfirst(){
         headers : authHeaderGet()
     };
 
-    return fetch(`68.183.86.24/stations`, requestOptions)
+    return fetch(`http://68.183.86.24/user/firsttime`, requestOptions)
 }
 
 function getProfile() {
@@ -70,7 +72,7 @@ function getProfile() {
         headers: authHeaderGet()
     };
 
-    return fetch(`68.183.86.24/stations`, requestOptions).then(handleResponse);
+    return fetch(`http://68.183.86.24/stations/user/profile`, requestOptions).then(handleResponse);
 }
 
 function getStations() {
@@ -79,7 +81,27 @@ function getStations() {
         headers: authHeaderGet()
     };
 
-    return fetch(`68.183.86.24/stations`, requestOptions).then(handleResponse);
+    return fetch(`http://68.183.86.24/user/station`, requestOptions).then(handleResponse);
+}
+
+function submitStation(opt1,opt2,opt3){
+    const requestOptions = {
+        method : 'POST',
+        headers : authHeaderPost,
+        body : JSON.stringify({ "opt1":opt1,"opt2":opt2,"opt3":opt3 })
+    }
+    return fetch(`http://68.183.86.24:3000/user/submitstation`, requestOptions)
+        .then(handleResponse);
+}
+
+function submitPrevStation(opt1,opt2,opt3){
+    const requestOptions = {
+        method : 'POST',
+        headers : authHeaderPost,
+        body : JSON.stringify({ "opt1":opt1,"opt2":opt2,"opt3":opt3 })
+    }
+    return fetch(`http://68.183.86.24:3000/user/submitstat`, requestOptions)
+        .then(handleResponse);
 }
 
 function handleResponseLogin(response) {

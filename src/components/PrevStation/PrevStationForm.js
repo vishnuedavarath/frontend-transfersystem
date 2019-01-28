@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { userActions } from "../../__actions/userActions";
+import { connect } from "react-redux";
 
-export default class OptionForm extends Component {
+class PrevStationForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,11 +18,17 @@ export default class OptionForm extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(userActions.getAllStation());
-    const toState = data => {
-		let teamsFromApi = data.map(team => { return {value: team, display: team} })
-		this.setState({ teams: [{value: '', display: '(Select your favourite team)'}].concat(teamsFromApi) });
-      };
-    toState(this.data);
+    const toState = (data) => {
+      let stationsFromApi = data.map(station => {
+        return { value: station._id, display: station.name };
+      });
+      this.setState({
+        stations: [
+          { value: "", display: "(Select your Previous station)" }
+        ].concat(stationsFromApi)
+      });
+    };
+    toState(this.data.stations);
   }
 
   handleChange(e) {
@@ -43,21 +50,47 @@ export default class OptionForm extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-       		<label>Select Last Three Stations
-			<select name = "opt1" value={this.state.opt1} 
-        		onChange={this.handleChange}>
-          		{this.state.teams.map((team) => <option key={team.value} value={team.value}>{team.display}</option>)}
-        	</select>
-			<select name = "opt2" value={this.state.opt2} 
-        		onChange={this.handleChange}>
-          		{this.state.teams.map((team) => <option key={team.value} value={team.value}>{team.display}</option>)}
-        	</select>
-			<select name = "opt3" value={this.state.opt3} 
-        		onChange={this.handleChange}>
-          		{this.state.teams.map((team) => <option key={team.value} value={team.value}>{team.display}</option>)}
-        	</select>
-			</label>
-        	<input type="submit" value={this.state.opt1} onSubmit = {this.handleSubmit} />
+          <label>
+            Fill the Options
+            <select
+              name="opt1"
+              value={this.state.opt1}
+              onChange={this.handleChange}
+            >
+              {this.state.stations.map(station => (
+                <option key={station.value} value={station.value}>
+                  {station.display}
+                </option>
+              ))}
+            </select>
+            <select
+              name="opt2"
+              value={this.state.opt2}
+              onChange={this.handleChange}
+            >
+              {this.state.stations.map(station => (
+                <option key={station.value} value={station.value}>
+                  {station.display}
+                </option>
+              ))}
+            </select>
+            <select
+              name="opt3"
+              value={this.state.opt3}
+              onChange={this.handleChange}
+            >
+              {this.state.stations.map(station => (
+                <option key={station.value} value={station.value}>
+                  {station.display}
+                </option>
+              ))}
+            </select>
+          </label>
+          <input
+            type="submit"
+            value={this.state.opt1}
+            onSubmit={this.handleSubmit}
+          />
         </form>
       </div>
     );
@@ -65,8 +98,10 @@ export default class OptionForm extends Component {
 }
 
 function mapStateToProps(state) {
+  // const { loggingin } = state.authentication;
   const { dispatch } = state;
   return {
     dispatch
   };
 }
+export default connect(mapStateToProps)(PrevStationForm);

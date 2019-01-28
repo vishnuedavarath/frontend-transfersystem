@@ -5,11 +5,13 @@ import { connect } from 'react-redux';
 import { history } from './__helpers/history';
 import { alertActions } from './__actions/alertActions';
 import { PrivateRoute } from './components/Login/PrivateRoute';
-// import { FirstTimeRoute } from './components/ChngPass/FirstTimeRoute';
+
 import './App.css';
 import LoginPage from './components/Login/LoginPage';
 import OptionPage from './components/Options/OptionPage';
 import ChangePwPage from './components/ChngPass/ChangePwPage';
+import ProfilePage from './components/Profile/ProfilePage';
+import PrevStationPage from './components/PrevStation/PrevStationPage';
 // import PrevStationPage from './components/PrevStation/PrevStationPage';
 
 class App extends Component {
@@ -35,9 +37,10 @@ class App extends Component {
                         	<switch>
 								<div>
                                     <Route exact path="/login" component={LoginPage} />
-                                    {localStorage.getItem('firsttime')&&
                                     <PrivateRoute exact path="/passchng" component={ChangePwPage} /> }
-                                    <PrivateRoute exact path = "/" component = {OptionPage} />      
+                                    <PrivateRoute exact path = "/" component = {ProfilePage} />  
+                                    <PrivateRoute exact path = "/optionpage" component = { OptionPage } />
+                                    <PrivateRoute exact path = "/previousstation" component = { PrevStationPage }/>
 								</div>
 							</switch>
                         </Router>
