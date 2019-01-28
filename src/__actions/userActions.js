@@ -39,7 +39,7 @@ function login(penNum, password) {
           history.push("/passchng");
         } else {
           console.log("Reached Profile");
-          history.push("/profile");
+          history.push("/");
         }
       },
       error => {
@@ -73,7 +73,7 @@ function passchng(newpassword) {
       user => {
         console.log(user);
         dispatch(pwsuccess(user));
-        history.push("/profile");
+        history.push("/");
       },
       error => {
         dispatch(pwfailure(error));
@@ -196,9 +196,9 @@ function getAllStation() {
 
 function getProfile() {
   return dispatch => {
-    dispatch(getProfileRequest());
+    // dispatch(getProfileRequest());
 
-    userService.getStations().then(
+    userService.getProfile().then(
       profile => dispatch(getProfileSuccess(profile)),
       error => {
         dispatch(getProfileFailure(error));
@@ -207,9 +207,9 @@ function getProfile() {
     );
   };
 
-  function getProfileRequest() {
-    return { type: userConstants.GET_PROFILE_REQUEST };
-  }
+//   function getProfileRequest() {
+//     return { type: userConstants.GET_PROFILE_REQUEST };
+//   }
   function getProfileSuccess(profile) {
     return { type: userConstants.GET_PROFILE_SUCCESS, profile };
   }

@@ -65,7 +65,7 @@ function getisfirst() {
     headers: authHeaderGet()
   };
 
-  return fetch(`http://68.183.86.24/user/firsttime`, requestOptions);
+  return fetch(`http://68.183.86.24:3000/user/firsttime`, requestOptions);
 }
 
 function getProfile() {
@@ -75,9 +75,15 @@ function getProfile() {
   };
 
   return fetch(
-    `http://68.183.86.24/stations/user/profile`,
+    `http://68.183.86.24:3000/user/profile`,
     requestOptions
-  ).then(handleResponse);
+  ).then(
+	  handleResponse)
+  .then(
+	  profile =>{
+		  return profile;
+	  }
+  )
 }
 
 function getStations() {
@@ -142,11 +148,12 @@ function handleResponseLogin(response) {
 }
 
 function handleResponse(response) {
+	console.log('handling')
   return response.text().then(text => {
     const data = text && JSON.parse(text);
     console.log(response);
     // console.log(response.token);
-    // console.log(data);
+    console.log(data);
     if (!response.ok) {
       const error = (data && data.message) || response.statusText;
       return Promise.reject(error);
