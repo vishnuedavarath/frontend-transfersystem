@@ -28,11 +28,21 @@ class ProfilePage extends Component {
 			opt2 : "",
 			opt3 : ""
 		},
-		gentransferstatus: false
+		gentransferstatus: false,
+		isGeneral: false,
+		isRequest: false
 
 	};
+	this.handleclick = this.handleclick.bind(this);
 	
   }
+  handleclick(e){
+	const { dispatch } = this.props;
+	this.setState({ name: true })
+	dispatch(userActions.reqtype(this.state.isGeneral,this.state.isRequest))
+
+  }
+
   componentDidMount(){
 	const { dispatch } = this.props;
 	dispatch(userActions.getProfile())
@@ -50,6 +60,7 @@ class ProfilePage extends Component {
 			gentransferstatus: this.profile.genTransferStatus
 
 		}
+		
 
 	);
 	
@@ -76,6 +87,9 @@ class ProfilePage extends Component {
         <span>Name :</span>
 		<button>< Link To = '/optionpage'>GENERAL TRANSFER</ Link></button>
 		<button> <Link To = '/optionpage'>REQUEST TRANSFER</Link></button>
+		<button onClick = { this.handleclick } name = "gen">GENERAL TRANSFER</button>
+		<button onClick = { this.handleclick } name = "req">REQUEST TRANSFER</button>
+		{/* <button onClick={this.handleCLick}>Logout</button> */}
       </div>
     );
   }

@@ -37,7 +37,7 @@ class App extends Component {
                         	<switch>
 								<div>
                                     <Route exact path="/login" component={LoginPage} />
-                                    <PrivateRoute exact path="/passchng" component={ChangePwPage} /> }
+                                    <PrivateRoute exact path="/passchng" component={ChangePwPage} /> 
                                     <PrivateRoute exact path = "/" component = {ProfilePage} />  
                                     <PrivateRoute exact path = "/optionpage" component = { OptionPage } />
                                     <PrivateRoute exact path = "/previousstation" component = { PrevStationPage }/>

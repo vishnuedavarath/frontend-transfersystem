@@ -42,7 +42,7 @@ class OptionForm extends Component {
     const { opt1, opt2, opt3 } = this.state;
     const { dispatch } = this.props;
     if (opt1 && opt2 && opt3) {
-      dispatch(userActions.submitStations(opt1, opt2, opt3));
+      dispatch(userActions.submitStations(opt1, opt2, opt3,this.props.isgen,this.props.isreq));
     }
   }
   render() {
@@ -99,8 +99,11 @@ class OptionForm extends Component {
 function mapStateToProps(state) {
   // const { loggingin } = state.authentication;
   const { dispatch } = state;
+  const {isgen,isreq} = state.transfer;
   return {
-    dispatch
+	dispatch,
+	isgen,
+	isreq
   };
 }
 
