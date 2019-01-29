@@ -37,6 +37,7 @@ class ProfilePage extends Component {
     };
     this.handleclickGen = this.handleclickGen.bind(this);
 	this.handleclickReq = this.handleclickReq.bind(this);
+	this.handleclick = this.handleclick.bind(this);
   }
 
   handleclickGen() {
@@ -50,6 +51,9 @@ class ProfilePage extends Component {
   }
   handleClick() {
     history.push("/prevstation");
+  }
+  handleclick(){
+	  history.push("/login");
   }
   componentDidMount() {
     // const { dispatch } = this.props;
@@ -80,8 +84,6 @@ class ProfilePage extends Component {
   }
 
   render() {
-	
-	//   console.log(p);
     return (
       <div>
         <h2>Profile</h2>
@@ -95,7 +97,7 @@ class ProfilePage extends Component {
         <br />
         <div>
           <span>
-            {/* Current Station :{this.state.stations.stations[(this.state.currentstattion)].name} */}
+            Current Station :{this.state.currentstattion}
           </span>
           <br />
         </div>
@@ -117,7 +119,7 @@ class ProfilePage extends Component {
 		<button> <Link To = '/optionpage'>REQUEST TRANSFER</Link></button> */}
         <div>
           {console.log(this.state.reqtransfer.op1)}
-          {!(this.state.gentransfer.op1 === undefined) && (
+          {(this.state.gentransfer.op1) && (
             <div>
               <h3>GENERAL TRANSFER</h3>
               <h4>Applied Options</h4>
@@ -134,8 +136,8 @@ class ProfilePage extends Component {
             </div>
           )}
         </div>
-        <div>
-          {!(this.state.reqtransfer.op1 === undefined) && (
+        <div>{ console.log(this.state.reqtransfer.op1) }
+          {(this.state.reqtransfer.op1) && (
             <div>
               <h3>REQUEST TRANSFER</h3>
               <h4>Applied Options</h4>
@@ -152,18 +154,19 @@ class ProfilePage extends Component {
           )}
         </div>
         <div>
-          {this.state.gentransferstatus &&
-            this.state.gentransfer.op1 === undefined && (
+			{console.log(this.state.gentransferstatus)}
+          {((this.state.gentransferstatus )&&
+            !(this.state.gentransfer.op1)&&!(this.state.reqtransfer.op1)) && (
               <button onClick={this.handleclickGen}>GENERAL TRANSFER</button>
             )}
         </div>
         <div>
-          {!this.state.gentransferstatus &&
-            this.state.reqtransfer.op1 === undefined && (
+          {(!this.state.gentransferstatus &&
+            !(this.state.reqtransfer.op1)&&!(this.state.gentransfer.op1) )&& (
               <button onClick={this.handleclickReq}>REQUEST TRANSFER</button>
             )}
         </div>
-        {/* <button onClick={this.handleCLick}>Logout</button> */}
+        <button onClick={this.handleclick}>Logout</button>
       </div>
     );
   }

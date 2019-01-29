@@ -9,7 +9,7 @@ class LoginPage extends Component {
 		return (
     		<div>
 				<div className="limiter">
-					<div class="container-login100">
+					<div className="container-login100">
 						<LoginForm/>
 					</div>
 				</div>

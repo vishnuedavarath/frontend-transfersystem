@@ -29,17 +29,17 @@ class ChangePwForm extends Component {
         e.preventDefault();
 
         this.setState({ submitted: true });
-        const { password, newpassword, repassword } = this.state;
+        const { password, newPassword, rePassword } = this.state;
         const { dispatch } = this.props;
-        if (password && newpassword && repassword) {
-                dispatch(userActions.passchng(newpassword));
+        if (password && newPassword && rePassword) {
+                dispatch(userActions.passchng(newPassword));
                 // dispatch(userActions.getfirst());
         }
     }
 
 
     render() {
-        const { password, newpassword, repassword } = this.state;
+        const { password, newPassword, rePassword } = this.state;
         return (
             <div>
                 <h2>Change Password </h2>
@@ -56,23 +56,23 @@ class ChangePwForm extends Component {
                     </div>
 
                     <div>
-                        <label htmlFor='newpassword'>New Password</label>
+                        <label htmlFor='newPassword'>New Password</label>
                         <input
                             type='password'
                             className='form-control'
-                            name='newpassword'
-                            value={newpassword}
+                            name='newPassword'
+                            value={newPassword}
                             onChange={this.handleChange}
                         />
                     </div>
 
                     <div>
-                        <label htmlFor='repassword'>Retype New Password</label>
+                        <label htmlFor='rePassword'>Retype New Password</label>
                         <input
                             type='password'
                             className='form-control'
-                            name='repassword'
-                            value={repassword}
+                            name='rePassword'
+                            value={rePassword}
                             onChange={this.handleChange}
                         />
                     </div>

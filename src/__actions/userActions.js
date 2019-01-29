@@ -74,7 +74,7 @@ function passchng(newpassword) {
       user => {
         console.log(user);
         dispatch(pwsuccess(user));
-        history.push("/previous");
+        history.push("/prevstation");
       },
       error => {
         dispatch(pwfailure(error));
