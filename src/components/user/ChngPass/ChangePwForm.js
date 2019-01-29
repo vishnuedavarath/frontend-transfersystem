@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { userActions } from '../../__actions/userActions';
-require('../../assets/changepass/css/chngpwform.css')
+import { userActions } from '../../../__actions/userActions';
+// require('../../../assets/changepass/css/chngpwform.css')
 
 class ChangePwForm extends Component {
     constructor(props) {

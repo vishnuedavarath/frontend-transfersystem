@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { userActions } from "../../__actions/userActions";
+import { userActions } from "../../../__actions/userActions";
 import { connect } from "react-redux";
-import { userService } from "../../__services/userService";
+import { userService } from "../../../__services/userService";
 // import moment from "moment";
 class OptionFormGen extends Component {
   constructor(props) {

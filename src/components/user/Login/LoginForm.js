@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 // import '../../assets/loginpage/css/loginform.css';
-import { userActions } from '../../__actions/userActions';
+import { userActions } from '../../../__actions/userActions';
 
 class LoginForm extends Component {
     constructor(props) {
@@ -41,7 +41,7 @@ class LoginForm extends Component {
             <div className='wrap-login100 p-t-190 p-b-30'>
                 <form name = 'form' className='login100-form' onSubmit = { this.handleSubmit }>
                     <div className='login100-form-icon'>
-                        <img src={require('../../assets/loginpage/img/Kerala_Police_Logo.png')} alt='KP Logo' />
+                        <img src={require('../../../assets/loginpage/img/Kerala_Police_Logo.png')} alt='KP Logo' />
                     </div>
 
                     <span className='login100-form-title p-t-20 p-b-45'>

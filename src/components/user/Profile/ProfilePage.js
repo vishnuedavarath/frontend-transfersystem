@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { userActions } from "../../__actions/userActions";
+import { userActions } from "../../../__actions/userActions";
 import { connect } from "react-redux";
 // import { Link } from "react-router-dom";
-import { userService } from "../../__services/userService";
-import { history } from "../../__helpers/history";
+import { userService } from "../../../__services/userService";
+import { history } from "../../../__helpers/history";
 
 class ProfilePage extends Component {
   constructor(props) {

@@ -4,15 +4,15 @@ import { connect } from 'react-redux';
 
 import { history } from './__helpers/history';
 import { alertActions } from './__actions/alertActions';
-import { PrivateRoute } from './components/Login/PrivateRoute';
+import { PrivateRoute } from './components/user/Login/PrivateRoute';
 
 import './App.css';
-import LoginPage from './components/Login/LoginPage';
-import OptionFormGen from './components/Options/OptionFormGen';
-import OptionFormReq from './components/Options/OptionFormReq';
-import ChangePwPage from './components/ChngPass/ChangePwPage';
-import ProfilePage from './components/Profile/ProfilePage';
-import PrevStationPage from './components/PrevStation/PrevStationPage';
+import LoginPage from './components/user/Login/LoginPage';
+import OptionFormGen from './components/user/Options/OptionFormGen';
+import OptionFormReq from './components/user/Options/OptionFormReq';
+import ChangePwPage from './components/user/ChngPass/ChangePwPage';
+import ProfilePage from './components/user/Profile/ProfilePage';
+import PrevStationPage from './components/user/PrevStation/PrevStationPage';
 // import PrevStationPage from './components/PrevStation/PrevStationPage';
 
 class App extends Component {
