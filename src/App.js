@@ -8,7 +8,8 @@ import { PrivateRoute } from './components/Login/PrivateRoute';
 
 import './App.css';
 import LoginPage from './components/Login/LoginPage';
-import OptionPage from './components/Options/OptionPage';
+import OptionFormGen from './components/Options/OptionFormGen';
+import OptionFormReq from './components/Options/OptionFormReq';
 import ChangePwPage from './components/ChngPass/ChangePwPage';
 import ProfilePage from './components/Profile/ProfilePage';
 import PrevStationPage from './components/PrevStation/PrevStationPage';
@@ -35,15 +36,16 @@ class App extends Component {
                             <div className={`alert ${alert.type}`}>{alert.message}</div>
                         }
                         <Router history={history}>
-                        	<switch>
+                        	{/* <switch> */}
 								<div>
                                     <Route exact path="/login" component={LoginPage} />
                                     <PrivateRoute exact path="/passchng" component={ChangePwPage} /> 
                                     <PrivateRoute exact path = "/" component = {ProfilePage} />  
-                                    <PrivateRoute exact path = "/optionpage" component = { OptionPage } />
-                                    <PrivateRoute exact path = "/previousstation" component = { PrevStationPage }/>
+                                    <PrivateRoute exact path = "/genoption" component = { OptionFormGen } />
+									<PrivateRoute exact path = "/reqoption" component = { OptionFormReq } />
+                                    <PrivateRoute exact path = "/prevstation" component = { PrevStationPage }/>
 								</div>
-							</switch>
+							{/* </switch> */}
                         </Router>
                     </div>
                 </div>

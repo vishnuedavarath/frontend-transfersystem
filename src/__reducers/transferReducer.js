@@ -4,11 +4,11 @@ export function transfer(state = initialState, action) {
 	switch (action.type) {
 	  case 'IS_GENERAL_TRANSFER':
 		return {
-		  isgen: true
+			isgen: true
 		};
 	  case 'IS_REQUEST_TRANSFER':
 		return {
-		  isreq: true
+		  isgen: false
 		};
   
 	  default:

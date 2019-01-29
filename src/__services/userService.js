@@ -8,9 +8,11 @@ export const userService = {
   logout,
   chngpass,
   getStations,
+  getStationsOpt,
   getisfirst,
   getProfile,
-  submitStation,
+  submitStationsGen,
+  submitStationsReq,
   submitPrevStation
 };
 
@@ -92,38 +94,77 @@ function getStations() {
     headers: authHeaderGet()
   };
 
-  return fetch(`http://68.183.86.24/user/station`, requestOptions).then(
+  return fetch(`http://68.183.86.24:3000/user/station`, requestOptions).then(
     handleResponse
-  );
+  )
+  .then(
+	  stations => {
+		  return stations;
+	  }
+  )
+}
+function getStationsOpt() {
+  const requestOptions = {
+    method: "GET",
+    headers: authHeaderGet()
+  };
+
+  return fetch(`http://68.183.86.24:3000/user/avilablestations`, requestOptions).then(
+    handleResponse
+  )
+  .then(
+	  stations => {
+		  return stations;
+	  }
+  )
 }
 
-function submitStation(opt1, opt2, opt3, isgen, isreq) {
+function submitStationsGen(opt1, opt2, opt3) {
+  // console.log(opt1,opt2,opt3)
   const requestOptions = {
     method: "POST",
-    headers: authHeaderPost,
-    body: JSON.stringify({ opt1: opt1, opt2: opt2, opt3: opt3 })
+    headers: authHeaderPost(),
+    body: JSON.stringify({ stat1: opt1, stat2: opt2, stat3: opt3 })
   };
-  if (isgen) {
+  console.log(requestOptions.body)
     return fetch(`http://68.183.86.24:3000/user/gentransfer`, requestOptions).then(
       handleResponse
-    );
-  }
-  if (isreq) {
-    return fetch(`http://68.183.86.24:3000/user/reqtransfer`, requestOptions).then(
-      handleResponse
-    );
-  }
+    ).then(
+      user=>{
+        return user;
+      }
+    )
 }
 
-function submitPrevStation(opt1, opt2, opt3) {
+function submitStationsReq(opt1, opt2, opt3) {
   const requestOptions = {
     method: "POST",
-    headers: authHeaderPost,
-    body: JSON.stringify({ opt1: opt1, opt2: opt2, opt3: opt3 })
+    headers: authHeaderPost(),
+    body: JSON.stringify({ stat1: opt1, stat2: opt2, stat3: opt3 })
   };
+    return fetch(`http://68.183.86.24:3000/user/reqtransfer`, requestOptions).then(
+      handleResponse
+    ).then(
+      user=>{
+        return user;
+      }
+    )
+}
+
+function submitPrevStation(cur, opt1, opt2, opt3,joindate,lastdate) {
+  const requestOptions = {
+    method: "POST",
+    headers: authHeaderPost(),
+    body: JSON.stringify({ current:cur, stat1: opt1, stat2: opt2, stat3: opt3, joindate: joindate, lastdate:lastdate })
+  };
+  console.log(requestOptions);
   return fetch(`http://68.183.86.24:3000/user/previous`, requestOptions).then(
-    handleResponse
-  );
+    handleResponse)
+    .then(
+      user=>{
+        return user;
+      }
+    )
 }
 
 function handleResponseLogin(response) {

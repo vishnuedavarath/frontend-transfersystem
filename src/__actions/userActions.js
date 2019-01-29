@@ -11,7 +11,8 @@ export const userActions = {
   getfirst,
   getProfile,
   submitPrevStations,
-  submitStations,
+  submitStationsGen,
+  submitStationsReq,
   reqtype
 };
 
@@ -73,7 +74,7 @@ function passchng(newpassword) {
       user => {
         console.log(user);
         dispatch(pwsuccess(user));
-        history.push("/");
+        history.push("/previous");
       },
       error => {
         dispatch(pwfailure(error));
@@ -99,7 +100,7 @@ function getfirst() {
 
     userService.getisfirst().then(
       user => {
-        dispatch(getfirstsuccess());
+        dispatch(getfirstsuccess(user));
       },
       error => {
         dispatch(getfirstfailure(error));
@@ -118,56 +119,65 @@ function getfirst() {
   }
 }
 
-function submitPrevStations(opt1, opt2, opt3, user) {
+function submitPrevStations(cur, opt1, opt2, opt3,joindate,lastdate) {
   return dispatch => {
-    dispatch(submitprevstationrequest({ opt1, opt2, opt3 }));
+    // dispatch(submitPrevStationRequest());
 
-    userService.chngpass(opt1, opt2, opt3, user).then(
+    userService.submitPrevStation(cur, opt1, opt2, opt3, joindate, lastdate).then(
       user => {
-        dispatch(submitprevstationsuccess(user));
+        // dispatch(submitPrevStationSuccess(user));
         history.push("/");
       },
       error => {
-        dispatch(submitprevstationfailure(error));
-        // dispatch(alertActions.error(error));
+        // dispatch(submitPrevStationFailure(error));
+        dispatch(alertActions.error(error));
       }
     );
   };
 
-  function submitprevstationrequest(user) {
-    return { type: userConstants.SUBMIT_STATION_REQUEST, user };
-  }
-  function submitprevstationsuccess(user) {
-    return { type: userConstants.SUBMIT_STATION_SUCCESS, user };
-  }
-  function submitprevstationfailure(error) {
-    return { type: userConstants.SUBMTI_STATION_FAILURE, error };
-  }
+  // function submitPrevStationRequest() {
+  //   return { type: userConstants.SUBMIT__PREV_STATION_REQUEST};
+  // }
+  // function submitPrevStationSuccess(user) {
+  //   return { type: userConstants.SUBMIT_PREV_STATION_SUCCESS, user };
+  // }
+  // function submitPrevStationFailure(error) {
+  //   return { type: userConstants.SUBMTI_PREV_STATION_FAILURE, error };
+  // }
 }
-function submitStations(opt1, opt2, opt3, isgen,isreq) {
+function submitStationsGen(opt1, opt2, opt3, isgen) {
   return dispatch => {
-    dispatch(submitstationrequest({ opt1, opt2, opt3,isgen,isreq }));
-
-    userService.submitStations(opt1, opt2, opt3).then(
+    // dispatch(submitstationrequest({ opt1, opt2, opt3,isgen,isreq }));
+    // console.log(opt1,opt2,opt3)
+    userService.submitStationsGen(opt1, opt2, opt3).then(
       user => {
-        dispatch(submitstationsuccess(user));
+		// dispatch(submitstationsuccess(user));
+		history.push('/');
       },
       error => {
-        dispatch(submitstationfailure(error));
-        // dispatch(alertActions.error(error));
+        // dispatch(submitstationfailure(error));
+        dispatch(alertActions.error(error));
       }
     );
   };
 
-  function submitstationrequest(user) {
-    return { type: userConstants.SUBMIT_STATION_REQUEST, user };
-  }
-  function submitstationsuccess(user) {
-    return { type: userConstants.SUBMIT_STATION_SUCCESS, user };
-  }
-  function submitstationfailure(error) {
-    return { type: userConstants.SUBMTI_STATION_FAILURE, error };
-  }
+}
+function submitStationsReq(opt1, opt2, opt3) {
+  return dispatch => {
+    // dispatch(submitstationrequest({ opt1, opt2, opt3,isgen,isreq }));
+
+    userService.submitStationsReq(opt1, opt2, opt3).then(
+      user => {
+		// dispatch(submitstationsuccess(user));
+		history.push('/');
+      },
+      error => {
+        // dispatch(submitstationfailure(error));
+        dispatch(alertActions.error(error));
+      }
+    );
+  };
+
 }
 
 function getAllStation() {
@@ -218,14 +228,18 @@ function getProfile() {
   }
 }
 
-function reqtype(gen, req) {
+function reqtype(gen) {
+  console.log(gen);
   return dispatch => {
 	  if(gen){
 		dispatch({type:'IS_GENERAL_TRANSFER',gen});
+		history.push('/optionpage')
+
 	  }
 	  else{
 	
-		dispatch({type:'IS_REQUEST_TRANSFER',req});
+		dispatch({type:'IS_REQUEST_TRANSFER',gen});
+		history.push('/optionpage')
 	  }
 
   }
