@@ -13,7 +13,7 @@ export const userService = {
   getProfile,
   submitStationsGen,
   submitStationsReq,
-  submitPrevStation
+  submitPrevStation,
 };
 
 function login(penNum, password) {
@@ -76,16 +76,11 @@ function getProfile() {
     headers: authHeaderGet()
   };
 
-  return fetch(
-    `http://68.183.86.24:3000/user/profile`,
-    requestOptions
-  ).then(
-	  handleResponse)
-  .then(
-	  profile =>{
-		  return profile;
-	  }
-  )
+  return fetch(`http://68.183.86.24:3000/user/profile`, requestOptions)
+    .then(handleResponse)
+    .then(profile => {
+      return profile;
+    });
 }
 
 function getStations() {
@@ -94,14 +89,11 @@ function getStations() {
     headers: authHeaderGet()
   };
 
-  return fetch(`http://68.183.86.24:3000/user/station`, requestOptions).then(
-    handleResponse
-  )
-  .then(
-	  stations => {
-		  return stations;
-	  }
-  )
+  return fetch(`http://68.183.86.24:3000/user/station`, requestOptions)
+    .then(handleResponse)
+    .then(stations => {
+      return stations;
+    });
 }
 function getStationsOpt() {
   const requestOptions = {
@@ -109,14 +101,11 @@ function getStationsOpt() {
     headers: authHeaderGet()
   };
 
-  return fetch(`http://68.183.86.24:3000/user/avilablestations`, requestOptions).then(
-    handleResponse
-  )
-  .then(
-	  stations => {
-		  return stations;
-	  }
-  )
+  return fetch(`http://68.183.86.24:3000/user/avilablestations`, requestOptions)
+    .then(handleResponse)
+    .then(stations => {
+      return stations;
+    });
 }
 
 function submitStationsGen(opt1, opt2, opt3) {
@@ -126,14 +115,12 @@ function submitStationsGen(opt1, opt2, opt3) {
     headers: authHeaderPost(),
     body: JSON.stringify({ stat1: opt1, stat2: opt2, stat3: opt3 })
   };
-  console.log(requestOptions.body)
-    return fetch(`http://68.183.86.24:3000/user/gentransfer`, requestOptions).then(
-      handleResponse
-    ).then(
-      user=>{
-        return user;
-      }
-    )
+  console.log(requestOptions.body);
+  return fetch(`http://68.183.86.24:3000/user/gentransfer`, requestOptions)
+    .then(handleResponse)
+    .then(user => {
+      return user;
+    });
 }
 
 function submitStationsReq(opt1, opt2, opt3) {
@@ -142,42 +129,46 @@ function submitStationsReq(opt1, opt2, opt3) {
     headers: authHeaderPost(),
     body: JSON.stringify({ stat1: opt1, stat2: opt2, stat3: opt3 })
   };
-    return fetch(`http://68.183.86.24:3000/user/reqtransfer`, requestOptions).then(
-      handleResponse
-    ).then(
-      user=>{
-        return user;
-      }
-    )
+  return fetch(`http://68.183.86.24:3000/user/reqtransfer`, requestOptions)
+    .then(handleResponse)
+    .then(user => {
+      return user;
+    });
 }
 
-function submitPrevStation(cur, opt1, opt2, opt3,joindate,lastdate) {
+function submitPrevStation(cur, opt1, opt2, opt3, joindate, lastdate) {
   const requestOptions = {
     method: "POST",
     headers: authHeaderPost(),
-    body: JSON.stringify({ current:cur, stat1: opt1, stat2: opt2, stat3: opt3, joindate: joindate, lastdate:lastdate })
+    body: JSON.stringify({
+      current: cur,
+      stat1: opt1,
+      stat2: opt2,
+      stat3: opt3,
+      joindate: joindate,
+      lastdate: lastdate
+    })
   };
   console.log(requestOptions);
-  return fetch(`http://68.183.86.24:3000/user/previous`, requestOptions).then(
-    handleResponse)
-    .then(
-      user=>{
-        return user;
-      }
-    )
+  return fetch(`http://68.183.86.24:3000/user/previous`, requestOptions)
+    .then(handleResponse)
+    .then(user => {
+      return user;
+    });
 }
 
 function handleResponseLogin(response) {
   return response.text().then(text => {
     const data = text && JSON.parse(text);
     console.log(response);
+    console.log(data.message);
     // console.log(response.token);
     // console.log(data);
     if (!response.ok) {
       if (response.status === 401) {
         // auto logout if 401 response returned from api
         logout();
-        Location.reload(true);
+        // window.location.reload(true);
       }
 
       const error = (data && data.message) || response.statusText;
@@ -189,7 +180,7 @@ function handleResponseLogin(response) {
 }
 
 function handleResponse(response) {
-	console.log('handling')
+  console.log("handling");
   return response.text().then(text => {
     const data = text && JSON.parse(text);
     console.log(response);

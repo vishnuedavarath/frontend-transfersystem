@@ -63,7 +63,9 @@ class PrevStationForm extends Component {
     this.setState({ submitted: true });
     const { cur, opt1, opt2, opt3, joindate, lastdate } = this.state;
     const { dispatch } = this.props;
-    dispatch(userActions.submitPrevStations(cur,opt1, opt2, opt3, joindate, lastdate));
+    dispatch(
+      userActions.submitPrevStations(cur, opt1, opt2, opt3, joindate, lastdate)
+    );
   }
   render() {
     return (
@@ -142,8 +144,9 @@ class PrevStationForm extends Component {
               placeholder="YYYY-MM-DD"
               onChange={this.handleChange}
             />
-          </label><br/>
-		  <label>
+          </label>
+          <br />
+          <label>
             Last Transfer Date(YYYY-MM-DD):
             <input
               type="text"
@@ -152,7 +155,8 @@ class PrevStationForm extends Component {
               placeholder="YYYY-MM-DD"
               onChange={this.handleChange}
             />
-          </label><br/>
+          </label>
+          <br />
 
           <button onSubmit={this.handleSubmit}>Submit</button>
         </form>

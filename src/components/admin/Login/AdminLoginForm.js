@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 // import '../../assets/loginpage/css/loginform.css';
-import { userActions } from '../../../__actions/userActions';
+import { adminActions } from '../../../__actions/adminActions';
 
 class LoginForm extends Component {
     constructor(props) {
         super(props);
         // reset login status
-        this.props.dispatch(userActions.logout());
+        this.props.dispatch(adminActions.logoutAdmin());
         this.state = {
             penNum: '',
             password: '',
@@ -31,7 +31,7 @@ class LoginForm extends Component {
         const { penNum, password } = this.state;
         const { dispatch } = this.props;
         if (penNum && password) {
-            dispatch(userActions.login(penNum, password));
+            dispatch(adminActions.loginAdmin(penNum, password));
         }
     }
 
@@ -45,7 +45,7 @@ class LoginForm extends Component {
                     </div>
 
                     <span className='login100-form-title p-t-20 p-b-45'>
-                        User Log In
+                        Admin Log In
                     </span><br/>
                     
                         <input

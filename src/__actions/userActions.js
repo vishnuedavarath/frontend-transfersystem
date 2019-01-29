@@ -13,7 +13,7 @@ export const userActions = {
   submitPrevStations,
   submitStationsGen,
   submitStationsReq,
-  reqtype
+  reqtype,
 };
 
 function login(penNum, password) {
@@ -94,6 +94,7 @@ function passchng(newpassword) {
   }
 }
 
+
 function getfirst() {
   return dispatch => {
     dispatch(getfirstrequest());
@@ -119,20 +120,22 @@ function getfirst() {
   }
 }
 
-function submitPrevStations(cur, opt1, opt2, opt3,joindate,lastdate) {
+function submitPrevStations(cur, opt1, opt2, opt3, joindate, lastdate) {
   return dispatch => {
     // dispatch(submitPrevStationRequest());
 
-    userService.submitPrevStation(cur, opt1, opt2, opt3, joindate, lastdate).then(
-      user => {
-        // dispatch(submitPrevStationSuccess(user));
-        history.push("/");
-      },
-      error => {
-        // dispatch(submitPrevStationFailure(error));
-        dispatch(alertActions.error(error));
-      }
-    );
+    userService
+      .submitPrevStation(cur, opt1, opt2, opt3, joindate, lastdate)
+      .then(
+        user => {
+          // dispatch(submitPrevStationSuccess(user));
+          history.push("/");
+        },
+        error => {
+          // dispatch(submitPrevStationFailure(error));
+          dispatch(alertActions.error(error));
+        }
+      );
   };
 
   // function submitPrevStationRequest() {
@@ -151,8 +154,8 @@ function submitStationsGen(opt1, opt2, opt3, isgen) {
     // console.log(opt1,opt2,opt3)
     userService.submitStationsGen(opt1, opt2, opt3).then(
       user => {
-		// dispatch(submitstationsuccess(user));
-		history.push('/');
+        // dispatch(submitstationsuccess(user));
+        history.push("/");
       },
       error => {
         // dispatch(submitstationfailure(error));
@@ -160,7 +163,6 @@ function submitStationsGen(opt1, opt2, opt3, isgen) {
       }
     );
   };
-
 }
 function submitStationsReq(opt1, opt2, opt3) {
   return dispatch => {
@@ -168,8 +170,8 @@ function submitStationsReq(opt1, opt2, opt3) {
 
     userService.submitStationsReq(opt1, opt2, opt3).then(
       user => {
-		// dispatch(submitstationsuccess(user));
-		history.push('/');
+        // dispatch(submitstationsuccess(user));
+        history.push("/");
       },
       error => {
         // dispatch(submitstationfailure(error));
@@ -177,7 +179,6 @@ function submitStationsReq(opt1, opt2, opt3) {
       }
     );
   };
-
 }
 
 function getAllStation() {
@@ -217,9 +218,9 @@ function getProfile() {
     );
   };
 
-//   function getProfileRequest() {
-//     return { type: userConstants.GET_PROFILE_REQUEST };
-//   }
+  //   function getProfileRequest() {
+  //     return { type: userConstants.GET_PROFILE_REQUEST };
+  //   }
   function getProfileSuccess(profile) {
     return { type: userConstants.GET_PROFILE_SUCCESS, profile };
   }
@@ -231,16 +232,12 @@ function getProfile() {
 function reqtype(gen) {
   console.log(gen);
   return dispatch => {
-	  if(gen){
-		dispatch({type:'IS_GENERAL_TRANSFER',gen});
-		history.push('/optionpage')
-
-	  }
-	  else{
-	
-		dispatch({type:'IS_REQUEST_TRANSFER',gen});
-		history.push('/optionpage')
-	  }
-
-  }
+    if (gen) {
+      dispatch({ type: "IS_GENERAL_TRANSFER", gen });
+      history.push("/optionpage");
+    } else {
+      dispatch({ type: "IS_REQUEST_TRANSFER", gen });
+      history.push("/optionpage");
+    }
+  };
 }
