@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import history from "../../../__helpers/history"
 
 export default class AdminPage extends Component {
   constructor() {
@@ -8,10 +9,12 @@ export default class AdminPage extends Component {
 
   }
   handleClickGen(){
+	  history.push("/admin/general");
 
   }
   handleClickReq(){
-	  
+	  history.push("/admin/request")
+
   }
 
   render() {

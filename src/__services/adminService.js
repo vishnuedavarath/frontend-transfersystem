@@ -10,6 +10,8 @@ export const adminService = {
   GenList,
   openModal,
   genAllot,
+  ReqList,
+  reqAllot
 };
 function loginAdmin(penNum, password) {
   const requestOptions = {
@@ -78,6 +80,19 @@ function getfirstAdmin() {
 	  })
 
   }
+  function ReqList(des){
+	const requestOptions = {
+		method: "GET",
+		headers: authHeaderGet(),
+	};
+	console.log(des);
+	return fetch('http://68.183.86.24:3000/admin/reqlist/'+ des, requestOptions)
+	.then(handleResponse)
+	.then(list =>{
+		return list;
+	})
+
+}
   function openModal(des,cur,op1,op2,op3){
 	const req={
 		designation : des,
@@ -99,6 +114,18 @@ function getfirstAdmin() {
 
   }
   function genAllot(pen,stat,des){
+	const requestOptions = {
+		method: "POST",
+		headers: authHeaderPost(),
+		body: JSON.stringify({ penno:pen,allotedStation:stat,designation:des })
+	  };
+	  console.log(requestOptions);
+	  return fetch(
+		`http://68.183.86.24:3000/admin/allot`,
+		requestOptions
+	  ).then(handleResponse)
+  }
+  function reqAllot(pen,stat,des){
 	const requestOptions = {
 		method: "POST",
 		headers: authHeaderPost(),
