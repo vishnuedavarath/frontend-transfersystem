@@ -16,8 +16,8 @@ import PrevStationPage from "./components/user/PrevStation/PrevStationPage";
 import AdminLoginPage from "./components/admin/Login/AdminLoginPage";
 import ChangePwPageAdmin from "./components/admin/ChngPass/ChangePwPageAdmin";
 import AdminPage from "./components/admin/Admin/AdminPage"
-import GenPage from "./components/admin/Applications/GenPage";
-import ReqPage from "./components/admin/Applications/ReqPage";
+import GenPage from "./components/admin/TransferList/GenPage";
+import ReqPage from "./components/admin/TransferList/ReqPage";
 // import PrevStationPage from './components/PrevStation/PrevStationPage';
 
 class App extends Component {
