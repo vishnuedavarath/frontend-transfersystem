@@ -76,7 +76,7 @@ export default class ReqPage extends Component {
     return (
       <div>
         <div>
-          <h2>General Transfer Applications</h2>
+          <h2>Request Transfer Applications</h2>
           <span>Select Designation:</span>
           <select
             name="des"

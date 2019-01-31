@@ -96,7 +96,7 @@ class OptionFormGen extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <label>
-            Select Previous Stations
+            Select Stations
             <br />
             <select
               name="opt1"
