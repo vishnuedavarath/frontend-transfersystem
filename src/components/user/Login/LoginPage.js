@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import LoginForm from './LoginForm'
-// import '../../assets/loginpage/css/loginpage.css'
+// import '../../../assets/loginpage/css/loginpage.css'
 // import { url } from 'inspector';
 
 class LoginPage extends Component {

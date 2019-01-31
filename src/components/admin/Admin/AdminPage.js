@@ -24,9 +24,10 @@ export default class AdminPage extends Component {
     return (
       <div>
         <button onClick={this.handleClickGen}>General Transfer Applications</button><br/>
-		<button onClick={this.handleClickReq}>Request Transfer Applications</button>
-		<button onClick={this.handleClickStation}>Stations</button>
-		<button>Users</button>
+		<button onClick={this.handleClickReq}>Request Transfer Applications</button><br/>
+		<button onClick={this.handleClickStation}>Stations</button><br/>
+		<button onClick={this.handleClickUser}>Users</button><br/>
+    <button onClick={this.handleClickAdmin}>Admin</button><br/>
       </div>
     );
   }
