@@ -15,7 +15,8 @@ export default class EditAdmin extends Component {
     this.handleChangeAdmin = this.handleChangeAdmin.bind(this);
 	this.handleSubmitAdminSearch = this.handleSubmitAdminSearch.bind(this);
 	this.handleClickEdit = this.handleClickEdit.bind(this);
-	handleSubmitAdmin = this.handleSubmitAdmin.bind(this);
+	this.handleSubmitAdmin = this.handleSubmitAdmin.bind(this);
+	this.handleClickDelete = this.handleClickDelete.bind(this);
   }
   handleChangeAdmin(e) {
     const { name, value } = e.target;
@@ -36,6 +37,11 @@ export default class EditAdmin extends Component {
   handleClickEdit(){
 	  this.setState({openPopup:true});
   }
+  handleSubmitAdmin(){
+	  const {adminPenno,adminName,adminPrivilege,adminDesignation} = this.state
+	  adminService.editAdmin(adminPenno,adminName,adminPrivilege,adminDesignation)
+  }
+
   render() {
     return (
       <div>
