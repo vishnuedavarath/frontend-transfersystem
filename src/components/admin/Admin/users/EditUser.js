@@ -2,56 +2,56 @@ import React, { Component } from "react";
 import { adminService } from "../../../../__services/adminService";
 import Popup from 'reactjs-popup';
 
-export default class EditAdmin extends Component {
+export default class EditUser extends Component {
   constructor() {
     super();
     this.state = {
       penno: "",
-      adminName: "",
-      adminPenno: "",
-      adminPrivilege: "",
-      adminDesignation: ""
+      userName: "",
+      userPenno: "",
+      userPrivilege: "",
+      userDesignation: ""
     };
-    this.handleChangeAdmin = this.handleChangeAdmin.bind(this);
-	this.handleSubmitAdminSearch = this.handleSubmitAdminSearch.bind(this);
+    this.handleChangeUser = this.handleChangeUser.bind(this);
+	this.handleSubmitUserSearch = this.handleSubmitUserSearch.bind(this);
 	this.handleClickEdit = this.handleClickEdit.bind(this);
-	this.handleSubmitAdmin = this.handleSubmitAdmin.bind(this);
+	this.handleSubmitUser = this.handleSubmitUser.bind(this);
 	this.handleClickDelete = this.handleClickDelete.bind(this);
   }
-  handleChangeAdmin(e) {
+  handleChangeUser(e) {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   }
-  handleSubmitAdminSearch() {
+  handleSubmitUserSearch() {
     const { penno } = this.state;
-    adminService.searchAdmin(penno).then(admin => {
+    adminService.searchUser(penno).then(user => {
       this.setState({
 		  openPopup:false,
-        adminName: admin.name,
-        adminPenno: admin.penno,
-        adminPrivilege: admin.privilege,
-        adminDesignation: admin.designation
+        userName: user.name,
+        userPenno: user.penno,
+        userPrivilege: user.privilege,
+        userDesignation: user.designation
       });
     });
   }
   handleClickEdit(){
 	  this.setState({openPopup:true});
   }
-  handleSubmitAdmin(){
-	  const {adminPenno,adminName,adminPrivilege,adminDesignation} = this.state
-	  adminService.editAdmin(adminPenno,adminName,adminPrivilege,adminDesignation);
+  handleSubmitUser(){
+	  const {userPenno,userName,userPrivilege,userDesignation} = this.state
+	  adminService.editUser(userPenno,userName,userPrivilege,userDesignation);
   }
 
   render() {
     return (
       <div>
         <div>
-          <form onSubmit={this.handleSubmitAdminSearch}>
+          <form onSubmit={this.handleSubmitUserSearch}>
             <input
-              type="admin"
+              type="user"
               name="penno"
               value={this.state.penno}
-              onChange={this.handleChangeAdmin}
+              onChange={this.handleChangeUser}
             />
             <button>Submit</button>
           </form>
@@ -59,16 +59,16 @@ export default class EditAdmin extends Component {
         <div>
           {user => (
             <div>
-              <span>PEN Number:{this.state.adminPenno}</span>
+              <span>PEN Number:{this.state.userPenno}</span>
               <br />
-              <span>Name:{this.state.adminName}</span>
+              <span>Name:{this.state.userName}</span>
               <br />
-              <span>Privilege:{this.state.adminPrivilege}</span>
+              <span>Privilege:{this.state.userPrivilege}</span>
               <br />u
               <Popup
                 trigger={
                   <button onClick={this.handleClickEdit}>
-                    Edit Admin Details
+                    Edit user Details
                   </button>
                 }
                 position="bottom center"
@@ -76,30 +76,30 @@ export default class EditAdmin extends Component {
                 on="click"
               >
                 <div>
-                  <form onSubmit={this.handleSubmitAdmin}>
+                  <form onSubmit={this.handleSubmitUser}>
 				  PEN Number:
                     <br />
                     <input
-                      name="adminPenno"
-                      value={this.state.adminPenno}
-                      onChange={this.handleChangeAdmin}
+                      name="userPenno"
+                      value={this.state.userPenno}
+                      onChange={this.handleChangeUser}
                     />
                     Name:
                     <br />
                     <input
-                      name="adminName"
-                      value={this.state.adminName}
-                      onChange={this.handleChangeAdmin}
+                      name="userName"
+                      value={this.state.userName}
+                      onChange={this.handleChangeUser}
                     />
                     <br />
                     Designation:
                     <br />
                     <input
                       name="code"
-                      value={this.state.admin}
+                      value={this.state.user}
                       onChange={this.handleChangeStation}
                     />
-					<select value = {this.state.adminDesignation} onChange = {this.handleChangeAdmin}>
+					<select value = {this.state.userDesignation} onChange = {this.handleChangeUser}>
 						<option value="si">SI</option>
 						<option value="asi">ASI</option>
 						<option value="scpo">SCPO</option>
@@ -108,16 +108,16 @@ export default class EditAdmin extends Component {
 						<option value="wcpo">WCPO</option>
 					</select>
                     <br />
-                    <select value = {this.state.adminPrivilege} onChange = {this.handleChangeAdmin}>
+                    <select value = {this.state.userPrivilege} onChange = {this.handleChangeUser}>
 						<option value="1">Super</option>
-						<option value="2">Admin</option>
+						<option value="2">user</option>
 					</select>
                     <br />
                     <button>Submit</button>
                   </form>
                 </div>
               </Popup>
-			  <button onClick = {this.handleClickDelete}>Delete Admin</button>
+			  <button onClick = {this.handleClickDelete}>Delete user</button>
             </div>
           )}
         </div>

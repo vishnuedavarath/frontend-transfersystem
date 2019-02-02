@@ -14,6 +14,7 @@ export const adminService = {
   reqAllot,
   addAdmin,
   searchAdmin,
+  editAdmin
 };
 function loginAdmin(penNum, password) {
   const requestOptions = {
@@ -161,6 +162,18 @@ function getfirstAdmin() {
       .then(data =>{
         return data;
       })
+  }
+  function editAdmin(id,penno,name,privilege){
+    const requestOptions = {
+      method: "PATCH",
+      headers: authHeaderPost(),
+      body: JSON.stringify({ _id:id,penno:penno,name:name,privilege:privilege })
+      };
+      console.log(requestOptions);
+      return fetch(
+      `http://68.183.86.24:3000/admin/adminactions`,
+      requestOptions
+      ).then(handleResponse)
   }
 
 function handleResponseLogin(response) {
