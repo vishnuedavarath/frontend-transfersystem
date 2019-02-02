@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { history } from "../../../../__helpers/history"
 import { adminService } from "../../../../__services/adminService";
+import Popup from 'react-popup';
 
 export default class SearchPage extends Component {
   constructor() {
