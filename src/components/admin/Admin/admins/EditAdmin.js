@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { adminService } from "../../../../__services/adminService";
-import Popup from 'reactjs-popup';
+import Popup from "reactjs-popup";
 
 export default class EditAdmin extends Component {
   constructor() {
     super();
     this.state = {
+      openPopup: false,
       penno: "",
       adminName: "",
       adminPenno: "",
@@ -13,10 +14,10 @@ export default class EditAdmin extends Component {
       adminDesignation: ""
     };
     this.handleChangeAdmin = this.handleChangeAdmin.bind(this);
-	this.handleSubmitAdminSearch = this.handleSubmitAdminSearch.bind(this);
-	this.handleClickEdit = this.handleClickEdit.bind(this);
-	this.handleSubmitAdmin = this.handleSubmitAdmin.bind(this);
-	this.handleClickDelete = this.handleClickDelete.bind(this);
+    this.handleSubmitAdminSearch = this.handleSubmitAdminSearch.bind(this);
+    this.handleClickEdit = this.handleClickEdit.bind(this);
+    this.handleSubmitAdmin = this.handleSubmitAdmin.bind(this);
+    this.handleClickDelete = this.handleClickDelete.bind(this);
   }
   handleChangeAdmin(e) {
     const { name, value } = e.target;
@@ -26,7 +27,7 @@ export default class EditAdmin extends Component {
     const { penno } = this.state;
     adminService.searchAdmin(penno).then(admin => {
       this.setState({
-		  openPopup:false,
+        openPopup: false,
         adminName: admin.name,
         adminPenno: admin.penno,
         adminPrivilege: admin.privilege,
@@ -34,12 +35,22 @@ export default class EditAdmin extends Component {
       });
     });
   }
-  handleClickEdit(){
-	  this.setState({openPopup:true});
+  handleClickEdit() {
+    this.setState({ openPopup: true });
   }
-  handleSubmitAdmin(){
-	  const {adminPenno,adminName,adminPrivilege,adminDesignation} = this.state
-	  adminService.editAdmin(adminPenno,adminName,adminPrivilege,adminDesignation);
+  handleSubmitAdmin() {
+    const {
+      adminPenno,
+      adminName,
+      adminPrivilege,
+      adminDesignation
+    } = this.state;
+    adminService.editAdmin(
+      adminPenno,
+      adminName,
+      adminPrivilege,
+      adminDesignation
+    );
   }
 
   render() {
@@ -77,7 +88,7 @@ export default class EditAdmin extends Component {
               >
                 <div>
                   <form onSubmit={this.handleSubmitAdmin}>
-				  PEN Number:
+                    PEN Number:
                     <br />
                     <input
                       name="adminPenno"
@@ -99,25 +110,31 @@ export default class EditAdmin extends Component {
                       value={this.state.admin}
                       onChange={this.handleChangeStation}
                     />
-					<select value = {this.state.adminDesignation} onChange = {this.handleChangeAdmin}>
-						<option value="si">SI</option>
-						<option value="asi">ASI</option>
-						<option value="scpo">SCPO</option>
-						<option value="tscpo">TSCPO</option>
-						<option value="cpo">CPO</option>
-						<option value="wcpo">WCPO</option>
-					</select>
+                    <select
+                      value={this.state.adminDesignation}
+                      onChange={this.handleChangeAdmin}
+                    >
+                      <option value="si">SI</option>
+                      <option value="asi">ASI</option>
+                      <option value="scpo">SCPO</option>
+                      <option value="tscpo">TSCPO</option>
+                      <option value="cpo">CPO</option>
+                      <option value="wcpo">WCPO</option>
+                    </select>
                     <br />
-                    <select value = {this.state.adminPrivilege} onChange = {this.handleChangeAdmin}>
-						<option value="1">Super</option>
-						<option value="2">Admin</option>
-					</select>
+                    <select
+                      value={this.state.adminPrivilege}
+                      onChange={this.handleChangeAdmin}
+                    >
+                      <option value="1">Super</option>
+                      <option value="2">Admin</option>
+                    </select>
                     <br />
                     <button>Submit</button>
                   </form>
                 </div>
               </Popup>
-			  <button onClick = {this.handleClickDelete}>Delete Admin</button>
+              <button onClick={this.handleClickDelete}>Delete Admin</button>
             </div>
           )}
         </div>

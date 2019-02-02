@@ -2,74 +2,92 @@ import React, { Component } from "react";
 import { adminService } from "../../../../__services/adminService";
 import Popup from "reactjs-popup";
 
-export default class EditUser extends Component {
+export default class EditStation extends Component {
   constructor() {
     super();
     this.state = {
       openPopup: false,
-      penno: "",
-      userName: "",
-      userPenno: "",
-      userPrivilege: "",
-      userDesignation: ""
+      name: "",
+      stationName: "",
+      stationCode: "",
+      stationVacancySI: "",
+      stationVacancyASI: "",
+      stationVacancySCPO: "",
+      stationVacancyTSCPO: "",
+      stationVacancyCPO: "",
+      stationVacancyWCPO: ""
     };
-    this.handleChangeUser = this.handleChangeUser.bind(this);
-    this.handleSubmitUserSearch = this.handleSubmitUserSearch.bind(this);
+    this.handleChangeStation = this.handleChangeStation.bind(this);
+    this.handleSubmitStationSearch = this.handleSubmitStationSearch.bind(this);
     this.handleClickEdit = this.handleClickEdit.bind(this);
-    this.handleSubmitUser = this.handleSubmitUser.bind(this);
+    this.handleSubmitStation = this.handleSubmitStation.bind(this);
     this.handleClickDelete = this.handleClickDelete.bind(this);
   }
-  handleChangeUser(e) {
+  handleChangeStation(e) {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   }
-  handleSubmitUserSearch() {
-    const { penno } = this.state;
-    adminService.searchUser(penno).then(user => {
+  handleSubmitStationSearch() {
+    const { name } = this.state;
+    adminService.searchStation(name).then(station => {
       this.setState({
         openPopup: false,
-        userName: user.name,
-        userPenno: user.penno,
-        userPrivilege: user.privilege,
-        userDesignation: user.designation
+        stationName: station.name,
+        stationCode: station.code,
+        stationVacancySI: "",
+        stationVacancyASI: "",
+        stationVacancySCPO: "",
+        stationVacancyTSCPO: "",
+        stationVacancyCPO: "",
+        stationVacancyWCPO: ""
       });
     });
   }
   handleClickEdit() {
     this.setState({ openPopup: true });
   }
-  handleSubmitUser() {
-    const { userPenno, userName, userPrivilege, userDesignation } = this.state;
-    adminService.editUser(userPenno, userName, userPrivilege, userDesignation);
+  handleSubmitStation() {
+    const {
+      stationPenno,
+      stationName,
+      stationPrivilege,
+      stationDesignation
+    } = this.state;
+    adminService.editStation(
+      stationPenno,
+      stationName,
+      stationPrivilege,
+      stationDesignation
+    );
   }
 
   render() {
     return (
       <div>
         <div>
-          <form onSubmit={this.handleSubmitUserSearch}>
+          <form onSubmit={this.handleSubmitStationSearch}>
             <input
-              type="user"
+              type="station"
               name="penno"
               value={this.state.penno}
-              onChange={this.handleChangeUser}
+              onChange={this.handleChangeStation}
             />
             <button>Submit</button>
           </form>
         </div>
         <div>
-          {user => (
+          {station => (
             <div>
-              <span>PEN Number:{this.state.userPenno}</span>
+              <span>PEN Number:{this.state.stationPenno}</span>
               <br />
-              <span>Name:{this.state.userName}</span>
+              <span>Name:{this.state.stationName}</span>
               <br />
-              <span>Privilege:{this.state.userPrivilege}</span>
+              <span>Privilege:{this.state.stationPrivilege}</span>
               <br />u
               <Popup
                 trigger={
                   <button onClick={this.handleClickEdit}>
-                    Edit user Details
+                    Edit station Details
                   </button>
                 }
                 position="bottom center"
@@ -77,32 +95,32 @@ export default class EditUser extends Component {
                 on="click"
               >
                 <div>
-                  <form onSubmit={this.handleSubmitUser}>
+                  <form onSubmit={this.handleSubmitStation}>
                     PEN Number:
                     <br />
                     <input
-                      name="userPenno"
-                      value={this.state.userPenno}
-                      onChange={this.handleChangeUser}
+                      name="stationPenno"
+                      value={this.state.stationPenno}
+                      onChange={this.handleChangeStation}
                     />
                     Name:
                     <br />
                     <input
-                      name="userName"
-                      value={this.state.userName}
-                      onChange={this.handleChangeUser}
+                      name="stationName"
+                      value={this.state.stationName}
+                      onChange={this.handleChangeStation}
                     />
                     <br />
                     Designation:
                     <br />
                     <input
                       name="code"
-                      value={this.state.user}
+                      value={this.state.station}
                       onChange={this.handleChangeStation}
                     />
                     <select
-                      value={this.state.userDesignation}
-                      onChange={this.handleChangeUser}
+                      value={this.state.stationDesignation}
+                      onChange={this.handleChangeStation}
                     >
                       <option value="si">SI</option>
                       <option value="asi">ASI</option>
@@ -113,18 +131,18 @@ export default class EditUser extends Component {
                     </select>
                     <br />
                     <select
-                      value={this.state.userPrivilege}
-                      onChange={this.handleChangeUser}
+                      value={this.state.stationPrivilege}
+                      onChange={this.handleChangeStation}
                     >
                       <option value="1">Super</option>
-                      <option value="2">user</option>
+                      <option value="2">station</option>
                     </select>
                     <br />
                     <button>Submit</button>
                   </form>
                 </div>
               </Popup>
-              <button onClick={this.handleClickDelete}>Delete user</button>
+              <button onClick={this.handleClickDelete}>Delete station</button>
             </div>
           )}
         </div>

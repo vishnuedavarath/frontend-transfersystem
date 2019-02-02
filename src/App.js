@@ -18,7 +18,7 @@ import ChangePwPageAdmin from "./components/admin/ChngPass/ChangePwPageAdmin";
 import AdminPage from "./components/admin/Admin/AdminPage";
 import GenPage from "./components/admin/TransferList/GenPage";
 import ReqPage from "./components/admin/TransferList/ReqPage";
-import SearchPage from "./components/admin/Admin/stations/SearchPage";
+import SearchPage from "./components/admin/Admin/stations/EditStation";
 // import PrevStationPage from './components/PrevStation/PrevStationPage';
 
 class App extends Component {
