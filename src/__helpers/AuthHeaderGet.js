@@ -1,4 +1,17 @@
-export function authHeaderGet() {
+function AdminAuthHeaderGet() {
+  // return authorization header with jwt token
+  let admin = JSON.parse(localStorage.getItem("admin"));
+
+  if (admin && admin.token) {
+    return {
+      Authorization: "Bearer " + admin.token
+    };
+  } else {
+    return {};
+  }
+}
+
+function authHeaderGet() {
   // return authorization header with jwt token
   let user = JSON.parse(localStorage.getItem("user"));
 
@@ -10,3 +23,7 @@ export function authHeaderGet() {
     return {};
   }
 }
+
+
+
+module.exports = {AdminAuthHeaderGet,authHeaderGet}

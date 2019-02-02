@@ -21,7 +21,7 @@ export default class EditStation extends Component {
     this.handleSubmitStationSearch = this.handleSubmitStationSearch.bind(this);
     this.handleClickEdit = this.handleClickEdit.bind(this);
     this.handleSubmitStation = this.handleSubmitStation.bind(this);
-    this.handleClickDelete = this.handleClickDelete.bind(this);
+    // this.handleClickDelete = this.handleClickDelete.bind(this);
   }
   handleChangeStation(e) {
     const { name, value } = e.target;

@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { history } from "./__helpers/history";
 import { alertActions } from "./__actions/alertActions";
 import { PrivateRoute } from "./components/user/Login/PrivateRoute";
+import { AdminPrivateRoute } from "./components/admin/Login/AdminPrivateRoute";
 
 import "./App.css";
 import LoginPage from "./components/user/Login/LoginPage";
@@ -18,7 +19,9 @@ import ChangePwPageAdmin from "./components/admin/ChngPass/ChangePwPageAdmin";
 import AdminPage from "./components/admin/Admin/AdminPage";
 import GenPage from "./components/admin/TransferList/GenPage";
 import ReqPage from "./components/admin/TransferList/ReqPage";
-import SearchPage from "./components/admin/Admin/stations/EditStation";
+// import SearchPage from "./components/admin/Admin/stations/EditStation";
+import EditAdmin from "./components/admin/Admin/admins/EditAdmin";
+import EditUser from "./components/admin/Admin/users/EditUser"
 // import PrevStationPage from './components/PrevStation/PrevStationPage';
 
 class App extends Component {
@@ -62,16 +65,33 @@ class App extends Component {
                   component={PrevStationPage}
                 />
                 <Route exact path="/admin/login" component={AdminLoginPage} />
-                <PrivateRoute
+                <AdminPrivateRoute
                   exact
                   path="/admin/passchng"
                   component={ChangePwPageAdmin}
                 />
-                <PrivateRoute exact path="/admin" component={AdminPage} />
+                <AdminPrivateRoute exact path="/admin" component={AdminPage} />
 
-                <PrivateRoute exact path="/admin/general" component={GenPage} />
-                <PrivateRoute exact path="/admin/request" component={ReqPage} />
-                <PrivateRoute exact path="/admin/station" component={SearchPage} />
+                <AdminPrivateRoute
+                  exact
+                  path="/admin/general"
+                  component={GenPage}
+                />
+                <AdminPrivateRoute
+                  exact
+                  path="/admin/request"
+                  component={ReqPage}
+                />
+                <AdminPrivateRoute
+                  exact
+                  path="/admin/editadmin"
+                  component={EditAdmin}
+                />
+                <AdminPrivateRoute
+                  exact
+                  path="/admin/edituser"
+                  component={EditUser}
+                />
               </div>
               {/* </switch> */}
             </Router>

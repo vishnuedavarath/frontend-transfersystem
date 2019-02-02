@@ -11,7 +11,12 @@ export default class EditAdmin extends Component {
       adminName: "",
       adminPenno: "",
       adminPrivilege: "",
-      adminDesignation: ""
+	  adminDesignation: "",
+	  adminId:"",
+	  privilege:{
+		"1": "Super Admin",
+		"2":"Admin"
+	  }
     };
     this.handleChangeAdmin = this.handleChangeAdmin.bind(this);
     this.handleSubmitAdminSearch = this.handleSubmitAdminSearch.bind(this);
@@ -23,34 +28,49 @@ export default class EditAdmin extends Component {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   }
-  handleSubmitAdminSearch() {
+  handleSubmitAdminSearch(e) {
+	e.preventDefault();
     const { penno } = this.state;
     adminService.searchAdmin(penno).then(admin => {
       this.setState({
         openPopup: false,
-        adminName: admin.name,
-        adminPenno: admin.penno,
-        adminPrivilege: admin.privilege,
-        adminDesignation: admin.designation
+        adminName: admin.admins.name,
+        adminPenno: admin.admins.penno,
+        adminPrivilege: admin.admins.privilege,
+		adminDesignation: admin.admins.designation,
+		adminId: admin.admins._id,
       });
     });
   }
   handleClickEdit() {
     this.setState({ openPopup: true });
   }
-  handleSubmitAdmin() {
+  handleSubmitAdmin(e) {
+	  e.preventDefault();
     const {
       adminPenno,
       adminName,
       adminPrivilege,
-      adminDesignation
+      adminId
     } = this.state;
     adminService.editAdmin(
       adminPenno,
       adminName,
       adminPrivilege,
-      adminDesignation
+	  adminId,
     );
+  }
+  handleClickDelete(){
+	  adminService.adminDelete(this.state.adminId)
+	  .then(
+		  data=>{
+			  window.location.reload(true);
+		  },
+		  error=>{
+			  
+		  }
+	  )
+	  window.location.reload(true);
   }
 
   render() {
@@ -68,14 +88,14 @@ export default class EditAdmin extends Component {
           </form>
         </div>
         <div>
-          {user => (
+          {this.state.adminId&&(
             <div>
               <span>PEN Number:{this.state.adminPenno}</span>
               <br />
               <span>Name:{this.state.adminName}</span>
               <br />
-              <span>Privilege:{this.state.adminPrivilege}</span>
-              <br />u
+              <span>Privilege:{this.state.privilege[this.state.adminPrivilege]}</span>
+              <br />
               <Popup
                 trigger={
                   <button onClick={this.handleClickEdit}>
@@ -103,27 +123,11 @@ export default class EditAdmin extends Component {
                       onChange={this.handleChangeAdmin}
                     />
                     <br />
-                    Designation:
-                    <br />
-                    <input
-                      name="code"
-                      value={this.state.admin}
-                      onChange={this.handleChangeStation}
-                    />
+					Privilege:
+					<br/>
                     <select
-                      value={this.state.adminDesignation}
-                      onChange={this.handleChangeAdmin}
-                    >
-                      <option value="si">SI</option>
-                      <option value="asi">ASI</option>
-                      <option value="scpo">SCPO</option>
-                      <option value="tscpo">TSCPO</option>
-                      <option value="cpo">CPO</option>
-                      <option value="wcpo">WCPO</option>
-                    </select>
-                    <br />
-                    <select
-                      value={this.state.adminPrivilege}
+					name="adminPrivilege"
+					value={this.state.adminPrivilege}
                       onChange={this.handleChangeAdmin}
                     >
                       <option value="1">Super</option>

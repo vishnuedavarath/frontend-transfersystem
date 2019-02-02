@@ -23,15 +23,15 @@ export default class EditUser extends Component {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   }
-  handleSubmitUserSearch() {
+  handleSubmitUserSearch(e) {
+    e.preventDefault();
     const { penno } = this.state;
     adminService.searchUser(penno).then(user => {
       this.setState({
-        openPopup: false,
-        userName: user.name,
-        userPenno: user.penno,
-        userPrivilege: user.privilege,
-        userDesignation: user.designation
+        userName: user.user.name,
+        userPenno: user.user.penno,
+        userId: user.user._id,
+        userDesignation: user.user.designation
       });
     });
   }
@@ -41,6 +41,11 @@ export default class EditUser extends Component {
   handleSubmitUser() {
     const { userPenno, userName, userPrivilege, userDesignation } = this.state;
     adminService.editUser(userPenno, userName, userPrivilege, userDesignation);
+  }
+  handleClickDelete(e) {
+    e.preventDefault();
+    adminService.userDelete();
+    window.location.reload(true);
   }
 
   render() {
@@ -58,14 +63,14 @@ export default class EditUser extends Component {
           </form>
         </div>
         <div>
-          {user => (
+          {this.state.userId && (
             <div>
               <span>PEN Number:{this.state.userPenno}</span>
               <br />
               <span>Name:{this.state.userName}</span>
               <br />
               <span>Privilege:{this.state.userPrivilege}</span>
-              <br />u
+              <br />
               <Popup
                 trigger={
                   <button onClick={this.handleClickEdit}>

@@ -6,8 +6,8 @@ export default class GenPage extends Component {
   constructor() {
     super();
     this.state = {
-      designations: ["a1", "a2", "a3"],
-      des: "a1",
+      designations: ["si", "asi", "scpo","tscpo","cpo","wcpo"],
+      des: "si",
       users: [],
       open: false,
       openPenno: "",
@@ -83,9 +83,9 @@ export default class GenPage extends Component {
             value={this.state.opt1}
             onChange={this.handleChange}
           >
-            {this.state.designations.map(station => (
-              <option key={station} value={station}>
-                {station}
+            {this.state.designations.map(des => (
+              <option key={des} value={des}>
+                {des}
               </option>
             ))}
           </select>
@@ -123,7 +123,7 @@ export default class GenPage extends Component {
                     <strong>Applied Option</strong>
                     <br />
                     <button
-                      value={this.state.op1.statCode}
+                      value={this.state.op1.id}
                       onClick={this.handleclick}
                     >
                       {this.state.op1.name}
@@ -132,7 +132,7 @@ export default class GenPage extends Component {
                     <span>Vacancy:{this.state.op1.vacancy}</span>
                     <br />
                     <button
-                      value={this.state.op2.statCode}
+                      value={this.state.op2.id}
                       onClick={this.handleclick}
                     >
                       {this.state.op2.name}
@@ -141,7 +141,7 @@ export default class GenPage extends Component {
                     <span>Vacancy:{this.state.op2.vacancy}</span>
                     <br />
                     <button
-                      value={this.state.op3.statCode}
+                      value={this.state.op3.id}
                       onClick={this.handleclick}
                     >
                       {this.state.op3.name}
