@@ -35,20 +35,20 @@ export default class ReqPage extends Component {
     });
   }
   onOpenModal = e => {
-	  var tgt = JSON.parse(e.target.value);
+    var tgt = JSON.parse(e.target.value);
     this.setState({
       open: true,
       openPenno: tgt.penno,
       openName: tgt.name
-	});
-	console.log(tgt);
+    });
+    console.log(tgt);
     adminService
       .openModal(
         this.state.des,
         tgt.currentStation,
-        tgt.genTransfer.op1,
-        tgt.genTransfer.op2,
-        tgt.genTransfer.op3
+        tgt.reqTransfer.op1,
+        tgt.reqTransfer.op2,
+        tgt.reqTransfer.op3
       )
       .then(data => {
         this.setState({
@@ -57,16 +57,19 @@ export default class ReqPage extends Component {
           op2: data.second,
           op3: data.third
         });
-	  });
-	  console.log(this.state);
+      });
+    console.log(this.state);
   };
   handleclick(e) {
     adminService
       .reqAllot(this.state.openPenno, e.target.value, this.state.des)
       .then(data => {
         console.log(data);
-        this.setState({ open: false });
-        window.location.reload(true);
+		this.setState({ open: false });
+		var desig = this.state.des;
+		window.location.reload(true);
+		this.setState({des:desig});
+		this.handleClick();
       });
   }
   onCloseModal = () => {
