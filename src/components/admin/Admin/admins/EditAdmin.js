@@ -111,6 +111,7 @@ export default class EditAdmin extends Component {
                   </form>
                 </div>
               </Popup>
+			  <button onClick = {this.handleClickDelete}>Delete Admin</button>
             </div>
           )}
         </div>
