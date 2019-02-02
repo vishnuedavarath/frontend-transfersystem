@@ -66,9 +66,9 @@ export default class ReqPage extends Component {
       .then(data => {
         console.log(data);
 		this.setState({ open: false });
-		var desig = this.state.des;
-		window.location.reload(true);
-		this.setState({des:desig});
+		// var desig = this.state.des;
+		// window.location.reload(true);
+		// this.setState({des:desig});
 		this.handleClick();
       });
   }
