@@ -15,9 +15,10 @@ import ProfilePage from "./components/user/Profile/ProfilePage";
 import PrevStationPage from "./components/user/PrevStation/PrevStationPage";
 import AdminLoginPage from "./components/admin/Login/AdminLoginPage";
 import ChangePwPageAdmin from "./components/admin/ChngPass/ChangePwPageAdmin";
-import AdminPage from "./components/admin/Admin/AdminPage"
+import AdminPage from "./components/admin/Admin/AdminPage";
 import GenPage from "./components/admin/TransferList/GenPage";
 import ReqPage from "./components/admin/TransferList/ReqPage";
+import SearchPage from "./components/admin/Admin/stations/SearchPage";
 // import PrevStationPage from './components/PrevStation/PrevStationPage';
 
 class App extends Component {
@@ -68,8 +69,9 @@ class App extends Component {
                 />
                 <PrivateRoute exact path="/admin" component={AdminPage} />
 
-				<PrivateRoute exact path="/admin/general" component={GenPage} />
-				<PrivateRoute exact path="/admin/request" component={ReqPage} />
+                <PrivateRoute exact path="/admin/general" component={GenPage} />
+                <PrivateRoute exact path="/admin/request" component={ReqPage} />
+                <PrivateRoute exact path="/admin/station" component={SearchPage} />
               </div>
               {/* </switch> */}
             </Router>

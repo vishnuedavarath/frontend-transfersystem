@@ -44,6 +44,7 @@ export default class SearchPage extends Component {
 	  const {name,code,vacancy} = this.state;
 	  adminService.Station(name,code,vacancy);
 	  this.setState({popup:false});
+	  this.handleSubmit();
   }
   render() {
     return (
