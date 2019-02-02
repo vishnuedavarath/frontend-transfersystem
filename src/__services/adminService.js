@@ -11,7 +11,9 @@ export const adminService = {
   openModal,
   genAllot,
   ReqList,
-  reqAllot
+  reqAllot,
+  addAdmin,
+  searchAdmin,
 };
 function loginAdmin(penNum, password) {
   const requestOptions = {
@@ -136,6 +138,29 @@ function getfirstAdmin() {
 		`http://68.183.86.24:3000/admin/allot`,
 		requestOptions
 	  ).then(handleResponse)
+  }
+  function addAdmin(penno,name,password,privilege){
+    const requestOptions = {
+      method: "POST",
+      headers: authHeaderPost(),
+      body: JSON.stringify({ penno:penno,name:name,privilege:privilege,password:password })
+      };
+      console.log(requestOptions);
+      return fetch(
+      `http://68.183.86.24:3000/admin/addadmin`,
+      requestOptions
+      ).then(handleResponse)
+  }
+  function searchAdmin(penno){
+    const requestOptions = {
+      method: "GET",
+      headers: authHeaderGet(),
+    };
+    return fetch('http://68.183.86.24:3000/admin/penno?='+penno , requestOptions)
+      .then(handleResponse)
+      .then(data =>{
+        return data;
+      })
   }
 
 function handleResponseLogin(response) {
