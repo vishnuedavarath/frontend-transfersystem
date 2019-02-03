@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { userActions } from '../../../__actions/userActions';
 // require('../../../assets/changepass/css/chngpwform.css')
+import styles from '../../../assets/changepass/css/chngpwform.css'
 
 class ChangePwForm extends Component {
     constructor(props) {
@@ -41,9 +42,9 @@ class ChangePwForm extends Component {
     render() {
         const { password, newPassword, rePassword } = this.state;
         return (
-            <div>
+            <div className = {styles.wrap_login100}>
                 <h2>Change Password </h2>
-                <form name='form' onSubmit={this.handleSubmit}>
+                <form name='form' className = {styles.login100_form} onSubmit={this.handleSubmit}>
                     <div>
                         <label htmlFor='password'>Current Password</label>
                         <input

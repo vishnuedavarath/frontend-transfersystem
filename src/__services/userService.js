@@ -22,7 +22,7 @@ function login(penNum, password) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ penno: penNum, password: password })
   };
-
+  console.log(requestOptions);
   return fetch(`http://68.183.86.24:3000/user/login`, requestOptions)
     .then(handleResponseLogin)
     .then(user => {
@@ -129,6 +129,8 @@ function submitStationsReq(opt1, opt2, opt3) {
     headers: authHeaderPost(),
     body: JSON.stringify({ stat1: opt1, stat2: opt2, stat3: opt3 })
   };
+  let decoded = jwt_decode(localStorage.getItem('user'));
+  console.log(decoded);
   return fetch(`http://68.183.86.24:3000/user/reqtransfer`, requestOptions)
     .then(handleResponse)
     .then(user => {

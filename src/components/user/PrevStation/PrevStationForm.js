@@ -80,7 +80,7 @@ class PrevStationForm extends Component {
               onChange={this.handleChange}
             >
               {this.state.stations.map(station => (
-                <option key={station.value} value={station.code}>
+                <option key={station.code} value={station.value}>
                   {station.display}
                 </option>
               ))}
@@ -92,7 +92,7 @@ class PrevStationForm extends Component {
               onChange={this.handleChange}
             >
               {this.state.stations.map(station => (
-                <option key={station.value} value={station.code}>
+                <option key={station.code} value={station.value}>
                   {station.display}
                 </option>
               ))}
@@ -104,7 +104,7 @@ class PrevStationForm extends Component {
               onChange={this.handleChange}
             >
               {this.state.stations.map(station => (
-                <option key={station.value} value={station.code}>
+                <option key={station.code} value={station.value}>
                   {station.display}
                 </option>
               ))}
@@ -118,7 +118,7 @@ class PrevStationForm extends Component {
               onChange={this.handleChange}
             >
               {this.state.stations.map(station => (
-                <option key={station.value} value={station.code}>
+                <option key={station.code} value={station.value}>
                   {station.display}
                 </option>
               ))}

@@ -60,14 +60,17 @@ class ProfilePage extends Component {
     // dispatch(userActions.getProfile());
     userService.getProfile().then(profile => {
       console.log(profile);
+      var joinDate = new Date(profile.joinDate);
+      var lastDate = new Date(profile.lastTransferDate);
+
       this.setState({
         penno: profile.penno,
         name: profile.name,
         designation: profile.designation,
-        joindate: profile.joinDate,
+        joindate: `${joinDate.getFullYear()}-${joinDate.getMonth()+1}-${joinDate.getDate()}`,
         currentstattion: profile.currentStation,
         prevstations: profile.prevStation,
-        lasttransfer: profile.lastTransferDate,
+        lasttransfer: `${lastDate.getFullYear()}-${lastDate.getMonth()+1}-${lastDate.getDate()}`,
         reqtransfer: profile.reqTransfer,
         gentransfer: profile.genTransfer,
         gentransferstatus: profile.genTransStatus

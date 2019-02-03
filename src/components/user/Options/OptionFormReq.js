@@ -104,7 +104,7 @@ class OptionFormGen extends Component {
               onChange={this.handleChange1}
             >
               {this.state.stations.map(station => (
-                <option key={station.value} value={station.code}>
+                <option key={station.code} value={station.value}>
                   {station.display}
                 </option>
               ))}
@@ -116,7 +116,7 @@ class OptionFormGen extends Component {
               onChange={this.handleChange2}
             >
               {this.state.stations.map(station => (
-                <option key={station.value} value={station.code}>
+                <option key={station.code} value={station.value}>
                   {station.display}
                 </option>
               ))}
@@ -128,7 +128,7 @@ class OptionFormGen extends Component {
               onChange={this.handleChange3}
             >
               {this.state.stations.map(station => (
-                <option key={station.value} value={station.code}>
+                <option key={station.code} value={station.value}>
                   {station.display}
                 </option>
               ))}
