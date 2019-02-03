@@ -23,7 +23,9 @@ export const adminService = {
   addStation,
   searchStation,
   editStation,
-  stationDelete
+  stationDelete,
+  userPassword,
+  adminPassword,
 };
 function loginAdmin(penNum, password) {
   const requestOptions = {
@@ -216,7 +218,7 @@ function adminDelete(id) {
     requestOptions
   ).then(handleResponse);
 }
-function addUser(penno,name,password,designation) {
+function addUser(penno, name, password, designation) {
   const requestOptions = {
     method: "POST",
     headers: AdminAuthHeaderPost(),
@@ -234,117 +236,143 @@ function addUser(penno,name,password,designation) {
   ).then(handleResponse);
 }
 function searchUser(name) {
-	const requestOptions = {
-	  method: "GET",
-	  headers: AdminAuthHeaderGet()
-	};
-	console.log(requestOptions);
-	return fetch(
-	  "http://68.183.86.24:3000/admin/useractions/" + name,
-	  requestOptions
-	)
-	  .then(handleResponse)
-	  .then(data => {
-		return data;
-	  });
-  }
-  function editUser(id,penno,name,designation){
-	const requestOptions = {
-		method: "PATCH",
-		headers: AdminAuthHeaderPost(),
-		body: JSON.stringify({
-		  userId: id,
-		  penno: penno,
-		  name: name,
-		  designation : designation
-		})
-	  };
-	  console.log(requestOptions);
-	  return fetch(
-		`http://68.183.86.24:3000/admin/useractions`,
-		requestOptions
-	  ).then(handleResponse);
-  }
-  function userDelete(id){
-	const requestOptions = {
-		method: "DELETE",
-		headers: AdminAuthHeaderGet()
-	  };
-	  console.log(requestOptions);
-	  return fetch(
-		"http://68.183.86.24:3000/admin/useractions/" + id,
-		requestOptions
-	  ).then(handleResponse);
-  }
-  function addStation(code,name,si,asi,scpo,tscpo,cpo,wcpo){
+  const requestOptions = {
+    method: "GET",
+    headers: AdminAuthHeaderGet()
+  };
+  console.log(requestOptions);
+  return fetch(
+    "http://68.183.86.24:3000/admin/useractions/" + name,
+    requestOptions
+  )
+    .then(handleResponse)
+    .then(data => {
+      return data;
+    });
+}
+function editUser(id, penno, name, designation) {
+  const requestOptions = {
+    method: "PATCH",
+    headers: AdminAuthHeaderPost(),
+    body: JSON.stringify({
+      userId: id,
+      penno: penno,
+      name: name,
+      designation: designation
+    })
+  };
+  console.log(requestOptions);
+  return fetch(
+    `http://68.183.86.24:3000/admin/useractions`,
+    requestOptions
+  ).then(handleResponse);
+}
+function userDelete(id) {
+  const requestOptions = {
+    method: "DELETE",
+    headers: AdminAuthHeaderGet()
+  };
+  console.log(requestOptions);
+  return fetch(
+    "http://68.183.86.24:3000/admin/useractions/" + id,
+    requestOptions
+  ).then(handleResponse);
+}
+function addStation(code, name, si, asi, scpo, tscpo, cpo, wcpo) {
+  const requestOptions = {
+    method: "POST",
+    headers: AdminAuthHeaderPost(),
+    body: JSON.stringify({
+      statCode: code,
+      name: name,
+      si: si,
+      asi: asi,
+      scpo: scpo,
+      tscpo: tscpo,
+      cpo: cpo,
+      wcpo: wcpo
+    })
+  };
+  console.log(requestOptions);
+  return fetch(`http://68.183.86.24:3000/admin/station`, requestOptions).then(
+    handleResponse
+  );
+}
+function searchStation(name) {
+  const requestOptions = {
+    method: "GET",
+    headers: AdminAuthHeaderGet()
+  };
+  return fetch(
+    "http://68.183.86.24:3000/admin/searchstation?station=" + name,
+    requestOptions
+  )
+    .then(handleResponse)
+    .then(data => {
+      return data;
+    });
+}
+function editStation(id, code, name, si, asi, scpo, tscpo, cpo, wcpo) {
+  const requestOptions = {
+    method: "PATCH",
+    headers: AdminAuthHeaderPost(),
+    body: JSON.stringify({
+      statId: id,
+      statCode: code,
+      name: name,
+      si: si,
+      asi: asi,
+      scpo: scpo,
+      tscpo: tscpo,
+      cpo: cpo,
+      wcpo: wcpo
+    })
+  };
+  console.log(requestOptions);
+  return fetch(`http://68.183.86.24:3000/admin/station`, requestOptions).then(
+    handleResponse
+  );
+}
+function stationDelete(id) {
+  const requestOptions = {
+    method: "DELETE",
+    headers: AdminAuthHeaderGet()
+  };
+  console.log(requestOptions);
+  return fetch(
+    "http://68.183.86.24:3000/admin/station/" + id,
+    requestOptions
+  ).then(handleResponse);
+}
+function userPassword(id,password){
 	const requestOptions = {
 		method: "POST",
 		headers: AdminAuthHeaderPost(),
 		body: JSON.stringify({
-		  statCode: code,
-		  name: name,
-		  si:si,
-		  asi:asi,
-		  scpo:scpo,
-		  tscpo:tscpo,
-		  cpo:cpo,
-		  wcpo:wcpo
+		  userId:id,
+		  password:password
 		})
 	  };
 	  console.log(requestOptions);
-	  return fetch(
-		`http://68.183.86.24:3000/admin/station`,
-		requestOptions
-	  ).then(handleResponse);
-	}
-	function searchStation(name) {
-		const requestOptions = {
-		  method: "GET",
-		  headers: AdminAuthHeaderGet()
-		};
-		return fetch(
-		  "http://68.183.86.24:3000/admin/searchstation?station=" + name,
-		  requestOptions
-		)
-		  .then(handleResponse)
-		  .then(data => {
-			return data;
-		  });
-	  }
-	  function editStation(id,code,name,si,asi,scpo,tscpo,cpo,wcpo) {
-		const requestOptions = {
-		  method: "PATCH",
-		  headers: AdminAuthHeaderPost(),
-		  body: JSON.stringify({
-			statId:id,
-			statCode:code,
-			name:name,
-			si:si,
-			asi:asi,
-			scpo:scpo,
-			tscpo:tscpo,
-			cpo:cpo,
-			wcpo:wcpo
-		  })
-		};
-		console.log(requestOptions);
-		return fetch(
-		  `http://68.183.86.24:3000/admin/station`,
-		  requestOptions
-		).then(handleResponse);
-	  }
-	  function stationDelete(id) {
-		const requestOptions = {
-		  method: "DELETE",
-		  headers: AdminAuthHeaderGet()
-		};
-		console.log(requestOptions);
-		return fetch(
-		  "http://68.183.86.24:3000/admin/signup/" + id,
-		  requestOptions
-		).then(handleResponse);
-	  }
-	  
+	  return fetch(`http://68.183.86.24:3000/admin/uspassreset`, requestOptions).then(
+		handleResponse
+	  );
+}
+function adminPassword(id,password){
+	const requestOptions = {
+		method: "POST",
+		headers: AdminAuthHeaderPost(),
+		body: JSON.stringify({
+		  userId:id,
+		  password:password
+		})
+	  };
+	  console.log(requestOptions);
+	  return fetch(`http://68.183.86.24:3000/admin/adpassreset`, requestOptions).then(
+		handleResponse
+	  );
+}
+
 function handleResponseLogin(response) {
   return response.text().then(text => {
     const data = text && JSON.parse(text);
@@ -356,7 +384,7 @@ function handleResponseLogin(response) {
       if (response.status === 401) {
         // auto logout if 401 response returned from api
         logoutAdmin();
-        // window.location.reload(true);
+        window.location.reload(true);
       }
 
       const error = (data && data.message) || response.statusText;
@@ -375,11 +403,12 @@ function handleResponse(response) {
     // console.log(response.token);
     console.log(data);
     if (!response.ok) {
-		if (response.status === 401) {
-			// auto logout if 401 response returned from api
-			logoutAdmin();
-			// window.location.reload(true);
-		  }
+      if (response.status === 401) {
+		// auto logout if 401 response returned from api
+		console.log('ada mwona')
+        logoutAdmin();
+        window.location.reload(true);
+      }
       const error = (data && data.message) || response.statusText;
       return Promise.reject(error);
     }

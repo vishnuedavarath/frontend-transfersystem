@@ -1,83 +1,88 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { adminService } from "../../../../__services/adminService";
 
-import { connect } from 'react-redux';
-
-import { userActions } from '../../../__actions/userActions';
-// require('../../../assets/changepass/css/chngpwform.css')
-
-class ChangePwForm extends Component {
-    constructor(props) {
-        super(props);
-        // console.log(this.state);
-        this.state = {
-            newPassword: '',
-            rePassword: '',
-            submitted: false,
-        };
-        // console.log(this.state);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(e) {
-        const { name, value } = e.target;
-        this.setState({ [name]: value });
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-
-        this.setState({ submitted: true });
-        const { password, newPassword, rePassword } = this.state;
-        if (password && newPassword && rePassword) {
-                // dispatch(userActions.getfirst());
-        }
-    }
-
-
-    render() {
-        const { newPassword, rePassword } = this.state;
-        return (
-            <div>
-                <h2>Change Password </h2>
-                <form name='form' onSubmit={this.handleSubmit}>
-
-                    <div>
-                        <label htmlFor='newPassword'>New Password</label>
-                        <input
-                            type='password'
-                            className='form-control'
-                            name='newPassword'
-                            value={newPassword}
-                            onChange={this.handleChange}
-                        />
-                    </div>
-
-                    <div>
-                        <label htmlFor='rePassword'>Retype New Password</label>
-                        <input
-                            type='password'
-                            className='form-control'
-                            name='rePassword'
-                            value={rePassword}
-                            onChange={this.handleChange}
-                        />
-                    </div>
-
-                    <div>
-                        <button className='btn btn-primary'>Submit</button>
-                    </div>
-                </form>
-            </div>
-        );
-    }
-}
-
-function mapStateToProps(state) {
-    const { loggingin } = state.authentication;
-    return {
-        loggingin,
+export default class AdminPassword extends Component {
+  constructor() {
+    super();
+    this.state = {
+      penno: "",
+      adminId: "",
+      adminPenno:"",
+      adminName:"",
+      newpassword: "",
+      repassword: ""
     };
-}
+    this.handleSubmitAdminSearch = this.handleSubmitAdminSearch.bind(this);
+	this.handleChangeAdmin = this.handleChangeAdmin.bind(this);
+	this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleChangeAdmin(e) {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  }
+  handleSubmitAdminSearch(e) {
+    e.preventDefault();
+    const { penno } = this.state;
+    adminService.searchAdmin(penno).then(admin => {
+      this.setState({
+        adminName: admin.admins.name,
+        adminPenno: admin.admins.penno,
+        adminId: admin.admins._id,
+      });
+    });
+  }
 
-export default connect(mapStateToProps)(ChangePwForm);
+  handleSubmit(e){
+	  e.preventDefault();
+    adminService.adminPassword(this.state.adminId,this.state.newpassword)
+    window.location.reload(true);
+  }
+  render() {
+    return (
+      <div>
+        <div>
+          <form onSubmit={this.handleSubmitAdminSearch}>
+            <input
+              type="admin"
+              name="penno"
+              value={this.state.penno}
+              onChange={this.handleChangeAdmin}
+            />
+            <button>Submit</button>
+          </form>
+        </div>
+        <div>
+          {this.state.adminId && (
+            <div>
+              <span>PEN Number:{this.state.adminPenno}</span>
+              <br />
+              <span>Name:{this.state.adminName}</span>
+              <br />
+              <h3>Change Password</h3>
+              <br />
+              <form onSubmit={this.handleSubmit}>
+                <span>New Password:</span>
+                <br />
+                <input
+                  type="password"
+                  name="newpassword"
+				  value={this.state.newpassword}
+				  onChange = {this.handleChangeAdmin}
+                /><br/>
+                <span>Retype New Password:</span>
+                <br />
+                <input
+                  type="password"
+                  name="repassword"
+				  value={this.state.repassword}
+				  onChange = {this.handleChangeAdmin}
+                /><br/>
+				<button>Submit</button>
+              </form>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+}

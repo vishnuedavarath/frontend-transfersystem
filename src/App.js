@@ -23,6 +23,8 @@ import ReqPage from "./components/admin/TransferList/ReqPage";
 import EditAdmin from "./components/admin/Admin/admins/EditAdmin";
 import EditUser from "./components/admin/Admin/users/EditUser"
 import EditStation from "./components/admin/Admin/stations/EditStation";
+import UserPassword from "./components/admin/Admin/users/UserPassword";
+import AdminPassword from "./components/admin/Admin/admins/AdminPassword";
 // import PrevStationPage from './components/PrevStation/PrevStationPage';
 
 class App extends Component {
@@ -97,6 +99,16 @@ class App extends Component {
                   exact
                   path="/admin/editstation"
                   component={EditStation}
+                />
+                <AdminPrivateRoute
+                  exact
+                  path="/admin/userpassword"
+                  component={UserPassword}
+                />
+                <AdminPrivateRoute
+                  exact
+                  path="/admin/adminpassword"
+                  component={AdminPassword}
                 />
               </div>
               {/* </switch> */}

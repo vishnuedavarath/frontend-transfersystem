@@ -23,7 +23,8 @@ export default class EditStation extends Component {
     this.handleSubmitStationSearch = this.handleSubmitStationSearch.bind(this);
     this.handleClickEdit = this.handleClickEdit.bind(this);
     this.handleSubmitStation = this.handleSubmitStation.bind(this);
-    // this.handleClickDelete = this.handleClickDelete.bind(this);
+    this.onCloseModal = this.onCloseModal.bind(this);
+    this.handleClickDelete = this.handleClickDelete.bind(this);
   }
   handleChangeStation(e) {
     const { name, value } = e.target;
@@ -45,17 +46,18 @@ export default class EditStation extends Component {
   handleClickEdit(e) {
     var tgt = JSON.parse(e.target.value);
     console.log(tgt);
-    this.setState({ openPopup: true,
-        stationId:tgt._id,
-        stationCode:tgt.statCode,
-        stationName:tgt.name,
-        stationVacancySI:tgt.si,
-        stationVacancyASI:tgt.asi,
-        stationVacancySCPO:tgt.scpo,
-        stationVacancyTSCPO:tgt.tscpo,
-        stationVacancyCPO:tgt.cpo,
-        stationVacancyWCPO:tgt.wcpo
-    })
+    this.setState({
+      openPopup: true,
+      stationId: tgt._id,
+      stationCode: tgt.statCode,
+      stationName: tgt.name,
+      stationVacancySI: tgt.si,
+      stationVacancyASI: tgt.asi,
+      stationVacancySCPO: tgt.scpo,
+      stationVacancyTSCPO: tgt.tscpo,
+      stationVacancyCPO: tgt.cpo,
+      stationVacancyWCPO: tgt.wcpo
+    });
   }
   handleSubmitStation(e) {
     e.preventDefault();
@@ -81,12 +83,31 @@ export default class EditStation extends Component {
       stationVacancyCPO,
       stationVacancyWCPO
     );
-    this.setState({openPopup:false});
+    this.setState({ openPopup: false });
   }
-  onCloseModal(){
-      this.setState({openPopup:false});
+  onCloseModal() {
+    //   console.log(this.state)
+    this.setState({ openPopup: false });
   }
-  handleClickDelete() {}
+  handleClickDelete(e) {
+    e.preventDefault();
+    console.log(this.state);
+    var tgt = JSON.parse(e.target.value);
+    console.log(tgt);
+    // this.setState({
+    //     stationId:tgt._id
+    // })
+    adminService.stationDelete(tgt._id).then(success => {
+      adminService
+        .searchStation(this.state.name.toUpperCase())
+        .then(stations => {
+          this.setState({
+            stations: stations.stations,
+            openPopup: false
+          });
+        });
+    });
+  }
 
   render() {
     return (
@@ -109,13 +130,19 @@ export default class EditStation extends Component {
               <br />
               <span>Station Name:{station.name}</span>
               <br />
-              <button onClick={this.handleClickEdit} value ={JSON.stringify(station)}>
+              <button
+                onClick={this.handleClickEdit}
+                value={JSON.stringify(station)}
+              >
                 Edit station Details
               </button>
-              <button onClick={this.handleClickDelete}>Delete station</button>
-              <Modal
-                open={this.state.openPopup}
+              <button
+                onClick={this.handleClickDelete}
+                value={JSON.stringify(station)}
               >
+                Delete station
+              </button>
+              <Modal open={this.state.openPopup} onClose={this.onCloseModal}>
                 <div>
                   <form onSubmit={this.handleSubmitStation}>
                     Station Code:
@@ -182,6 +209,7 @@ export default class EditStation extends Component {
                     />
                     <br />
                     <button>Submit</button>
+                    <button onClick={this.onCloseModal}>Close</button>
                   </form>
                 </div>
               </Modal>

@@ -43,7 +43,8 @@ export default class AdminPage extends Component {
     this.handleCLickAddStation = this.handleCLickAddStation.bind(this);
     this.handleChangeStation = this.handleChangeStation.bind(this);
     this.handleSubmitStation = this.handleSubmitStation.bind(this);
-    this.handleClickStationEdit = this.handleClickStationEdit.bind(this);
+	this.handleClickStationEdit = this.handleClickStationEdit.bind(this);
+	this.handleLogout = this.handleLogout.bind(this);
   }
   handleClickGen() {
     history.push("/admin/general");
@@ -106,6 +107,11 @@ export default class AdminPage extends Component {
   }
   handleClickStationEdit() {
     history.push("/admin/editstation");
+  }
+  handleLogout(){
+	  console.log('logged out');
+	  adminService.logoutAdmin();
+	  window.location.reload(true);
   }
   render() {
     return (
@@ -328,6 +334,7 @@ export default class AdminPage extends Component {
             <br />
             <button onClick={this.handleClickStationEdit}>Edit Admin</button>
           </div>
+		  <button onClick={this.handleLogout}>Logout</button>
         </div>
         {/* _______________________________________________________________ */}
       </div>
