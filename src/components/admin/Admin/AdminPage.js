@@ -98,10 +98,11 @@ export default class AdminPage extends Component {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   }
-  handleSubmitStation() {
-    const { adminPenno, adminName, adminPassword, adminPrivilege } = this.state;
-    adminService.addAdmin(adminPenno, adminName, adminPassword, adminPrivilege);
-    this.setState({ adminPopup: false });
+  handleSubmitStation(e) {
+	  e.preventDefault();
+    const { stationCode,stationName,stationVacancySI,stationVacancyASI,stationVacancySCPO,stationVacancyTSCPO,stationVacancyWCPO } = this.state;
+    adminService.addStation(stationCode,stationName,stationVacancySI,stationVacancyASI,stationVacancySCPO,stationVacancyTSCPO,stationVacancyWCPO );
+    this.setState({ stationPopup: false });
   }
   handleClickStationEdit() {
     history.push("/admin/editstation");
@@ -234,7 +235,7 @@ export default class AdminPage extends Component {
               </div>
             </Popup>
             <br />
-            <button onClick={this.handleClickUserEdit}>Edit Admin</button>
+            <button onClick={this.handleClickUserEdit}>Edit User</button>
             <button onClick={this.handleClickUserPassword}>
               Reset Password
             </button>
@@ -256,14 +257,16 @@ export default class AdminPage extends Component {
               on="click"
             >
               <div>
-                <form onSubmit={this.handleSubmitUser}>
-                  Station Name:
+                <form onSubmit={this.handleSubmitStation}>
+                  Station Code:
                   <br />
                   <input
                     name="stationCode"
                     value={this.state.stationCode}
                     onChange={this.handleChangeStation}
                   />
+				  Station Name:
+				  <br/>
                   <input
                     name="stationName"
                     value={this.state.stationName}

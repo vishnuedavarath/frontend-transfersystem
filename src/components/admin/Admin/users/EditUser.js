@@ -38,13 +38,20 @@ export default class EditUser extends Component {
   handleClickEdit() {
     this.setState({ openPopup: true });
   }
-  handleSubmitUser() {
-    const { userPenno, userName, userPrivilege, userDesignation } = this.state;
-    adminService.editUser(userPenno, userName, userPrivilege, userDesignation);
+  handleSubmitUser(e) {
+	e.preventDefault();
+    const {userId,userPenno, userName, userDesignation } = this.state;
+	adminService.editUser(userId,userPenno, userName, userDesignation).then(
+		success => {
+			this.setState({openPopup:false});
+			window.location.reload(true);
+			return success;
+		}
+	)
   }
   handleClickDelete(e) {
     e.preventDefault();
-    adminService.userDelete();
+    adminService.userDelete(this.state.userId);
     window.location.reload(true);
   }
 
@@ -69,8 +76,6 @@ export default class EditUser extends Component {
               <br />
               <span>Name:{this.state.userName}</span>
               <br />
-              <span>Privilege:{this.state.userPrivilege}</span>
-              <br />
               <Popup
                 trigger={
                   <button onClick={this.handleClickEdit}>
@@ -78,7 +83,7 @@ export default class EditUser extends Component {
                   </button>
                 }
                 position="bottom center"
-                open={this.state.openPopup}
+                open={(this.state.openPopup)}
                 on="click"
               >
                 <div>
@@ -100,12 +105,8 @@ export default class EditUser extends Component {
                     <br />
                     Designation:
                     <br />
-                    <input
-                      name="code"
-                      value={this.state.user}
-                      onChange={this.handleChangeStation}
-                    />
                     <select
+                      name="userDesignation"
                       value={this.state.userDesignation}
                       onChange={this.handleChangeUser}
                     >
@@ -115,14 +116,6 @@ export default class EditUser extends Component {
                       <option value="tscpo">TSCPO</option>
                       <option value="cpo">CPO</option>
                       <option value="wcpo">WCPO</option>
-                    </select>
-                    <br />
-                    <select
-                      value={this.state.userPrivilege}
-                      onChange={this.handleChangeUser}
-                    >
-                      <option value="1">Super</option>
-                      <option value="2">user</option>
                     </select>
                     <br />
                     <button>Submit</button>

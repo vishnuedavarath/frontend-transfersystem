@@ -22,6 +22,7 @@ import ReqPage from "./components/admin/TransferList/ReqPage";
 // import SearchPage from "./components/admin/Admin/stations/EditStation";
 import EditAdmin from "./components/admin/Admin/admins/EditAdmin";
 import EditUser from "./components/admin/Admin/users/EditUser"
+import EditStation from "./components/admin/Admin/stations/EditStation";
 // import PrevStationPage from './components/PrevStation/PrevStationPage';
 
 class App extends Component {
@@ -91,6 +92,11 @@ class App extends Component {
                   exact
                   path="/admin/edituser"
                   component={EditUser}
+                />
+                <AdminPrivateRoute
+                  exact
+                  path="/admin/editstation"
+                  component={EditStation}
                 />
               </div>
               {/* </switch> */}
