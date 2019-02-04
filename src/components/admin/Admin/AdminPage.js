@@ -167,18 +167,20 @@ export default class AdminPage extends Component {
 			style = {styles.adminPopup}
           >
             <div>
-              <form onSubmit={this.handleSubmitAdmin}>
+              <form style = {styles.adminForm} onSubmit={this.handleSubmitAdmin}>
                 PEN Number:
                 <br />
                 <input
                   name="adminPenno"
-                  value={this.state.adminPenno}
+				  value={this.state.adminPenno}
+				  style = {styles.adminInput}
                   onChange={this.handleChangeAdmin}
                 />
                 Name:
                 <br />
                 <input
-                  name="adminName"
+				  name="adminName"
+				  style = {styles.adminInput}
                   value={this.state.adminName}
                   onChange={this.handleChangeAdmin}
                 />
@@ -187,7 +189,8 @@ export default class AdminPage extends Component {
                 <br />
                 <input
                   type="password"
-                  name="adminPassword"
+				  name="adminPassword"
+				  style = {styles.adminInput}
                   value={this.state.adminPassword}
                   onChange={this.handleChangeAdmin}
                 />

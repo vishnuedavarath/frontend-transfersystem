@@ -1,6 +1,7 @@
 import { AdminAuthHeaderPost } from "../__helpers/AuthHeaderPost";
 import { AdminAuthHeaderGet } from "../__helpers/AuthHeaderGet";
 var jwt_decode = require("jwt-decode");
+const api = "http://68.183.86.24:3000"
 
 export const adminService = {
   loginAdmin,
@@ -34,7 +35,7 @@ function loginAdmin(penNum, password) {
     body: JSON.stringify({ penno: penNum, password: password })
   };
 
-  return fetch(`http://68.183.86.24:3000/admin/login`, requestOptions)
+  return fetch(`${api}/admin/login`, requestOptions)
     .then(handleResponseLogin)
     .then(user => {
       // console.log(JSON.stringify(user));
@@ -69,7 +70,7 @@ function chngpassadmin(newpassword) {
   };
   console.log(requestOptions);
   return fetch(
-    `http://68.183.86.24:3000/admin/setpassword`,
+    `${api}/admin/setpassword`,
     requestOptions
   ).then(handleResponse);
 }
@@ -79,7 +80,7 @@ function getfirstAdmin() {
     headers: AdminAuthHeaderGet()
   };
 
-  return fetch(`http://68.183.86.24:3000/admin/firsttime`, requestOptions);
+  return fetch(`${api}/admin/firsttime`, requestOptions);
 }
 function GenList(des) {
   const requestOptions = {
@@ -87,7 +88,7 @@ function GenList(des) {
     headers: AdminAuthHeaderGet()
   };
   console.log(des);
-  return fetch("http://68.183.86.24:3000/admin/genlist/" + des, requestOptions)
+  return fetch("${api}/admin/genlist/" + des, requestOptions)
     .then(handleResponse)
     .then(list => {
       return list;
@@ -99,7 +100,7 @@ function ReqList(des) {
     headers: AdminAuthHeaderGet()
   };
   console.log(des);
-  return fetch("http://68.183.86.24:3000/admin/reqlist/" + des, requestOptions)
+  return fetch("${api}/admin/reqlist/" + des, requestOptions)
     .then(handleResponse)
     .then(list => {
       return list;
@@ -119,7 +120,7 @@ function openModal(des, cur, op1, op2, op3) {
   };
   console.log(req);
   return fetch(
-    "http://68.183.86.24:3000/admin/returnstation?designation=" +
+    "${api}/admin/returnstation?designation=" +
       des +
       "&current=" +
       cur +
@@ -143,7 +144,7 @@ function genAllot(pen, stat, des) {
     body: JSON.stringify({ penno: pen, allotedStation: stat, designation: des })
   };
   console.log(requestOptions);
-  return fetch(`http://68.183.86.24:3000/admin/allot`, requestOptions).then(
+  return fetch(`${api}/admin/allot`, requestOptions).then(
     handleResponse
   );
 }
@@ -154,7 +155,7 @@ function reqAllot(pen, stat, des) {
     body: JSON.stringify({ penno: pen, allotedStation: stat, designation: des })
   };
   console.log(requestOptions);
-  return fetch(`http://68.183.86.24:3000/admin/allot`, requestOptions).then(
+  return fetch(`${api}/admin/allot`, requestOptions).then(
     handleResponse
   );
 }
@@ -172,7 +173,7 @@ function addAdmin(penno, name, password, privilege) {
   };
   console.log(requestOptions);
   return fetch(
-    `http://68.183.86.24:3000/admin/adminactions`,
+    `${api}/admin/adminactions`,
     requestOptions
   ).then(handleResponse);
 }
@@ -182,7 +183,7 @@ function searchAdmin(penno) {
     headers: AdminAuthHeaderGet()
   };
   return fetch(
-    "http://68.183.86.24:3000/admin/adminactions/" + penno,
+    "${api}/admin/adminactions/" + penno,
     requestOptions
   )
     .then(handleResponse)
@@ -203,7 +204,7 @@ function editAdmin(penno, name, privilege, id) {
   };
   console.log(requestOptions);
   return fetch(
-    `http://68.183.86.24:3000/admin/adminactions`,
+    `${api}/admin/adminactions`,
     requestOptions
   ).then(handleResponse);
 }
@@ -214,7 +215,7 @@ function adminDelete(id) {
   };
   console.log(requestOptions);
   return fetch(
-    "http://68.183.86.24:3000/admin/signup/" + id,
+    "${api}/admin/signup/" + id,
     requestOptions
   ).then(handleResponse);
 }
@@ -231,7 +232,7 @@ function addUser(penno, name, password, designation) {
   };
   console.log(requestOptions);
   return fetch(
-    `http://68.183.86.24:3000/admin/useractions`,
+    `${api}/admin/useractions`,
     requestOptions
   ).then(handleResponse);
 }
@@ -242,7 +243,7 @@ function searchUser(name) {
   };
   console.log(requestOptions);
   return fetch(
-    "http://68.183.86.24:3000/admin/useractions/" + name,
+    "${api}/admin/useractions/" + name,
     requestOptions
   )
     .then(handleResponse)
@@ -263,7 +264,7 @@ function editUser(id, penno, name, designation) {
   };
   console.log(requestOptions);
   return fetch(
-    `http://68.183.86.24:3000/admin/useractions`,
+    `${api}/admin/useractions`,
     requestOptions
   ).then(handleResponse);
 }
@@ -274,7 +275,7 @@ function userDelete(id) {
   };
   console.log(requestOptions);
   return fetch(
-    "http://68.183.86.24:3000/admin/useractions/" + id,
+    "${api}/admin/useractions/" + id,
     requestOptions
   ).then(handleResponse);
 }
@@ -294,7 +295,7 @@ function addStation(code, name, si, asi, scpo, tscpo, cpo, wcpo) {
     })
   };
   console.log(requestOptions);
-  return fetch(`http://68.183.86.24:3000/admin/station`, requestOptions).then(
+  return fetch(`${api}/admin/station`, requestOptions).then(
     handleResponse
   );
 }
@@ -304,7 +305,7 @@ function searchStation(name) {
     headers: AdminAuthHeaderGet()
   };
   return fetch(
-    "http://68.183.86.24:3000/admin/searchstation?station=" + name,
+    "${api}/admin/searchstation?station=" + name,
     requestOptions
   )
     .then(handleResponse)
@@ -329,7 +330,7 @@ function editStation(id, code, name, si, asi, scpo, tscpo, cpo, wcpo) {
     })
   };
   console.log(requestOptions);
-  return fetch(`http://68.183.86.24:3000/admin/station`, requestOptions).then(
+  return fetch(`${api}/admin/station`, requestOptions).then(
     handleResponse
   );
 }
@@ -340,7 +341,7 @@ function stationDelete(id) {
   };
   console.log(requestOptions);
   return fetch(
-    "http://68.183.86.24:3000/admin/station/" + id,
+    "${api}/admin/station/" + id,
     requestOptions
   ).then(handleResponse);
 }
@@ -354,7 +355,7 @@ function userPassword(id,password){
 		})
 	  };
 	  console.log(requestOptions);
-	  return fetch(`http://68.183.86.24:3000/admin/uspassreset`, requestOptions).then(
+	  return fetch(`${api}/admin/uspassreset`, requestOptions).then(
 		handleResponse
 	  );
 }
@@ -368,7 +369,7 @@ function adminPassword(id,password){
 		})
 	  };
 	  console.log(requestOptions);
-	  return fetch(`http://68.183.86.24:3000/admin/adpassreset`, requestOptions).then(
+	  return fetch(`${api}/admin/adpassreset`, requestOptions).then(
 		handleResponse
 	  );
 }

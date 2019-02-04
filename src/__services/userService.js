@@ -2,7 +2,7 @@
 import { authHeaderPost } from "../__helpers/AuthHeaderPost";
 import { authHeaderGet } from "../__helpers/AuthHeaderGet";
 var jwt_decode = require("jwt-decode");
-
+const api = "http://68.183.86.24:3000"
 export const userService = {
   login,
   logout,
@@ -23,7 +23,7 @@ function login(penNum, password) {
     body: JSON.stringify({ penno: penNum, password: password })
   };
   console.log(requestOptions);
-  return fetch(`http://68.183.86.24:3000/user/login`, requestOptions)
+  return fetch(`${api}/user/login`, requestOptions)
     .then(handleResponseLogin)
     .then(user => {
       // console.log(JSON.stringify(user));
@@ -56,7 +56,7 @@ function chngpass(newpassword) {
   };
 
   return fetch(
-    `http://68.183.86.24:3000/user/setpassword`,
+    `${api}/user/setpassword`,
     requestOptions
   ).then(handleResponse);
 }
@@ -67,7 +67,7 @@ function getisfirst() {
     headers: authHeaderGet()
   };
 
-  return fetch(`http://68.183.86.24:3000/user/firsttime`, requestOptions);
+  return fetch(`${api}/user/firsttime`, requestOptions);
 }
 
 function getProfile() {
@@ -76,7 +76,7 @@ function getProfile() {
     headers: authHeaderGet()
   };
 
-  return fetch(`http://68.183.86.24:3000/user/profile`, requestOptions)
+  return fetch(`${api}/user/profile`, requestOptions)
     .then(handleResponse)
     .then(profile => {
       return profile;
@@ -89,7 +89,7 @@ function getStations() {
     headers: authHeaderGet()
   };
 
-  return fetch(`http://68.183.86.24:3000/user/station`, requestOptions)
+  return fetch(`${api}/user/station`, requestOptions)
     .then(handleResponse)
     .then(stations => {
       return stations;
@@ -101,7 +101,7 @@ function getStationsOpt() {
     headers: authHeaderGet()
   };
 
-  return fetch(`http://68.183.86.24:3000/user/avilablestations`, requestOptions)
+  return fetch(`${api}/user/avilablestations`, requestOptions)
     .then(handleResponse)
     .then(stations => {
       return stations;
@@ -116,7 +116,7 @@ function submitStationsGen(opt1, opt2, opt3) {
     body: JSON.stringify({ stat1: opt1, stat2: opt2, stat3: opt3 })
   };
   console.log(requestOptions.body);
-  return fetch(`http://68.183.86.24:3000/user/gentransfer`, requestOptions)
+  return fetch(`${api}/user/gentransfer`, requestOptions)
     .then(handleResponse)
     .then(user => {
       return user;
@@ -131,7 +131,7 @@ function submitStationsReq(opt1, opt2, opt3) {
   };
   let decoded = jwt_decode(localStorage.getItem('user'));
   console.log(decoded);
-  return fetch(`http://68.183.86.24:3000/user/reqtransfer`, requestOptions)
+  return fetch(`${api}/user/reqtransfer`, requestOptions)
     .then(handleResponse)
     .then(user => {
       return user;
@@ -152,7 +152,7 @@ function submitPrevStation(cur, opt1, opt2, opt3, joindate, lastdate) {
     })
   };
   console.log(requestOptions);
-  return fetch(`http://68.183.86.24:3000/user/previous`, requestOptions)
+  return fetch(`${api}/user/previous`, requestOptions)
     .then(handleResponse)
     .then(user => {
       return user;
