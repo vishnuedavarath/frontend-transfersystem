@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { userActions } from "../../../__actions/userActions";
 import { connect } from "react-redux";
 import { userService } from "../../../__services/userService";
+import styles from "../../../assets/prevstations/css/prevstations";
 // import moment from "moment";
 class PrevStationForm extends Component {
   constructor(props) {
@@ -69,64 +70,66 @@ class PrevStationForm extends Component {
   }
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Select Previous Stations
-            <br />
-            <select
-              name="opt1"
-              value={this.state.opt1}
-              onChange={this.handleChange}
-            >
-              {this.state.stations.map(station => (
-                <option key={station.code} value={station.value}>
-                  {station.display}
-                </option>
-              ))}
-            </select>
-            <br />
-            <select
-              name="opt2"
-              value={this.state.opt2}
-              onChange={this.handleChange}
-            >
-              {this.state.stations.map(station => (
-                <option key={station.code} value={station.value}>
-                  {station.display}
-                </option>
-              ))}
-            </select>
-            <br />
-            <select
-              name="opt3"
-              value={this.state.opt3}
-              onChange={this.handleChange}
-            >
-              {this.state.stations.map(station => (
-                <option key={station.code} value={station.value}>
-                  {station.display}
-                </option>
-              ))}
-            </select>
-            <br />
-            Enter Current Station
-            <br />
-            <select
-              name="cur"
-              value={this.state.cur}
-              onChange={this.handleChange}
-            >
-              {this.state.stations.map(station => (
-                <option key={station.code} value={station.value}>
-                  {station.display}
-                </option>
-              ))}
-            </select>
-            <br />
-          </label>
+      <div style={styles.prevDiv1}>
+        <div style={styles.prevDiv2}>
+		<h2 style  = {styles.prevH}>Edit Details</h2>
+          <form style = {styles.prevForm} onSubmit={this.handleSubmit}>
+            <label>
+              Select Previous Stations
+              <br />
+              <select
+                name="opt1"
+                value={this.state.opt1}
+				onChange={this.handleChange}
+              >
+                {this.state.stations.map(station => (
+                  <option key={station.code} value={station.value}>
+                    {station.display}
+                  </option>
+                ))}
+              </select>
+              <br />
+              <select
+                name="opt2"
+                value={this.state.opt2}
+                onChange={this.handleChange}
+              >
+                {this.state.stations.map(station => (
+                  <option key={station.code} value={station.value}>
+                    {station.display}
+                  </option>
+                ))}
+              </select>
+              <br />
+              <select
+                name="opt3"
+                value={this.state.opt3}
+                onChange={this.handleChange}
+              >
+                {this.state.stations.map(station => (
+                  <option key={station.code} value={station.value}>
+                    {station.display}
+                  </option>
+                ))}
+              </select>
+              <br />
+              Enter Current Station
+              <br />
+              <select
+                name="cur"
+                value={this.state.cur}
+                onChange={this.handleChange}
+              >
+                {this.state.stations.map(station => (
+                  <option key={station.code} value={station.value}>
+                    {station.display}
+                  </option>
+                ))}
+              </select>
+              <br />
+            </label>
 
-          {/* <input
+            {/* <input
             name=""
             type="date"
             value={moment(this.state.item.requested_order_ship_date).format(
@@ -135,31 +138,34 @@ class PrevStationForm extends Component {
             className="form-control"
             onChange={this.handleInputChange}
 		  /> */}
-          <label>
-            Joining Date(YYYY-MM-DD):
-            <input
-              type="text"
-              name="joindate"
-              value={this.state.joindate}
-              placeholder="YYYY-MM-DD"
-              onChange={this.handleChange}
-            />
-          </label>
-          <br />
-          <label>
-            Last Transfer Date(YYYY-MM-DD):
-            <input
-              type="text"
-              name="lastdate"
-              value={this.state.lastdate}
-              placeholder="YYYY-MM-DD"
-              onChange={this.handleChange}
-            />
-          </label>
-          <br />
+            <label>
+              Joining Date(YYYY-MM-DD):
+              <input
+                type="text"
+                name="joindate"
+                value={this.state.joindate}
+                placeholder="YYYY-MM-DD"
+				onChange={this.handleChange}
+				style = {styles.prevInput}
+              />
+            </label>
+            <br />
+            <label>
+              Last Transfer Date(YYYY-MM-DD):
+              <input
+                type="text"
+                name="lastdate"
+                value={this.state.lastdate}
+                placeholder="YYYY-MM-DD"
+				onChange={this.handleChange}
+				style = {styles.prevInput}
+              />
+            </label>
+            <br />
 
-          <button onSubmit={this.handleSubmit}>Submit</button>
-        </form>
+            <button onSubmit={this.handleSubmit} style = {styles.prevButton} >Submit</button>
+          </form>
+        </div>
       </div>
     );
   }

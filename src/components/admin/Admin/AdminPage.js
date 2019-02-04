@@ -3,6 +3,7 @@ import { history } from "../../../__helpers/history";
 import Popup from "reactjs-popup";
 import { adminService } from "../../../__services/adminService";
 // import Modal from 'react-responsive-modal'
+import styles from "../../../assets/adminpage/css/adminpage";
 
 export default class AdminPage extends Component {
   constructor() {
@@ -43,8 +44,8 @@ export default class AdminPage extends Component {
     this.handleCLickAddStation = this.handleCLickAddStation.bind(this);
     this.handleChangeStation = this.handleChangeStation.bind(this);
     this.handleSubmitStation = this.handleSubmitStation.bind(this);
-	this.handleClickStationEdit = this.handleClickStationEdit.bind(this);
-	this.handleLogout = this.handleLogout.bind(this);
+    this.handleClickStationEdit = this.handleClickStationEdit.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
   handleClickGen() {
     history.push("/admin/general");
@@ -81,7 +82,7 @@ export default class AdminPage extends Component {
     this.setState({ [name]: value });
   }
   handleSubmitUser(e) {
-	e.preventDefault();
+    e.preventDefault();
     const { userPenno, userName, userPassword, userDesignation } = this.state;
     adminService.addUser(userPenno, userName, userPassword, userDesignation);
     this.setState({ userPopup: false });
@@ -100,40 +101,70 @@ export default class AdminPage extends Component {
     this.setState({ [name]: value });
   }
   handleSubmitStation(e) {
-	  e.preventDefault();
-    const { stationCode,stationName,stationVacancySI,stationVacancyASI,stationVacancySCPO,stationVacancyTSCPO,stationVacancyWCPO } = this.state;
-    adminService.addStation(stationCode,stationName,stationVacancySI,stationVacancyASI,stationVacancySCPO,stationVacancyTSCPO,stationVacancyWCPO );
+    e.preventDefault();
+    const {
+      stationCode,
+      stationName,
+      stationVacancySI,
+      stationVacancyASI,
+      stationVacancySCPO,
+      stationVacancyTSCPO,
+      stationVacancyWCPO
+    } = this.state;
+    adminService.addStation(
+      stationCode,
+      stationName,
+      stationVacancySI,
+      stationVacancyASI,
+      stationVacancySCPO,
+      stationVacancyTSCPO,
+      stationVacancyWCPO
+    );
     this.setState({ stationPopup: false });
   }
   handleClickStationEdit() {
     history.push("/admin/editstation");
   }
-  handleLogout(){
-	  console.log('logged out');
-	  adminService.logoutAdmin();
-	  window.location.reload(true);
+  handleLogout() {
+    console.log("logged out");
+    adminService.logoutAdmin();
+    window.location.reload(true);
   }
   render() {
     return (
-      <div>
-        <button onClick={this.handleClickGen}>
-          General Transfer Applications
-        </button>
-        <br />
-        <button onClick={this.handleClickReq}>
-          Request Transfer Applications
-        </button>
-        <br />
+      <div style={styles.adminDivMain}>
+        <header style={styles.adminHeader}>
+          <h2 style={styles.adminHeaderHead}>Kerala Police</h2>
+          <span style={styles.adminHeaderSpan}>Hello, Admin</span>
+          <button style={styles.adminLogout} onClick={this.handleLogout}>
+            Logout
+          </button>
+        </header>
+        <div style={styles.adminAllot}>
+          <div style = {styles.adminGen}>
+            <button style = {styles.adminGenButton} onClick={this.handleClickGen}>
+              General Transfer Applications
+            </button>
+          </div>
+          <br />
+          <div style = {styles.adminReq}>
+            <button style = {styles.adminReqButton} onClick={this.handleClickReq}>
+              Request Transfer Applications
+            </button>
+            <br />
+          </div>
+        </div>
         {/* _______________________________________________________________ */}
         <div>
-          <h2>Admin</h2>
+          <h2 style = {styles.adminHead}>Admin</h2>
           <Popup
             trigger={
               <button onClick={this.handleCLickAddAdmin}>Add Admin</button>
             }
             position="bottom center"
             open={this.state.adminPopup}
-            on="click"
+			on="click"
+			style = {styles.adminPopup}
           >
             <div>
               <form onSubmit={this.handleSubmitAdmin}>
@@ -183,7 +214,7 @@ export default class AdminPage extends Component {
           </button>
         </div>
         {/* _______________________________________________________________ */}
-        _______________________________________________________________
+        {/* _______________________________________________________________ */}
         <div>
           <div>
             <h2>User</h2>
@@ -205,7 +236,7 @@ export default class AdminPage extends Component {
                     onChange={this.handleChangeUser}
                   />
                   <br />
-				  Name:
+                  Name:
                   <input
                     name="userName"
                     value={this.state.userName}
@@ -271,8 +302,8 @@ export default class AdminPage extends Component {
                     value={this.state.stationCode}
                     onChange={this.handleChangeStation}
                   />
-				  Station Name:
-				  <br/>
+                  Station Name:
+                  <br />
                   <input
                     name="stationName"
                     value={this.state.stationName}
@@ -334,7 +365,6 @@ export default class AdminPage extends Component {
             <br />
             <button onClick={this.handleClickStationEdit}>Edit Admin</button>
           </div>
-		  <button onClick={this.handleLogout}>Logout</button>
         </div>
         {/* _______________________________________________________________ */}
       </div>

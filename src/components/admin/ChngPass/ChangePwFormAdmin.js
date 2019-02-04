@@ -1,97 +1,102 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import { adminActions } from '../../../__actions/adminActions';
+import { adminActions } from "../../../__actions/adminActions";
 // require('../../../assets/changepass/css/chngpwform.css')
+import styles from "../../../assets/adminpass/css/adminpassform";
 
 class ChangePwFormAdmin extends Component {
-    constructor(props) {
-        super(props);
-        // console.log(this.state);
-        this.state = {
-            password: '',
-            newPassword: '',
-            rePassword: '',
-            submitted: false,
-        };
-        // console.log(this.state);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+  constructor(props) {
+    super(props);
+    // console.log(this.state);
+    this.state = {
+      password: "",
+      newPassword: "",
+      rePassword: "",
+      submitted: false
+    };
+    // console.log(this.state);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e) {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
+    this.setState({ submitted: true });
+    const { password, newPassword, rePassword } = this.state;
+    const { dispatch } = this.props;
+    if (password && newPassword && rePassword) {
+      console.log(this.state);
+      dispatch(adminActions.passchngadmin(newPassword));
+      dispatch(adminActions.getfirstAdmin());
     }
+  }
 
-    handleChange(e) {
-        const { name, value } = e.target;
-        this.setState({ [name]: value });
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-
-        this.setState({ submitted: true });
-        const { password, newPassword, rePassword } = this.state;
-        const { dispatch } = this.props;
-        if (password && newPassword && rePassword) {
-                console.log(this.state);
-                dispatch(adminActions.passchngadmin(newPassword));
-                dispatch(adminActions.getfirstAdmin());
-        }
-    }
-
-
-    render() {
-        const { password, newPassword, rePassword } = this.state;
-        return (
+  render() {
+    const { password, newPassword, rePassword } = this.state;
+    return (
+      <div style={styles.ChngPgDiv1}>
+        <div style={styles.ChngPgDiv2}>
+          <h1 style={styles.ChngPgH}>Change Password </h1><br/>
+          <form name="form" styles={styles.ChngPgForm1} onSubmit={this.handleSubmit}>
             <div>
-                <h2>Change Password </h2>
-                <form name='form' onSubmit={this.handleSubmit}>
-                    <div>
-                        <label htmlFor='password'>Current Password</label>
-                        <input
-                            type='password'
-                            className='form-control'
-                            name='password'
-                            value={password}
-                            onChange={this.handleChange}
-                        />
-                    </div>
-
-                    <div>
-                        <label htmlFor='newPassword'>New Password</label>
-                        <input
-                            type='password'
-                            className='form-control'
-                            name='newPassword'
-                            value={newPassword}
-                            onChange={this.handleChange}
-                        />
-                    </div>
-
-                    <div>
-                        <label htmlFor='rePassword'>Retype New Password</label>
-                        <input
-                            type='password'
-                            className='form-control'
-                            name='rePassword'
-                            value={rePassword}
-                            onChange={this.handleChange}
-                        />
-                    </div>
-
-                    <div>
-                        <button className='btn btn-primary'>Submit</button>
-                    </div>
-                </form>
+              {/* <label htmlFor="password">Current Password</label> */}
+              <input
+                type="password"
+                style={styles.ChngPgInput}
+                name="password"
+                value={password}
+                placeholder = "Current Password"
+                onChange={this.handleChange}
+              />
             </div>
-        );
-    }
+
+            <div>
+              {/* <label htmlFor="newPassword">New Password</label> */}
+              <input
+                type="password"
+                style={styles.ChngPgInput}
+                name="newPassword"
+                value={newPassword}
+                placeholder = "New Password"
+                onChange={this.handleChange}
+              />
+            </div>
+
+            <div>
+              {/* <label htmlFor="rePassword">Retype New Password</label> */}
+              <input
+                type="password"
+                style={styles.ChngPgInput}
+                name="rePassword"
+                value={rePassword}
+                placeholder = "Retype New Password"
+                onChange={this.handleChange}
+              />
+            </div>
+
+            <div>
+              <button style = {styles.ChngPgButton}>Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    );
+  }
 }
 
 function mapStateToProps(state) {
-    const { loggingin } = state.authentication;
-    return {
-        loggingin,
-    };
+  const { loggingin } = state.authentication;
+  return {
+    loggingin
+  };
 }
 
 export default connect(mapStateToProps)(ChangePwFormAdmin);

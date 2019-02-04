@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { userService } from "../../../__services/userService";
 import { history } from "../../../__helpers/history";
 
+import styles from "../../../assets/profile/css/profile";
 class ProfilePage extends Component {
   constructor(props) {
     super(props);
@@ -36,8 +37,8 @@ class ProfilePage extends Component {
       isRequest: false
     };
     this.handleclickGen = this.handleclickGen.bind(this);
-	this.handleclickReq = this.handleclickReq.bind(this);
-	this.handleclick = this.handleclick.bind(this);
+    this.handleclickReq = this.handleclickReq.bind(this);
+    this.handleclick = this.handleclick.bind(this);
   }
 
   handleclickGen() {
@@ -52,8 +53,8 @@ class ProfilePage extends Component {
   handleClick() {
     history.push("/prevstation");
   }
-  handleclick(){
-	  history.push("/login");
+  handleclick() {
+    history.push("/login");
   }
   componentDidMount() {
     // const { dispatch } = this.props;
@@ -67,109 +68,190 @@ class ProfilePage extends Component {
         penno: profile.penno,
         name: profile.name,
         designation: profile.designation,
-        joindate: `${joinDate.getFullYear()}-${joinDate.getMonth()+1}-${joinDate.getDate()}`,
+        joindate: `${joinDate.getFullYear()}-${joinDate.getMonth() +
+          1}-${joinDate.getDate()}`,
         currentstattion: profile.currentStation,
         prevstations: profile.prevStation,
-        lasttransfer: `${lastDate.getFullYear()}-${lastDate.getMonth()+1}-${lastDate.getDate()}`,
+        lasttransfer: `${lastDate.getFullYear()}-${lastDate.getMonth() +
+          1}-${lastDate.getDate()}`,
         reqtransfer: profile.reqTransfer,
         gentransfer: profile.genTransfer,
         gentransferstatus: profile.genTransStatus
       });
-	});
+    });
     // var stat;
     userService.getStations().then(stations => {
-		console.log(stations);
-		this.setState({stations:stations});
-
-	});
+      console.log(stations);
+      this.setState({ stations: stations });
+    });
     console.log(this.stat);
     this.props.dispatch(userActions.getfirst());
   }
 
   render() {
     return (
-      <div>
-        <h2>Profile</h2>
-        <span>Name :{this.state.name}</span>
-        <br />
-        <span>PEN Number:{this.state.penno}</span>
-        <br />
-        <span>Designation :{this.state.designation}</span>
-        <br />
-        <span>Joining Date : {this.state.joindate}</span>
-        <br />
-        <div>
-          <span>
-            Current Station :{this.state.currentstattion}
-          </span>
-          <br />
-        </div>
-        <div>
-          Previous Stations
-          <br />
-          <span>1.{this.state.prevstations.first}</span>
-          <br />
-          <span>2.{this.state.prevstations.second}</span>
-          <br />
-          <span>3.{this.state.prevstations.Third}</span>
-          <br />
-          <button onClick={this.handleClick}>Edit Details</button>
-          <br />
-        </div>
-        <span>LAST TRANSFER DATE:{this.state.lasttransfer}</span>
-        <br />
-        {/* <button>< Link To = '/optionpage'>GENERAL TRANSFER</ Link></button>
-		<button> <Link To = '/optionpage'>REQUEST TRANSFER</Link></button> */}
-        <div>
-          {console.log(this.state.reqtransfer.op1)}
-          {(this.state.gentransfer.op1) && (
-            <div>
-              <h3>GENERAL TRANSFER</h3>
-              <h4>Applied Options</h4>
-              {console.log(this.state.gentransfer)}
+      <div style={styles.profileMainDiv}>
+        <header style={styles.profileHeader}>
+          <h3 style={styles.profileHeaderHead}>Kerala Police</h3>
+          <div style = {styles.profileRight}>
+            <span style={styles.profileHeaderSpan}>
+              Hello, {this.state.name}
+            </span>&nbsp;&nbsp;
+            <button style={styles.profileLogout} onClick={this.handleclick}>
+              Logout
+            </button>
+          </div>
+        </header>
+        <div style={styles.profileDiv1}>
+          <div style={styles.profileDiv2}>
+            <h2 style={styles.profileHead2}>Profile</h2>
+            <span style={styles.profileSpan}>{this.state.name}</span>
+            <br />
+            <span style={styles.profileSpan}>
+              PEN Number:{this.state.penno}
+            </span>
+            <br />
+            <span style={styles.profileSpan}>
+              Designation :{this.state.designation}
+            </span>
+            <br />
+            <table>
+              <tr>
+                <span style={styles.profileSpan}>
+                  <td>Joining Date</td>
+                  <td> :</td>
+                  <td>{this.state.joindate}</td>
+                </span>
+                <br />
+              </tr>
+              <div style={styles.profileDiv4}>
+                <tr>
+                  <span style={styles.profileSpan}>
+                    <td>Current Station</td>
+                    <td> :</td>
+                    <td> {this.state.currentstattion}</td>
+                  </span>
+                  <br />
+                </tr>
+              </div>
+            </table>
+            <div style={styles.profileDiv4}>
+              Previous Stations
               <br />
-              <span>1.{this.state.gentransfer.op1}</span>
+              <span style={styles.profileSpan}>
+                1.{this.state.prevstations.first}
+              </span>
               <br />
-              <span>2.{this.state.gentransfer.op2}</span>
+              <span style={styles.profileSpan}>
+                2.{this.state.prevstations.second}
+              </span>
               <br />
-              <span>3.{this.state.gentransfer.op3}</span>
+              <span style={styles.profileSpan}>
+                3.{this.state.prevstations.Third}
+              </span>
               <br />
-              <button onClick={this.handleclickGen}>Edit Options</button>
+              <button
+                style={styles.profileButtonEdit1}
+                onClick={this.handleClick}
+              >
+                Edit Details
+              </button>
               <br />
             </div>
-          )}
-        </div>
-        <div>{ console.log(this.state.reqtransfer.op1) }
-          {(this.state.reqtransfer.op1) && (
-            <div>
-              <h3>REQUEST TRANSFER</h3>
-              <h4>Applied Options</h4>
-              <br />
-              <span>1.{this.state.reqtransfer.op1}</span>
-              <br />
-              <span>2.{this.state.reqtransfer.op2}</span>
-              <br />
-              <span>3.{this.state.reqtransfer.op3}</span>
-              <br />
-              <button onClick={this.handleclickReq}>Edit Options</button>
-              <br />
+            <span style={styles.profileSpan}>
+              LAST TRANSFER DATE:{this.state.lasttransfer}
+            </span>
+            <br />
+          </div>
+          {/* <button>< Link To = '/optionpage'>GENERAL TRANSFER</ Link></button>
+        <button> <Link To = '/optionpage'>REQUEST TRANSFER</Link></button> */}
+          <div style={styles.profileDiv3}>
+            <div style={styles.profileDiv4}>
+              {console.log(this.state.reqtransfer.op1)}
+              {this.state.gentransfer.op1 && (
+                <div>
+                  <h3 style={styles.profileHead3}>GENERAL TRANSFER</h3>
+                  <h4>Applied Options</h4>
+                  {console.log(this.state.gentransfer)}
+                  <br />
+                  <span style={styles.profileSpan}>
+                    1.{this.state.gentransfer.op1}
+                  </span>
+                  <br />
+                  <span style={styles.profileSpan}>
+                    2.{this.state.gentransfer.op2}
+                  </span>
+                  <br />
+                  <span style={styles.profileSpan}>
+                    3.{this.state.gentransfer.op3}
+                  </span>
+                  <br />
+                  <button
+                    style={styles.profileButtonEdit2}
+                    onClick={this.handleclickGen}
+                  >
+                    Edit Options
+                  </button>
+                  <br />
+                </div>
+              )}
             </div>
-          )}
+            <div>
+              {console.log(this.state.reqtransfer.op1)}
+              {this.state.reqtransfer.op1 && (
+                <div style={styles.profileDiv4}>
+                  <h3>REQUEST TRANSFER</h3>
+                  <h4>Applied Options</h4>
+                  <br />
+                  <span style={styles.profileSpan}>
+                    1.{this.state.reqtransfer.op1}
+                  </span>
+                  <br />
+                  <span style={styles.profileSpan}>
+                    2.{this.state.reqtransfer.op2}
+                  </span>
+                  <br />
+                  <span style={styles.profileSpan}>
+                    3.{this.state.reqtransfer.op3}
+                  </span>
+                  <br />
+                  <button
+                    style={styles.profileButtonEdit3}
+                    onClick={this.handleclickReq}
+                  >
+                    Edit Options
+                  </button>
+                  <br />
+                </div>
+              )}
+            </div>
+            <div style={styles.profileDiv5}>
+              {console.log(this.state.gentransferstatus)}
+              {this.state.gentransferstatus &&
+                !this.state.gentransfer.op1 &&
+                !this.state.reqtransfer.op1 && (
+                  <button
+                    style={styles.profileButtonSubmit1}
+                    onClick={this.handleclickGen}
+                  >
+                    GENERAL TRANSFER
+                  </button>
+                )}
+            </div>
+            <div style={styles.profileDIv6}>
+              {!this.state.gentransferstatus &&
+                !this.state.reqtransfer.op1 &&
+                !this.state.gentransfer.op1 && (
+                  <button
+                    style={styles.profileButtonSubmit2}
+                    onClick={this.handleclickReq}
+                  >
+                    REQUEST TRANSFER
+                  </button>
+                )}
+            </div>
+          </div>
         </div>
-        <div>
-			{console.log(this.state.gentransferstatus)}
-          {((this.state.gentransferstatus )&&
-            !(this.state.gentransfer.op1)&&!(this.state.reqtransfer.op1)) && (
-              <button onClick={this.handleclickGen}>GENERAL TRANSFER</button>
-            )}
-        </div>
-        <div>
-          {(!this.state.gentransferstatus &&
-            !(this.state.reqtransfer.op1)&&!(this.state.gentransfer.op1) )&& (
-              <button onClick={this.handleclickReq}>REQUEST TRANSFER</button>
-            )}
-        </div>
-        <button onClick={this.handleclick}>Logout</button>
       </div>
     );
   }
