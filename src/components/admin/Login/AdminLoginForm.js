@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
-// import '../../assets/loginpage/css/loginform.css';
+import '../../../assets/loginpage/css/loginform.css';
 import { adminActions } from '../../../__actions/adminActions';
 
 class LoginForm extends Component {

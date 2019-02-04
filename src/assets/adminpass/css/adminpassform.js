@@ -59,5 +59,6 @@ export default {
   
 	position: "relative",
 	zIndex: "1",
-  }
+	},
+	
 };

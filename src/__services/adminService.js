@@ -88,7 +88,7 @@ function GenList(des) {
     headers: AdminAuthHeaderGet()
   };
   console.log(des);
-  return fetch("${api}/admin/genlist/" + des, requestOptions)
+  return fetch(`${api}/admin/genlist/` + des, requestOptions)
     .then(handleResponse)
     .then(list => {
       return list;
@@ -100,7 +100,7 @@ function ReqList(des) {
     headers: AdminAuthHeaderGet()
   };
   console.log(des);
-  return fetch("${api}/admin/reqlist/" + des, requestOptions)
+  return fetch(`${api}/admin/reqlist/` + des, requestOptions)
     .then(handleResponse)
     .then(list => {
       return list;
@@ -120,7 +120,7 @@ function openModal(des, cur, op1, op2, op3) {
   };
   console.log(req);
   return fetch(
-    "${api}/admin/returnstation?designation=" +
+    `${api}/admin/returnstation?designation=` +
       des +
       "&current=" +
       cur +
@@ -183,7 +183,7 @@ function searchAdmin(penno) {
     headers: AdminAuthHeaderGet()
   };
   return fetch(
-    "${api}/admin/adminactions/" + penno,
+    `${api}/admin/adminactions/` + penno,
     requestOptions
   )
     .then(handleResponse)
@@ -215,7 +215,7 @@ function adminDelete(id) {
   };
   console.log(requestOptions);
   return fetch(
-    "${api}/admin/signup/" + id,
+    `${api}/admin/signup/` + id,
     requestOptions
   ).then(handleResponse);
 }
@@ -243,7 +243,7 @@ function searchUser(name) {
   };
   console.log(requestOptions);
   return fetch(
-    "${api}/admin/useractions/" + name,
+    `${api}/admin/useractions/` + name,
     requestOptions
   )
     .then(handleResponse)
@@ -275,7 +275,7 @@ function userDelete(id) {
   };
   console.log(requestOptions);
   return fetch(
-    "${api}/admin/useractions/" + id,
+    `${api}/admin/useractions/` + id,
     requestOptions
   ).then(handleResponse);
 }
@@ -305,7 +305,7 @@ function searchStation(name) {
     headers: AdminAuthHeaderGet()
   };
   return fetch(
-    "${api}/admin/searchstation?station=" + name,
+    `${api}/admin/searchstation?station=` + name,
     requestOptions
   )
     .then(handleResponse)
@@ -341,7 +341,7 @@ function stationDelete(id) {
   };
   console.log(requestOptions);
   return fetch(
-    "${api}/admin/station/" + id,
+    `${api}/admin/station/` + id,
     requestOptions
   ).then(handleResponse);
 }
@@ -385,7 +385,6 @@ function handleResponseLogin(response) {
       if (response.status === 401) {
         // auto logout if 401 response returned from api
         logoutAdmin();
-        window.location.reload(true);
       }
 
       const error = (data && data.message) || response.statusText;
@@ -406,7 +405,6 @@ function handleResponse(response) {
     if (!response.ok) {
       if (response.status === 401) {
 		// auto logout if 401 response returned from api
-		console.log('ada mwona')
         logoutAdmin();
         window.location.reload(true);
       }

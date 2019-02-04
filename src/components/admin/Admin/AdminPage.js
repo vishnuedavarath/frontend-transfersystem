@@ -4,7 +4,7 @@ import Popup from "reactjs-popup";
 import { adminService } from "../../../__services/adminService";
 // import Modal from 'react-responsive-modal'
 import styles from "../../../assets/adminpage/css/adminpage";
-
+// require('../../../assets/adminpage/css/adminpage.css')
 export default class AdminPage extends Component {
   constructor() {
     super();
@@ -134,11 +134,15 @@ export default class AdminPage extends Component {
     return (
       <div style={styles.adminDivMain}>
         <header style={styles.adminHeader}>
-          <h2 style={styles.adminHeaderHead}>Kerala Police</h2>
-          <span style={styles.adminHeaderSpan}>Hello, Admin</span>
-          <button style={styles.adminLogout} onClick={this.handleLogout}>
-            Logout
-          </button>
+		<h3 style={styles.adminHeaderHead}>Kerala Police</h3>
+          <div style = {styles.adminRight}>
+            <span style={styles.adminHeaderSpan}>
+              Hello, Admin
+            </span>&nbsp;&nbsp;
+            <button style={styles.adminLogout} onClick={this.handleclick}>
+              Logout
+            </button>
+          </div>
         </header>
         <div style={styles.adminAllot}>
           <div style = {styles.adminGen}>
@@ -159,7 +163,7 @@ export default class AdminPage extends Component {
           <h2 style = {styles.adminHead}>Admin</h2>
           <Popup
             trigger={
-              <button onClick={this.handleCLickAddAdmin}>Add Admin</button>
+              <button style = {styles.adminButton} onClick={this.handleCLickAddAdmin}>Add Admin</button>
             }
             position="bottom center"
             open={this.state.adminPopup}
@@ -206,13 +210,13 @@ export default class AdminPage extends Component {
                   <option value="2">Admin</option>
                 </select>
                 <br />
-                <button>Submit</button>
+                <button style = {styles.adminButton}>Submit</button>
               </form>
             </div>
           </Popup>
           <br />
-          <button onClick={this.handleClickAdminEdit}>Edit Admin</button>
-          <button onClick={this.handleClickAdminPassword}>
+          <button style = {styles.adminButton} onClick={this.handleClickAdminEdit}>Edit Admin</button><br/>
+          <button style = {styles.adminButton} onClick={this.handleClickAdminPassword}>
             Reset Password
           </button>
         </div>
@@ -223,7 +227,7 @@ export default class AdminPage extends Component {
             <h2>User</h2>
             <Popup
               trigger={
-                <button onClick={this.handleCLickAddAdmin}>Add User</button>
+                <button style = {styles.adminButton} onClick={this.handleCLickAddAdmin}>Add User</button>
               }
               position="bottom center"
               open={this.state.userPopup}
@@ -270,13 +274,13 @@ export default class AdminPage extends Component {
                     <option value="wcpo">WCPO</option>
                   </select>
                   <br />
-                  <button>Submit</button>
+                  <button style = {styles.adminButton} >Submit</button>
                 </form>
               </div>
             </Popup>
             <br />
-            <button onClick={this.handleClickUserEdit}>Edit User</button>
-            <button onClick={this.handleClickUserPassword}>
+            <button style = {styles.adminButton} onClick={this.handleClickUserEdit}>Edit User</button>
+            <button style = {styles.adminButton} onClick={this.handleClickUserPassword}><br/>
               Reset Password
             </button>
           </div>
@@ -288,7 +292,7 @@ export default class AdminPage extends Component {
             <h2>Stations</h2>
             <Popup
               trigger={
-                <button onClick={this.handleCLickAddStation}>
+                <button style = {styles.adminButton} onClick={this.handleCLickAddStation}>
                   Add Station
                 </button>
               }
@@ -361,12 +365,12 @@ export default class AdminPage extends Component {
                     onChange={this.handleChangeStation}
                   />
                   <br />
-                  <button>Submit</button>
+                  <button style = {styles.adminButton} >Submit</button>
                 </form>
               </div>
             </Popup>
             <br />
-            <button onClick={this.handleClickStationEdit}>Edit Admin</button>
+            <button style = {styles.adminButton} onClick={this.handleClickStationEdit}>Edit Admin</button>
           </div>
         </div>
         {/* _______________________________________________________________ */}
