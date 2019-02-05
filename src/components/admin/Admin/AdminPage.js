@@ -5,6 +5,7 @@ import { adminService } from "../../../__services/adminService";
 // import Modal from 'react-responsive-modal'
 import styles from "../../../assets/adminpage/css/adminpage";
 // require('../../../assets/adminpage/css/adminpage.css')
+import "../../../App.css";
 export default class AdminPage extends Component {
   constructor() {
     super();
@@ -133,247 +134,318 @@ export default class AdminPage extends Component {
   render() {
     return (
       <div style={styles.adminDivMain}>
+        {/* <div style = {styles.adminHeaderDiv}> */}
         <header style={styles.adminHeader}>
-		<h3 style={styles.adminHeaderHead}>Kerala Police</h3>
-          <div style = {styles.adminRight}>
-            <span style={styles.adminHeaderSpan}>
-              Hello, Admin
-            </span>&nbsp;&nbsp;
-            <button style={styles.adminLogout} onClick={this.handleclick}>
-              Logout
+          <h3 style={styles.adminHeaderHead}>
+            <span style={{ color: "#ff471a" }}>കേ</span>
+            <span style={{ color: "#fff" }}>രള</span>{" "}
+            <span style={{ color: "#ff471a" }}>പോ</span>
+            <span style={{ color: "#fff" }}>ലീസ്</span>
+          </h3>
+          <div style={styles.adminRight}>
+            <span style={styles.adminHeaderSpan}>Hello, </span>
+            &nbsp;&nbsp;
+            <button className="adminLogout" onClick={this.handleLogout}>
+              LOG OUT
             </button>
           </div>
         </header>
-        <div style={styles.adminAllot}>
-          <div style = {styles.adminGen}>
-            <button style = {styles.adminGenButton} onClick={this.handleClickGen}>
-              General Transfer Applications
-            </button>
-          </div>
-          <br />
-          <div style = {styles.adminReq}>
-            <button style = {styles.adminReqButton} onClick={this.handleClickReq}>
-              Request Transfer Applications
-            </button>
-            <br />
-          </div>
-        </div>
-        {/* _______________________________________________________________ */}
-        <div>
-          <h2 style = {styles.adminHead}>Admin</h2>
-          <Popup
-            trigger={
-              <button style = {styles.adminButton} onClick={this.handleCLickAddAdmin}>Add Admin</button>
-            }
-            position="bottom center"
-            open={this.state.adminPopup}
-			on="click"
-			style = {styles.adminPopup}
-          >
-            <div>
-              <form style = {styles.adminForm} onSubmit={this.handleSubmitAdmin}>
-                PEN Number:
-                <br />
-                <input
-                  name="adminPenno"
-				  value={this.state.adminPenno}
-				  style = {styles.adminInput}
-                  onChange={this.handleChangeAdmin}
-                />
-                Name:
-                <br />
-                <input
-				  name="adminName"
-				  style = {styles.adminInput}
-                  value={this.state.adminName}
-                  onChange={this.handleChangeAdmin}
-                />
-                <br />
-                Password:
-                <br />
-                <input
-                  type="password"
-				  name="adminPassword"
-				  style = {styles.adminInput}
-                  value={this.state.adminPassword}
-                  onChange={this.handleChangeAdmin}
-                />
-                <br />
-                Privilege:
-                <br />
-                <select
-                  name="adminPrivilege"
-                  value={this.state.adminPrivilege}
-                  onChange={this.handleChangeAdmin}
+        {/* </div> */}
+        <div style={styles.adminContent}>
+          <center>
+            <div style={styles.adminAllot}>
+              <div style={styles.adminGen}>
+                <button
+                  className="admingenbutton"
+                  onClick={this.handleClickGen}
                 >
-                  <option value="1">Super Admin</option>
-                  <option value="2">Admin</option>
-                </select>
-                <br />
-                <button style = {styles.adminButton}>Submit</button>
-              </form>
-            </div>
-          </Popup>
-          <br />
-          <button style = {styles.adminButton} onClick={this.handleClickAdminEdit}>Edit Admin</button><br/>
-          <button style = {styles.adminButton} onClick={this.handleClickAdminPassword}>
-            Reset Password
-          </button>
-        </div>
-        {/* _______________________________________________________________ */}
-        {/* _______________________________________________________________ */}
-        <div>
-          <div>
-            <h2>User</h2>
-            <Popup
-              trigger={
-                <button style = {styles.adminButton} onClick={this.handleCLickAddAdmin}>Add User</button>
-              }
-              position="bottom center"
-              open={this.state.userPopup}
-              on="click"
-            >
-              <div>
-                <form onSubmit={this.handleSubmitUser}>
-                  PEN Number:
-                  <br />
-                  <input
-                    name="userPenno"
-                    value={this.state.userPenno}
-                    onChange={this.handleChangeUser}
-                  />
-                  <br />
-                  Name:
-                  <input
-                    name="userName"
-                    value={this.state.userName}
-                    onChange={this.handleChangeUser}
-                  />
-                  <br />
-                  Password:
-                  <br />
-                  <input
-                    type="password"
-                    name="adminPassword"
-                    value={this.state.adminPassword}
-                    onChange={this.handleChangeAdmin}
-                  />
-                  <br />
-                  Designation:
-                  <br />
-                  <select
-                    name="userDesignation"
-                    value={this.state.userDesignation}
-                    onChange={this.handleChangeUser}
-                  >
-                    <option value="si">SI</option>
-                    <option value="asi">ASI</option>
-                    <option value="scpo">SCPO</option>
-                    <option value="tscpo">TSCPO</option>
-                    <option value="cpo">CPO</option>
-                    <option value="wcpo">WCPO</option>
-                  </select>
-                  <br />
-                  <button style = {styles.adminButton} >Submit</button>
-                </form>
-              </div>
-            </Popup>
-            <br />
-            <button style = {styles.adminButton} onClick={this.handleClickUserEdit}>Edit User</button>
-            <button style = {styles.adminButton} onClick={this.handleClickUserPassword}><br/>
-              Reset Password
-            </button>
-          </div>
-        </div>
-        {/* _______________________________________________________________ */}
-        {/* _______________________________________________________________ */}
-        <div>
-          <div>
-            <h2>Stations</h2>
-            <Popup
-              trigger={
-                <button style = {styles.adminButton} onClick={this.handleCLickAddStation}>
-                  Add Station
+                  General Transfer Applications
                 </button>
-              }
-              position="bottom center"
-              open={this.state.stationPopup}
-              on="click"
-            >
-              <div>
-                <form onSubmit={this.handleSubmitStation}>
-                  Station Code:
-                  <br />
-                  <input
-                    name="stationCode"
-                    value={this.state.stationCode}
-                    onChange={this.handleChangeStation}
-                  />
-                  Station Name:
-                  <br />
-                  <input
-                    name="stationName"
-                    value={this.state.stationName}
-                    onChange={this.handleChangeStation}
-                  />
-                  <br />
-                  Vacancy for SI:
-                  <br />
-                  <input
-                    name="stationVacancySI"
-                    value={this.state.stationVacancySI}
-                    onChange={this.handleChangeStation}
-                  />
-                  <br />
-                  Vacancy for ASI:
-                  <br />
-                  <input
-                    name="stationVacancyASI"
-                    value={this.state.stationVacancyASI}
-                    onChange={this.handleChangeStation}
-                  />
-                  <br />
-                  Vacancy for SCPO:
-                  <br />
-                  <input
-                    name="stationVacancySCPO"
-                    value={this.state.stationVacancySCPO}
-                    onChange={this.handleChangeStation}
-                  />
-                  <br />
-                  Vacancy for TSCPO:
-                  <br />
-                  <input
-                    name="stationVacancyTSCPO"
-                    value={this.state.stationVacancyTSCPO}
-                    onChange={this.handleChangeStation}
-                  />
-                  <br />
-                  Vacancy for CPO:
-                  <br />
-                  <input
-                    name="stationVacancyCPO"
-                    value={this.state.stationVacancyCPO}
-                    onChange={this.handleChangeStation}
-                  />
-                  <br />
-                  Vacancy for WCPO:
-                  <br />
-                  <input
-                    name="stationVacancyWCPO"
-                    value={this.state.stationVacancyWCPO}
-                    onChange={this.handleChangeStation}
-                  />
-                  <br />
-                  <button style = {styles.adminButton} >Submit</button>
-                </form>
               </div>
-            </Popup>
-            <br />
-            <button style = {styles.adminButton} onClick={this.handleClickStationEdit}>Edit Admin</button>
-          </div>
+              <br />
+              <div style={styles.adminReq}>
+                <button
+                  className="admingenbutton"
+                  onClick={this.handleClickReq}
+                >
+                  Request Transfer Applications
+                </button>
+                <br />
+              </div>
+            </div>
+          </center>
+          {/* _______________________________________________________________ */}
+          <center>
+            <div style={styles.adminFn}>
+              <div>
+                <div style={styles.adminAdmin}>
+                  <center>
+                    <h2 style={styles.adminHead}>ADMIN</h2>
+                  </center>
+                  <Popup
+                    trigger={
+                      <button
+                        className="adminButton"
+                        onClick={this.handleCLickAddAdmin}
+                      >
+                        Add Admin
+                      </button>
+                    }
+                    position="bottom center"
+                    open={this.state.adminPopup}
+                    on="click"
+                    style={styles.adminPopup}
+                  >
+                    <div>
+                      <form
+                        style={styles.adminForm}
+                        onSubmit={this.handleSubmitAdmin}
+                      >
+                        PEN Number:
+                        <br />
+                        <input
+                          name="adminPenno"
+                          value={this.state.adminPenno}
+                          style={styles.adminInput}
+                          onChange={this.handleChangeAdmin}
+                        />
+                        Name:
+                        <br />
+                        <input
+                          name="adminName"
+                          style={styles.adminInput}
+                          value={this.state.adminName}
+                          onChange={this.handleChangeAdmin}
+                        />
+                        <br />
+                        Password:
+                        <br />
+                        <input
+                          type="password"
+                          name="adminPassword"
+                          style={styles.adminInput}
+                          value={this.state.adminPassword}
+                          onChange={this.handleChangeAdmin}
+                        />
+                        <br />
+                        Privilege:
+                        <br />
+                        <select
+                          name="adminPrivilege"
+                          value={this.state.adminPrivilege}
+                          onChange={this.handleChangeAdmin}
+                        >
+                          <option value="1">Super Admin</option>
+                          <option value="2">Admin</option>
+                        </select>
+                        <br />
+                        <button style={styles.adminButton}>Submit</button>
+                      </form>
+                    </div>
+                  </Popup>
+                  <br />
+                  <button
+                    className="adminButton"
+                    onClick={this.handleClickAdminEdit}
+                  >
+                    Edit Admin
+                  </button>
+                  <br />
+                  <button
+                    className="adminButton"
+                    onClick={this.handleClickAdminPassword}
+                  >
+                    Reset Password
+                  </button>
+                </div>
+              </div>
+
+              {/* _______________________________________________________________ */}
+              {/* _______________________________________________________________ */}
+              <div style={styles.adminUser}>
+                <div>
+                  <center>
+                    <h2 style={styles.adminHead}>USER</h2>
+                  </center>
+                  <Popup
+                    trigger={
+                      <button
+                        className="adminButton"
+                        onClick={this.handleCLickAddAdmin}
+                      >
+                        Add User
+                      </button>
+                    }
+                    position="bottom center"
+                    open={this.state.userPopup}
+                    on="click"
+                  >
+                    <div>
+                      <form onSubmit={this.handleSubmitUser}>
+                        PEN Number:
+                        <br />
+                        <input
+                          name="userPenno"
+                          value={this.state.userPenno}
+                          onChange={this.handleChangeUser}
+                        />
+                        <br />
+                        Name:
+                        <input
+                          name="userName"
+                          value={this.state.userName}
+                          onChange={this.handleChangeUser}
+                        />
+                        <br />
+                        Password:
+                        <br />
+                        <input
+                          type="password"
+                          name="adminPassword"
+                          value={this.state.adminPassword}
+                          onChange={this.handleChangeAdmin}
+                        />
+                        <br />
+                        Designation:
+                        <br />
+                        <select
+                          name="userDesignation"
+                          value={this.state.userDesignation}
+                          onChange={this.handleChangeUser}
+                        >
+                          <option value="si">SI</option>
+                          <option value="asi">ASI</option>
+                          <option value="scpo">SCPO</option>
+                          <option value="tscpo">TSCPO</option>
+                          <option value="cpo">CPO</option>
+                          <option value="wcpo">WCPO</option>
+                        </select>
+                        <br />
+                        <button style={styles.adminButton}>Submit</button>
+                      </form>
+                    </div>
+                  </Popup>
+                  <br />
+                  <button
+                    className="adminButton"
+                    onClick={this.handleClickUserEdit}
+                  >
+                    Edit User
+                  </button>
+                  <br />
+                  <button
+                    className="adminButton"
+                    onClick={this.handleClickUserPassword}
+                  >
+                    Reset Password
+                  </button>
+                </div>
+              </div>
+              {/* _______________________________________________________________ */}
+              {/* _______________________________________________________________ */}
+              <div style={styles.adminStation}>
+                <div>
+                  <h2 style={styles.adminHead}>STATIONS</h2>
+                  <Popup
+                    trigger={
+                      <button
+                        className="adminButton"
+                        onClick={this.handleCLickAddStation}
+                      >
+                        Add Station
+                      </button>
+                    }
+                    position="bottom center"
+                    open={this.state.stationPopup}
+                    on="click"
+                  >
+                    <div>
+                      <form onSubmit={this.handleSubmitStation}>
+                        Station Code:
+                        <br />
+                        <input
+                          name="stationCode"
+                          value={this.state.stationCode}
+                          onChange={this.handleChangeStation}
+                        />
+                        Station Name:
+                        <br />
+                        <input
+                          name="stationName"
+                          value={this.state.stationName}
+                          onChange={this.handleChangeStation}
+                        />
+                        <br />
+                        Vacancy for SI:
+                        <br />
+                        <input
+                          name="stationVacancySI"
+                          value={this.state.stationVacancySI}
+                          onChange={this.handleChangeStation}
+                        />
+                        <br />
+                        Vacancy for ASI:
+                        <br />
+                        <input
+                          name="stationVacancyASI"
+                          value={this.state.stationVacancyASI}
+                          onChange={this.handleChangeStation}
+                        />
+                        <br />
+                        Vacancy for SCPO:
+                        <br />
+                        <input
+                          name="stationVacancySCPO"
+                          value={this.state.stationVacancySCPO}
+                          onChange={this.handleChangeStation}
+                        />
+                        <br />
+                        Vacancy for TSCPO:
+                        <br />
+                        <input
+                          name="stationVacancyTSCPO"
+                          value={this.state.stationVacancyTSCPO}
+                          onChange={this.handleChangeStation}
+                        />
+                        <br />
+                        Vacancy for CPO:
+                        <br />
+                        <input
+                          name="stationVacancyCPO"
+                          value={this.state.stationVacancyCPO}
+                          onChange={this.handleChangeStation}
+                        />
+                        <br />
+                        Vacancy for WCPO:
+                        <br />
+                        <input
+                          name="stationVacancyWCPO"
+                          value={this.state.stationVacancyWCPO}
+                          onChange={this.handleChangeStation}
+                        />
+                        <br />
+                        <button style={styles.adminButton}>Submit</button>
+                      </form>
+                    </div>
+                  </Popup>
+                  <br />
+                  <button
+                    className="adminButton"
+                    onClick={this.handleClickStationEdit}
+                  >
+                    Edit Station
+                  </button>
+                </div>
+              </div>
+            </div>
+            {/* _______________________________________________________________ */}
+          </center>
         </div>
-        {/* _______________________________________________________________ */}
+        <footer style={styles.footer}>
+          <center style={styles.footerText}>
+            &copy; Kerala Police Palakkad 2019-2020
+          </center>
+        </footer>
       </div>
     );
   }
