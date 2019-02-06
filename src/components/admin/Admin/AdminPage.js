@@ -3,9 +3,7 @@ import { history } from "../../../__helpers/history";
 import Popup from "reactjs-popup";
 import { adminService } from "../../../__services/adminService";
 // import Modal from 'react-responsive-modal'
-import styles from "../../../assets/adminpage/css/adminpage";
-// require('../../../assets/adminpage/css/adminpage.css')
-import "../../../App.css";
+require('../../../assets/adminpage/css/adminpage.css');
 export default class AdminPage extends Component {
   constructor() {
     super();
@@ -133,17 +131,17 @@ export default class AdminPage extends Component {
   }
   render() {
     return (
-      <div style={styles.adminDivMain}>
-        {/* <div style = {styles.adminHeaderDiv}> */}
-        <header style={styles.adminHeader}>
-          <h3 style={styles.adminHeaderHead}>
+      <div className="adminDivMain" >
+        {/* <div className = {adminHeaderDiv}> */}
+        <header className="adminHeader">
+          <h3 className="adminHeaderHead">
             <span style={{ color: "#ff471a" }}>കേ</span>
             <span style={{ color: "#fff" }}>രള</span>{" "}
             <span style={{ color: "#ff471a" }}>പോ</span>
             <span style={{ color: "#fff" }}>ലീസ്</span>
           </h3>
-          <div style={styles.adminRight}>
-            <span style={styles.adminHeaderSpan}>Hello, </span>
+          <div className="adminRight">
+            <span className="adminHeaderSpan">Hello, Admin </span>
             &nbsp;&nbsp;
             <button className="adminLogout" onClick={this.handleLogout}>
               LOG OUT
@@ -151,10 +149,10 @@ export default class AdminPage extends Component {
           </div>
         </header>
         {/* </div> */}
-        <div style={styles.adminContent}>
+        <div className="adminContent">
           <center>
-            <div style={styles.adminAllot}>
-              <div style={styles.adminGen}>
+            <div className="adminAllot">
+              <div className="adminGen">
                 <button
                   className="admingenbutton"
                   onClick={this.handleClickGen}
@@ -163,7 +161,7 @@ export default class AdminPage extends Component {
                 </button>
               </div>
               <br />
-              <div style={styles.adminReq}>
+              <div className="adminReq">
                 <button
                   className="admingenbutton"
                   onClick={this.handleClickReq}
@@ -176,11 +174,11 @@ export default class AdminPage extends Component {
           </center>
           {/* _______________________________________________________________ */}
           <center>
-            <div style={styles.adminFn}>
+            <div className="adminFn">
               <div>
-                <div style={styles.adminAdmin}>
+                <div className="adminAdmin">
                   <center>
-                    <h2 style={styles.adminHead}>ADMIN</h2>
+                    <h2 className="adminHea">ADMIN</h2>
                   </center>
                   <Popup
                     trigger={
@@ -194,11 +192,11 @@ export default class AdminPage extends Component {
                     position="bottom center"
                     open={this.state.adminPopup}
                     on="click"
-                    style={styles.adminPopup}
+                    className="adminPopup"
                   >
                     <div>
                       <form
-                        style={styles.adminForm}
+                        className="adminForm"
                         onSubmit={this.handleSubmitAdmin}
                       >
                         PEN Number:
@@ -206,14 +204,14 @@ export default class AdminPage extends Component {
                         <input
                           name="adminPenno"
                           value={this.state.adminPenno}
-                          style={styles.adminInput}
+                          className="adminInput"
                           onChange={this.handleChangeAdmin}
                         />
                         Name:
                         <br />
                         <input
                           name="adminName"
-                          style={styles.adminInput}
+                          className="adminInput"
                           value={this.state.adminName}
                           onChange={this.handleChangeAdmin}
                         />
@@ -223,7 +221,7 @@ export default class AdminPage extends Component {
                         <input
                           type="password"
                           name="adminPassword"
-                          style={styles.adminInput}
+                          className="adminInput"
                           value={this.state.adminPassword}
                           onChange={this.handleChangeAdmin}
                         />
@@ -239,7 +237,7 @@ export default class AdminPage extends Component {
                           <option value="2">Admin</option>
                         </select>
                         <br />
-                        <button style={styles.adminButton}>Submit</button>
+                        <button className="adminButton">Submit</button>
                       </form>
                     </div>
                   </Popup>
@@ -262,10 +260,10 @@ export default class AdminPage extends Component {
 
               {/* _______________________________________________________________ */}
               {/* _______________________________________________________________ */}
-              <div style={styles.adminUser}>
+              <div className="adminUser">
                 <div>
                   <center>
-                    <h2 style={styles.adminHead}>USER</h2>
+                    <h2 className="adminHead">USER</h2>
                   </center>
                   <Popup
                     trigger={
@@ -321,7 +319,7 @@ export default class AdminPage extends Component {
                           <option value="wcpo">WCPO</option>
                         </select>
                         <br />
-                        <button style={styles.adminButton}>Submit</button>
+                        <button className="adminButton">Submit</button>
                       </form>
                     </div>
                   </Popup>
@@ -343,9 +341,9 @@ export default class AdminPage extends Component {
               </div>
               {/* _______________________________________________________________ */}
               {/* _______________________________________________________________ */}
-              <div style={styles.adminStation}>
+              <div className="adminStation">
                 <div>
-                  <h2 style={styles.adminHead}>STATIONS</h2>
+                  <h2 className="adminHead">STATIONS</h2>
                   <Popup
                     trigger={
                       <button
@@ -424,7 +422,7 @@ export default class AdminPage extends Component {
                           onChange={this.handleChangeStation}
                         />
                         <br />
-                        <button style={styles.adminButton}>Submit</button>
+                        <button className="adminButton">Submit</button>
                       </form>
                     </div>
                   </Popup>
@@ -441,8 +439,8 @@ export default class AdminPage extends Component {
             {/* _______________________________________________________________ */}
           </center>
         </div>
-        <footer style={styles.footer}>
-          <center style={styles.footerText}>
+        <footer className="footer">
+          <center className="footerText">
             &copy; Kerala Police Palakkad 2019-2020
           </center>
         </footer>

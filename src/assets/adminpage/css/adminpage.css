@@ -1,0 +1,209 @@
+.adminMainDiv {
+    /* height: 100vh; */
+    background-size: cover;
+}
+
+.adminHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #34495e;
+    height: 50px;
+}
+
+.adminHeaderHead {
+    margin-left: 10px;
+    color: #FFF;
+    font-size: 23px
+}
+
+.adminHeaderSpan {
+    margin-right: 10px;
+    color: #FFF;
+}
+
+.adminContent {
+    background-color: #ecf0f1;
+    height: 90vh;
+    /* background-size: cover; */
+}
+
+.adminAllot {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #FFF;
+    padding-bottom: 20px;
+    width: 80%;
+    border-radius: 0 0 25px 25px;
+    box-shadow: 5px 11px 100px -10px rgba(0, 0, 0, 0.45);
+}
+
+.adminGen {
+    display: flex;
+    align-items: center;
+}
+
+.adminReq {
+    display: flex;
+    align-items: center;
+}
+
+.adminReqButton {
+    font-family: Montserrat-Bold;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #e0e0e0;
+
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    background: #333333;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+
+    margin-top: 15px;
+    margin-right: 30px;
+
+    position: relative;
+    z-index: 1;
+}
+
+
+.adminHead {
+    padding: 0px 20px 10px 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+.footer {
+    height: 40px;
+    background-color: #34495e;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.footerext {
+    color: #fff;
+    padding-top: 7px;
+}
+
+.adminFn {
+    display: flex;
+    margin-top: 70px;
+    justify-content: space-around;
+    /* flex-direction: column"; */
+    width: "85%";
+}
+
+.adminAdmin {
+    padding: 30px 30px;
+    background: #FFF;
+    border-radius: 25px;
+    box-shadow: 8px 6px 62px -9px rgba(0, 0, 0, 0.45);
+}
+
+.adminUser {
+    padding: 30px 30px;
+    background: #FFF;
+    border-radius: 25px;
+    box-shadow: 8px 6px 62px -9px rgba(0, 0, 0, 0.45);
+}
+
+
+.adminStation {
+    padding: 30px 45px;
+    background: #FFF;
+    border-radius: 25px;
+    box-shadow: 8px 6px 62px -9px rgba(0, 0, 0, 0.45);
+}
+
+.adminButton {
+    font-family: "Montserrat-Bold";
+    font-size: 15px;
+    line-height: 1.5;
+    color: #34495e;
+    border: 1.5px solid #34495e;
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+    transition: all 0.4s;
+    position: relative;
+    z-index: 1;
+}
+
+.adminButton:hover {
+    background-color: #34495e;
+    color: #fff;
+}
+
+.admingenbutton {
+    font-family: "Montserrat-Bold";
+    font-size: 15px;
+    line-height: 1.5;
+    color: #fff;
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    background: #34495e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+    margin-top: 15px;
+    transition: all 0.4s;
+    margin-left: 30px;
+    position: relative;
+    z-index: 1;
+    border: 1.5px solid #34495e;
+}
+
+.admingenbutton:hover {
+    background: #fff;
+    color: #34495e;
+}
+
+.adminLogout {
+    font-family: "Montserrat-Bold";
+    font-size: 15px;
+    line-height: 1.5;
+    color: #e74c3c;
+    margin-top: 0;
+    margin-bottom: 0;
+    /* border-bottom: 1px solid #e74c3c; */
+    height: 50px;
+    background: #fff;
+    padding: 0 25px;
+    transition: all 0.4s;
+    position: relative;
+    z-index: 1;
+    top: 0;
+}
+
+.adminLogout:hover {
+    background: #e74c3c;
+    color: #fff;
+}
+
+@media (max-width : 576px) {
+    .adminHeader {
+        display: flex;
+        flex-direction: column;
+    }
+}
