@@ -1,10 +1,14 @@
-.adminMainDiv {
-    /* height: 100vh; */
+.adminDivMain {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     background-size: cover;
 }
 
 .adminHeader {
     display: flex;
+    width :100%;
     justify-content: space-between;
     align-items: center;
     background-color: #34495e;
@@ -18,13 +22,15 @@
 }
 
 .adminHeaderSpan {
-    margin-right: 10px;
+    margin: 10px;
+    align-items: center;
     color: #FFF;
 }
 
 .adminContent {
     background-color: #ecf0f1;
     height: 90vh;
+
     /* background-size: cover; */
 }
 
@@ -88,11 +94,22 @@
 }
 
 .footer {
-    height: 40px;
     background-color: #34495e;
-    position: absolute;
-    bottom: 0;
     width: 100%;
+    clear: both;
+    position: relative;
+    height: 40px;
+    margin-top: auto;
+}
+
+.footermob{
+    display: none;
+    background-color: #34495e;
+    width: 100%;
+    clear: both;
+    position: relative;
+    height: 40px;
+    margin-top: auto;
 }
 
 .footerext {
@@ -105,7 +122,7 @@
     margin-top: 70px;
     justify-content: space-around;
     /* flex-direction: column"; */
-    width: "85%";
+    width: 85%;
 }
 
 .adminAdmin {
@@ -202,8 +219,61 @@
 }
 
 @media (max-width : 576px) {
+    .adminDivMain{
+        width : 100vw !important;
+        /* height: 731px; */
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
     .adminHeader {
         display: flex;
         flex-direction: column;
+        justify-content: flex-start;
+        width: 100vw !important;
+        height : 125px;
+
+    }
+    .adminContent {
+        height: auto;
+    }
+    .adminRight{
+        display: flex;
+        flex-direction: column;
+    }
+    .adminLogout{
+        /* padding: 0px; */
+        margin-top: -10px;
+    }
+    .adminAllot {
+        display: flex;
+        flex-direction: column;
+    }
+    .adminFn{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .adminAllot{
+        align-items: center;
+        /* padding-right: -10px;  */
+    }
+    .adminAdmin {
+        margin-bottom: 30px;
+    }
+    .adminUser {
+        margin : 30px 0px;
+    }
+    .adminStation {
+        margin-top: 30px;
+    }
+    .admingenbutton {
+        margin-left: 0px;
+    }
+    .footer {
+        display: none;
+    }
+    .footermob{
+        display: block;
     }
 }

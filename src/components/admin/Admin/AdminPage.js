@@ -3,7 +3,9 @@ import { history } from "../../../__helpers/history";
 import Popup from "reactjs-popup";
 import { adminService } from "../../../__services/adminService";
 // import Modal from 'react-responsive-modal'
-require('../../../assets/adminpage/css/adminpage.css');
+import "../../../assets/adminpage/css/adminpage.css";
+// import StickyFooter from 'react-sticky-footer';
+
 export default class AdminPage extends Component {
   constructor() {
     super();
@@ -131,7 +133,7 @@ export default class AdminPage extends Component {
   }
   render() {
     return (
-      <div className="adminDivMain" >
+      <div className="adminDivMain">
         {/* <div className = {adminHeaderDiv}> */}
         <header className="adminHeader">
           <h3 className="adminHeaderHead">
@@ -178,7 +180,7 @@ export default class AdminPage extends Component {
               <div>
                 <div className="adminAdmin">
                   <center>
-                    <h2 className="adminHea">ADMIN</h2>
+                    <h2 className="adminHead">ADMIN</h2>
                   </center>
                   <Popup
                     trigger={
@@ -434,16 +436,22 @@ export default class AdminPage extends Component {
                     Edit Station
                   </button>
                 </div>
+                
               </div>
+              <footer className="footermob">
+            <center className="footerText">
+              &copy; Kerala Police Palakkad 2019-2020
+            </center>
+          </footer>
             </div>
             {/* _______________________________________________________________ */}
           </center>
         </div>
-        <footer className="footer">
-          <center className="footerText">
-            &copy; Kerala Police Palakkad 2019-2020
-          </center>
-        </footer>
+          <footer className="footer">
+            <center className="footerText">
+              &copy; Kerala Police Palakkad 2019-2020
+            </center>
+          </footer>
       </div>
     );
   }

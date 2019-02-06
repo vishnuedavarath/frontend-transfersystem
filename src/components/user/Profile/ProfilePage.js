@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { userService } from "../../../__services/userService";
 import { history } from "../../../__helpers/history";
 
-import styles from "../../../assets/profile/css/profile";
+import "../../../assets/profile/css/profile.css";
 class ProfilePage extends Component {
   constructor(props) {
     super(props);
@@ -90,104 +90,96 @@ class ProfilePage extends Component {
 
   render() {
     return (
-      <div style={styles.profileMainDiv}>
-        <header style={styles.profileHeader}>
-          <h3 style={styles.profileHeaderHead}>Kerala Police</h3>
-          <div style = {styles.profileRight}>
-            <span style={styles.profileHeaderSpan}>
-              Hello, {this.state.name}
-            </span>&nbsp;&nbsp;
-            <button style={styles.profileLogout} onClick={this.handleclick}>
+      <div className="profileMainDiv">
+        <header className="profileHeader">
+          <h3 className="profileHeaderHead">Kerala Police</h3>
+          <div className="profileRight">
+            <span className="profileHeaderSpan">
+              Hello, &nbsp;&nbsp;{this.state.name}
+            </span>
+            &nbsp;&nbsp;
+            <button className="profileLogout" onClick={this.handleclick}>
               Logout
             </button>
           </div>
         </header>
-        <div style={styles.profileDiv1}>
-          <div style={styles.profileDiv2}>
-            <h2 style={styles.profileHead2}>Profile</h2>
-            <span style={styles.profileSpan}>{this.state.name}</span>
-            <br />
-            <span style={styles.profileSpan}>
-              PEN Number:{this.state.penno}
-            </span>
-            <br />
-            <span style={styles.profileSpan}>
-              Designation :{this.state.designation}
-            </span>
-            <br />
-            <table>
-              <tr>
-                <span style={styles.profileSpan}>
-                  <td>Joining Date</td>
-                  <td> :</td>
-                  <td>{this.state.joindate}</td>
+        <div className="profileDiv1">
+          <div className="profileDiv2">
+            <h2 className="profileHead2">PROFILE</h2>
+            <div className="profileProfile">
+              <div className = "profileDetail">
+                <span className="profileSpan">{this.state.name}</span>
+                <br />
+                <span className="profileSpan">
+                  PEN Number:{this.state.penno}
                 </span>
                 <br />
-              </tr>
-              <div style={styles.profileDiv4}>
-                <tr>
-                  <span style={styles.profileSpan}>
-                    <td>Current Station</td>
-                    <td> :</td>
-                    <td> {this.state.currentstattion}</td>
-                  </span>
-                  <br />
-                </tr>
+                <span className="profileSpan">
+                  Designation :{this.state.designation}
+                </span>
+                <br />
+                <span className="profileSpan">
+                  Joining Date :{this.state.joindate}
+                </span>
+                <br />
               </div>
-            </table>
-            <div style={styles.profileDiv4}>
+              <button className="profileButtonEdit1" onClick={this.handleClick}>
+                Edit Details
+              </button>
+            </div>
+            <div className="profileDiv4">
+              <span className="profileSpan">
+                Current Station :{this.state.currentstattion}
+              </span>
+              <br />
+            </div>
+            <div className="profileDiv4">
               Previous Stations
               <br />
-              <span style={styles.profileSpan}>
+              <span className="profileSpan">
                 1.{this.state.prevstations.first}
               </span>
               <br />
-              <span style={styles.profileSpan}>
+              <span className="profileSpan">
                 2.{this.state.prevstations.second}
               </span>
               <br />
-              <span style={styles.profileSpan}>
+              <span className="profileSpan">
                 3.{this.state.prevstations.Third}
               </span>
               <br />
-              <button
-                style={styles.profileButtonEdit1}
-                onClick={this.handleClick}
-              >
-                Edit Details
-              </button>
               <br />
             </div>
-            <span style={styles.profileSpan}>
+            <span className="profileSpan">
               LAST TRANSFER DATE:{this.state.lasttransfer}
             </span>
             <br />
           </div>
           {/* <button>< Link To = '/optionpage'>GENERAL TRANSFER</ Link></button>
         <button> <Link To = '/optionpage'>REQUEST TRANSFER</Link></button> */}
-          <div style={styles.profileDiv3}>
-            <div style={styles.profileDiv4}>
+          <div className="profileDiv3">
+            <div className="profileDiv4">
               {console.log(this.state.reqtransfer.op1)}
               {this.state.gentransfer.op1 && (
                 <div>
-                  <h3 style={styles.profileHead3}>GENERAL TRANSFER</h3>
+                  <h3 className="profileHead3">GENERAL TRANSFER</h3>
                   <h4>Applied Options</h4>
                   {console.log(this.state.gentransfer)}
                   <br />
-                  <span style={styles.profileSpan}>
+                  <span className="profileSpan">
                     1.{this.state.gentransfer.op1}
                   </span>
                   <br />
-                  <span style={styles.profileSpan}>
+                  <span className="profileSpan">
                     2.{this.state.gentransfer.op2}
                   </span>
                   <br />
-                  <span style={styles.profileSpan}>
+                  <span className="profileSpan">
                     3.{this.state.gentransfer.op3}
                   </span>
                   <br />
                   <button
-                    style={styles.profileButtonEdit2}
+                    className="profileButtonEdit2"
                     onClick={this.handleclickGen}
                   >
                     Edit Options
@@ -199,24 +191,24 @@ class ProfilePage extends Component {
             <div>
               {console.log(this.state.reqtransfer.op1)}
               {this.state.reqtransfer.op1 && (
-                <div style={styles.profileDiv4}>
+                <div className="profileDiv4">
                   <h3>REQUEST TRANSFER</h3>
                   <h4>Applied Options</h4>
                   <br />
-                  <span style={styles.profileSpan}>
+                  <span className="profileSpan">
                     1.{this.state.reqtransfer.op1}
                   </span>
                   <br />
-                  <span style={styles.profileSpan}>
+                  <span className="profileSpan">
                     2.{this.state.reqtransfer.op2}
                   </span>
                   <br />
-                  <span style={styles.profileSpan}>
+                  <span className="profileSpan">
                     3.{this.state.reqtransfer.op3}
                   </span>
                   <br />
                   <button
-                    style={styles.profileButtonEdit3}
+                    className="profileButtonEdit3"
                     onClick={this.handleclickReq}
                   >
                     Edit Options
@@ -225,25 +217,25 @@ class ProfilePage extends Component {
                 </div>
               )}
             </div>
-            <div style={styles.profileDiv5}>
+            <div className="profileDiv5">
               {console.log(this.state.gentransferstatus)}
               {this.state.gentransferstatus &&
                 !this.state.gentransfer.op1 &&
                 !this.state.reqtransfer.op1 && (
                   <button
-                    style={styles.profileButtonSubmit1}
+                    className="profileButtonSubmit1"
                     onClick={this.handleclickGen}
                   >
                     GENERAL TRANSFER
                   </button>
                 )}
             </div>
-            <div style={styles.profileDIv6}>
+            <div className="profileDIv6">
               {!this.state.gentransferstatus &&
                 !this.state.reqtransfer.op1 &&
                 !this.state.gentransfer.op1 && (
                   <button
-                    style={styles.profileButtonSubmit2}
+                    className="profileButtonSubmit2"
                     onClick={this.handleclickReq}
                   >
                     REQUEST TRANSFER

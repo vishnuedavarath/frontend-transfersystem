@@ -1,0 +1,128 @@
+.profileMainDiv {
+    display: flex;
+    flex-direction: column;
+    background-color: #ecf0f1;
+    height: 100vh;
+}
+
+.profileHeader {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #34495e;
+    height: 50px;
+}
+.profileHeaderHead {
+    margin-left: 10px;
+    color: #FFF;
+    font-size: 23px
+}
+.profileHeaderSpan {
+    margin: 10px;
+    align-items: center;
+    color: #FFF;
+}
+.profileLogout {
+    font-family: "Montserrat-Bold";
+    font-size: 15px;
+    line-height: 1.5;
+    color: #e74c3c;
+    margin-top: 0;
+    margin-bottom: 0;
+    /* border-bottom: 1px solid #e74c3c; */
+    height: 50px;
+    background: #fff;
+    padding: 0 25px;
+    transition: all 0.4s;
+    position: relative;
+    z-index: 1;
+    top: 0;
+}
+.profileDiv1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 70px;
+}
+.profileDiv2 {
+    padding: 30px 30px;
+    background: #FFF;
+    border-radius: 25px;
+    box-shadow: 8px 6px 62px -9px rgba(0, 0, 0, 0.45);
+
+    text-align: center;
+}
+.profileDiv3 {
+    padding: 30px 30px;
+    background: #FFF;
+    border-radius: 25px;
+    box-shadow: 8px 6px 62px -9px rgba(0, 0, 0, 0.45);
+    height: 100%;
+}
+.profileProfile {
+    display: flex;
+    text-align: left;
+    padding: 10px;
+    border-bottom: solid 1.5px #bdc3c7;
+    margin: 20px;
+}
+.profileDetail{
+    display: flex;
+    flex-direction: column;
+
+}
+.profileButtonEdit1 {
+    font-family: "Montserrat-Bold";
+    font-size: 15px;
+    line-height: 1.5;
+    color: #fff;
+    width: 40%;
+    height: 40px;
+    border-radius: 5px;
+    background: #34495e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+    margin-top: 15px;
+    transition: all 0.4s;
+    margin-left: 30px;
+    position: relative;
+    z-index: 1;
+    border: 1.5px solid #34495e;
+}
+.profileButtonEdit2 {
+    font-family: "Montserrat-Bold";
+    font-size: 15px;
+    line-height: 1.5;
+    color: #34495e;
+    border: 1.5px solid #34495e;
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+    transition: all 0.4s;
+    position: relative;
+    z-index: 1;
+}
+.profileButtonEdit3 {
+    font-family: "Montserrat-Bold";
+    font-size: 15px;
+    line-height: 1.5;
+    color: #34495e;
+    border: 1.5px solid #34495e;
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+    transition: all 0.4s;
+    position: relative;
+    z-index: 1;
+}
