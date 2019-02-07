@@ -127,7 +127,7 @@ class ProfilePage extends Component {
                 Edit Details
               </button>
             </div>
-            <div className="profileDiv4">
+            <div className="profileDiv6">
               <span className="profileSpan">
                 Current Station :{this.state.currentstattion}
               </span>
@@ -158,14 +158,15 @@ class ProfilePage extends Component {
           {/* <button>< Link To = '/optionpage'>GENERAL TRANSFER</ Link></button>
         <button> <Link To = '/optionpage'>REQUEST TRANSFER</Link></button> */}
           <div className="profileDiv3">
-            <div className="profileDiv4">
+            <div >
               {console.log(this.state.reqtransfer.op1)}
               {this.state.gentransfer.op1 && (
-                <div>
+                <div className="profileDiv5">
                   <h3 className="profileHead3">GENERAL TRANSFER</h3>
                   <h4>Applied Options</h4>
                   {console.log(this.state.gentransfer)}
                   <br />
+                  <div className = "profileOptions">
                   <span className="profileSpan">
                     1.{this.state.gentransfer.op1}
                   </span>
@@ -177,6 +178,7 @@ class ProfilePage extends Component {
                   <span className="profileSpan">
                     3.{this.state.gentransfer.op3}
                   </span>
+                  </div>
                   <br />
                   <button
                     className="profileButtonEdit2"
@@ -188,13 +190,14 @@ class ProfilePage extends Component {
                 </div>
               )}
             </div>
-            <div>
+            <div >
               {console.log(this.state.reqtransfer.op1)}
               {this.state.reqtransfer.op1 && (
-                <div className="profileDiv4">
-                  <h3>REQUEST TRANSFER</h3>
+                <div className="profileDiv5" >
+                  <h3 className="profileHead3">REQUEST TRANSFER</h3>
                   <h4>Applied Options</h4>
                   <br />
+                  <div className = "profileOptions">
                   <span className="profileSpan">
                     1.{this.state.reqtransfer.op1}
                   </span>
@@ -206,9 +209,10 @@ class ProfilePage extends Component {
                   <span className="profileSpan">
                     3.{this.state.reqtransfer.op3}
                   </span>
+                  </div>
                   <br />
                   <button
-                    className="profileButtonEdit3"
+                    className="profileButtonEdit2"
                     onClick={this.handleclickReq}
                   >
                     Edit Options
@@ -223,19 +227,19 @@ class ProfilePage extends Component {
                 !this.state.gentransfer.op1 &&
                 !this.state.reqtransfer.op1 && (
                   <button
-                    className="profileButtonSubmit1"
+                    className="profileButtonEdit2"
                     onClick={this.handleclickGen}
                   >
                     GENERAL TRANSFER
                   </button>
                 )}
             </div>
-            <div className="profileDIv6">
+            <div className="profileDiv5">
               {!this.state.gentransferstatus &&
                 !this.state.reqtransfer.op1 &&
                 !this.state.gentransfer.op1 && (
                   <button
-                    className="profileButtonSubmit2"
+                    className="profileButtonEdit2"
                     onClick={this.handleclickReq}
                   >
                     REQUEST TRANSFER

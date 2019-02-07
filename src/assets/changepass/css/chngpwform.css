@@ -1,340 +1,81 @@
-
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
-
-/* @font-face {
-	font-family: Montserrat-Regular;
-	src: url('../../changepass/css/'); 
-  }
-  
-  @font-face {
-	font-family: Montserrat-ExtraBold;
-	src: url('../fonts/montserrat/Montserrat-ExtraBold.ttf'); 
-  }
-  
-  @font-face {
-	font-family: Montserrat-Bold;
-	src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
-  }
-   */
-  
-  /*//////////////////////////////////////////////////////////////////
-  /*---------------------------------------------*/
-a {
-	font-family: Montserrat-Regular;
-	font-size: 14px;
-	line-height: 1.7;
-	color: #666666;
-	margin: 0px;
-	transition: all 0.4s;
-	-webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
+.ChngPgDiv1 {
+    display: flex;
+    flex-direction: column;
+    background-color: #ecf0f1;
+    height: 100vh;
 }
 
-a:focus {
-	outline: none !important;
+.ChngPgContent {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    margin-top: 70px;
 }
 
-a:hover {
-	text-decoration: none;
-  color: #fff;
+.ChngPgDiv2 {
+    padding: 30px 30px;
+    background: #FFF;
+    border-radius: 25px;
+    box-shadow: 8px 6px 62px -9px rgba(0, 0, 0, 0.45);
+
+    text-align: center;
 }
 
-/*---------------------------------------------*/
-h1,h2,h3,h4,h5,h6 {
-	margin: 0px;
+.ChngPgH {
+    font-family: Montserrat-Regular;
+    font-size: 32px;
+    ;
+    line-height: 1.2;
+    text-align: center;
+
+    width: 100%;
+    display: block;
 }
 
-p {
-	font-family: Montserrat-Regular;
-	font-size: 14px;
-	line-height: 1.7;
-	color: #666666;
-	margin: 0px;
+.ChngPgInput {
+    font-family: Montserrat-Bold;
+    font-size: 15px;
+    line-height: 1.2;
+    color: #34495e;
+    display: block;
+    width: 100%;
+    background: #fff;
+    height: 50px;
+    border-radius: 25px;
+    border: 1.5px solid #34495e;
+    padding: 0 30px 0px 53px;
+    margin-bottom: 12px;
 }
 
-ul, li {
-	margin: 0px;
-	list-style-type: none;
+.ChngPgButton {
+    font-family: Montserrat-Bold;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #FFF;
+
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    background: #34495e;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+
+    position: relative;
+    z-index: 1;
 }
-
-
-/*---------------------------------------------*/
-input {
-	outline: none;
-	border: none;
+.ChngPgButton:hover {
+    background: #fff;
+    color: #34495e;
+    border : 1.5px solid #34495e;
 }
-
-textarea {
-  outline: none;
-  border: none;
-}
-
-textarea:focus, input:focus {
-  border-color: transparent !important;
-}
-
-input:focus::-webkit-input-placeholder { color:transparent; }
-input:focus:-moz-placeholder { color:transparent; }
-input:focus::-moz-placeholder { color:transparent; }
-input:focus:-ms-input-placeholder { color:transparent; }
-
-textarea:focus::-webkit-input-placeholder { color:transparent; }
-textarea:focus:-moz-placeholder { color:transparent; }
-textarea:focus::-moz-placeholder { color:transparent; }
-textarea:focus:-ms-input-placeholder { color:transparent; }
-
-input::-webkit-input-placeholder { color: #999999; }
-input:-moz-placeholder { color: #999999; }
-input::-moz-placeholder { color: #999999; }
-input:-ms-input-placeholder { color: #999999; }
-
-textarea::-webkit-input-placeholder { color: #999999; }
-textarea:-moz-placeholder { color: #999999; }
-textarea::-moz-placeholder { color: #999999; }
-textarea:-ms-input-placeholder { color: #999999; }
-
-/*---------------------------------------------*/
-button {
-	outline: none !important;
-	border: none;
-	background: transparent;
-}
-
-button:hover {
-	cursor: pointer;
-}
-
-iframe {
-	border: none !important;
-}
-
-
-/*//////////////////////////////////////////////////////////////////
-[ Utility ]*/
-.txt1 {
-  font-family: Montserrat-Regular;
-  font-size: 16px;
-  color: #cccccc;
-  line-height: 1.4;
-}
-
-.bo1 {
-  border-bottom: 1px solid #999999;
-}
-
-.hov1:hover {
-  border-color: #d33f8d;
-}
-
-.wrap_login100 {
-	display: none;
-	width: 390px;
-	background: rgba(0,91,234, 0.6);
-  }
-/*//////////////////////////////////////////////////////////////////
-/*---------------------------------------------*/
-.login100-form-title {
-  font-family: Montserrat-ExtraBold;
-  font-size: 24px;
-  color: #fff;
-  line-height: 1.2;
-  text-align: center;
-
-  width: 100%;
-  display: block;
-}
-
-/*---------------------------------------------*/
-.login100-form-icon {
-  width: 180px;
-  height: 180px;
-  border-radius: 0%;
-  overflow: hidden;
-  margin: 0 auto;
-}
-.login100-form-icon img {
-  width: 100%;
-}
-
-
-/*---------------------------------------------*/
-.help-input100 {
-  position: relative;
-  width: 100%;
-	z-index: 1;
-	color: #fc6f6f;
-}
-
-.input100 {
-  font-family: Montserrat-Bold;
-  font-size: 15px;
-  line-height: 1.2;
-  color: #333333;
-
-  display: block;
-  width: 100%;
-  background: #fff;
-  height: 50px;
-  border-radius: 25px;
-  padding: 0 30px 0 53px;
-}
-
-
-/*------------------------------------------------------------------
-[ Focus ]*/
-.focus-input100 {
-  display: block;
-  position: absolute;
-  border-radius: 25px;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  box-shadow: 0px 0px 0px 0px;
-  color: rgba(0,91,234, 0.6);
-}
-
-.input100:focus + .focus-input100 {
-  -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
-  animation: anim-shadow 0.5s ease-in-out forwards;
-}
-
-@-webkit-keyframes anim-shadow {
-  to {
-    box-shadow: 0px 0px 80px 30px;
-    opacity: 0;
-  }
-}
-
-@keyframes anim-shadow {
-  to {
-    box-shadow: 0px 0px 80px 30px;
-    opacity: 0;
-  }
-}
-
-.symbol-input100 {
-  font-size: 15px;
-  color: #999999;
-
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  align-items: center;
-  position: absolute;
-  border-radius: 25px;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding-left: 30px;
-  pointer-events: none;
-
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
-}
-
-.input100:focus + .focus-input100 + .symbol-input100 {
-  color: #00c6fb;
-  padding-left: 23px;
-}
-
-
-  /*------------------------------------------------------------------
-  [ Button ]*/
-  .container-login100-form-btn {
-	width: 100%;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-  }
-  
-  .login100-form-btn {
-	font-family: Montserrat-Bold;
-	font-size: 15px;
-	line-height: 1.5;
-	color: #e0e0e0;
-  
-	width: 100%;
-	height: 50px;
-	border-radius: 25px;
-	background: #333333;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 0 25px;
-  
-	-webkit-transition: all 0.4s;
-	-o-transition: all 0.4s;
-	-moz-transition: all 0.4s;
-	transition: all 0.4s;
-  
-	position: relative;
-	z-index: 1;
-  }
-  
-  .login100-form-btn::before {
-	content: "";
-	display: block;
-	position: absolute;
-	z-index: -1;
-	width: 100%;
-	height: 100%;
-	border-radius: 25px;
-	top: 0;
-	left: 0;
-	background: #005bea;
-	background: -webkit-linear-gradient(to right, #005bea, #00c6fb);
-	background: -o-linear-gradient(to right, #005bea, #00c6fb);
-	background: -moz-linear-gradient(to right, #005bea, #00c6fb);
-	background: linear-gradient(to right, #005bea, #00c6fb);
-	-webkit-transition: all 0.4s;
-	-o-transition: all 0.4s;
-	-moz-transition: all 0.4s;
-	transition: all 0.4s;
-	opacity: 0;
-  }
-  
-  .login100-form-btn:hover {
-	background: transparent;
-	color: #fff;
-  }
-  
-  .login100-form-btn:hover:before {
-	opacity: 1;
-  }
-  
-  
-  
-  @media (max-width: 992px) {
-	.alert-validate::before {
-	  visibility: visible;
-	  opacity: 1;
-	}
-  }
-  
-  /*//////////////////////////////////////////////////////////////////
-  [ responsive ]*/
-  
-  @media (max-width: 576px) {
-	.wrap-login100 {
-	  padding-top: 80px;
-	  padding-left: 15px;
-	  padding-right: 15px;
-	}
-  }

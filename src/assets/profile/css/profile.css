@@ -98,9 +98,9 @@
     line-height: 1.5;
     color: #34495e;
     border: 1.5px solid #34495e;
-    width: 100%;
+    width: 90%;
     height: 50px;
-    border-radius: 25px;
+    border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -108,21 +108,23 @@
     transition: all 0.4s;
     position: relative;
     z-index: 1;
+    margin-top: 20px;
 }
-.profileButtonEdit3 {
-    font-family: "Montserrat-Bold";
-    font-size: 15px;
-    line-height: 1.5;
-    color: #34495e;
-    border: 1.5px solid #34495e;
-    width: 100%;
-    height: 50px;
-    border-radius: 25px;
+.profileDiv5 {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 0 25px;
-    transition: all 0.4s;
-    position: relative;
-    z-index: 1;
+}
+.profileHead3{
+    margin : 20px;
+}
+.profileButtonEdit1:hover {
+    background: #fff;
+    color: #34495e;
+    border : 1.5px solid #34495e;
+}
+.profileButtonEdit2:hover {
+    background: #34495e;
+    color: #fff;
+    /* border : 1.5px solid #34495e; */
 }

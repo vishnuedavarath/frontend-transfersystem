@@ -94,6 +94,18 @@ class OptionFormGen extends Component {
   render() {
     return (
       <div>
+        <header className="profileHeader">
+          <h3 className="profileHeaderHead">Kerala Police</h3>
+          <div className="profileRight">
+            <span className="profileHeaderSpan">
+              Hello, &nbsp;&nbsp;{this.state.name}
+            </span>
+            &nbsp;&nbsp;
+            <button className="profileLogout" onClick={this.handleclick}>
+              Logout
+            </button>
+          </div>
+        </header>
         <form onSubmit={this.handleSubmit}>
           <label>
             Select Stations

@@ -1,0 +1,35 @@
+.prevDiv1 {
+
+	display: flex;
+	flex-direction: column;
+	background-color: #ecf0f1;
+	height: 100vh;
+}
+
+.prevContent {
+	display: flex;
+	justify-content: space-around;
+	align-content: center;
+	margin-top: 70px;
+}
+
+.prevDiv2 {
+	padding: 30px 30px;
+	background: #FFF;
+	border-radius: 25px;
+	box-shadow: 8px 6px 62px -9px rgba(0, 0, 0, 0.45);
+
+	text-align: center;
+}
+
+.prevH {
+	font-family: Montserrat-Regular;
+	font-size: 32px;
+	;
+	line-height: 1.2;
+	text-align: center;
+
+	width: 100%;
+	display: block;
+	margin: 10px;
+}

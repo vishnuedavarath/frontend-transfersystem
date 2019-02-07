@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { userActions } from "../../../__actions/userActions";
 import { connect } from "react-redux";
 import { userService } from "../../../__services/userService";
-import styles from "../../../assets/prevstations/css/prevstations";
+import "../../../assets/prevstations/css/prevstation.css";
 // import moment from "moment";
 class PrevStationForm extends Component {
   constructor(props) {
@@ -70,101 +70,107 @@ class PrevStationForm extends Component {
   }
   render() {
     return (
-      <div style={styles.prevDiv1}>
-        <div style={styles.prevDiv2}>
-		<h2 style  = {styles.prevH}>Edit Details</h2>
-          <form style = {styles.prevForm} onSubmit={this.handleSubmit}>
-            <label>
-              Select Previous Stations
+      <div className="prevDiv1">
+        <header className="profileHeader">
+          <h3 className="profileHeaderHead">Kerala Police</h3>
+          <div className="profileRight">
+            <span className="profileHeaderSpan">
+              Hello, &nbsp;&nbsp;{this.state.name}
+            </span>
+            &nbsp;&nbsp;
+            <button className="profileLogout" onClick={this.handleclick}>
+              Logout
+            </button>
+          </div>
+        </header>
+        <div className = "prevContent">
+          <div className="prevDiv2">
+            <h2 className="prevH">Edit Details</h2>
+            <form className="prevForm" onSubmit={this.handleSubmit}>
+              <label>
+                Select Previous Stations
+                <br />
+                <select
+                  name="opt1"
+                  value={this.state.opt1}
+                  onChange={this.handleChange}
+                >
+                  {this.state.stations.map(station => (
+                    <option key={station.code} value={station.value}>
+                      {station.display}
+                    </option>
+                  ))}
+                </select>
+                <br />
+                <select
+                  name="opt2"
+                  value={this.state.opt2}
+                  onChange={this.handleChange}
+                >
+                  {this.state.stations.map(station => (
+                    <option key={station.code} value={station.value}>
+                      {station.display}
+                    </option>
+                  ))}
+                </select>
+                <br />
+                <select
+                  name="opt3"
+                  value={this.state.opt3}
+                  onChange={this.handleChange}
+                >
+                  {this.state.stations.map(station => (
+                    <option key={station.code} value={station.value}>
+                      {station.display}
+                    </option>
+                  ))}
+                </select>
+                <br />
+                Enter Current Station
+                <br />
+                <select
+                  name="cur"
+                  value={this.state.cur}
+                  onChange={this.handleChange}
+                >
+                  {this.state.stations.map(station => (
+                    <option key={station.code} value={station.value}>
+                      {station.display}
+                    </option>
+                  ))}
+                </select>
+                <br />
+              </label>
+              <label>
+                Joining Date(YYYY-MM-DD):
+                <input
+                  type="text"
+                  name="joindate"
+                  value={this.state.joindate}
+                  placeholder="YYYY-MM-DD"
+                  onChange={this.handleChange}
+                  className="prevInput"
+                />
+              </label>
               <br />
-              <select
-                name="opt1"
-                value={this.state.opt1}
-				onChange={this.handleChange}
-              >
-                {this.state.stations.map(station => (
-                  <option key={station.code} value={station.value}>
-                    {station.display}
-                  </option>
-                ))}
-              </select>
+              <label>
+                Last Transfer Date(YYYY-MM-DD):
+                <input
+                  type="text"
+                  name="lastdate"
+                  value={this.state.lastdate}
+                  placeholder="YYYY-MM-DD"
+                  onChange={this.handleChange}
+                  className="prevInput"
+                />
+              </label>
               <br />
-              <select
-                name="opt2"
-                value={this.state.opt2}
-                onChange={this.handleChange}
-              >
-                {this.state.stations.map(station => (
-                  <option key={station.code} value={station.value}>
-                    {station.display}
-                  </option>
-                ))}
-              </select>
-              <br />
-              <select
-                name="opt3"
-                value={this.state.opt3}
-                onChange={this.handleChange}
-              >
-                {this.state.stations.map(station => (
-                  <option key={station.code} value={station.value}>
-                    {station.display}
-                  </option>
-                ))}
-              </select>
-              <br />
-              Enter Current Station
-              <br />
-              <select
-                name="cur"
-                value={this.state.cur}
-                onChange={this.handleChange}
-              >
-                {this.state.stations.map(station => (
-                  <option key={station.code} value={station.value}>
-                    {station.display}
-                  </option>
-                ))}
-              </select>
-              <br />
-            </label>
 
-            {/* <input
-            name=""
-            type="date"
-            value={moment(this.state.item.requested_order_ship_date).format(
-              "YYYY-MM-DD"
-            )}
-            className="form-control"
-            onChange={this.handleInputChange}
-		  /> */}
-            <label>
-              Joining Date(YYYY-MM-DD):
-              <input
-                type="text"
-                name="joindate"
-                value={this.state.joindate}
-                placeholder="YYYY-MM-DD"
-				onChange={this.handleChange}
-				style = {styles.prevInput}
-              />
-            </label>
-            <br />
-            <label>
-              Last Transfer Date(YYYY-MM-DD):
-              <input
-                type="text"
-                name="lastdate"
-                value={this.state.lastdate}
-                placeholder="YYYY-MM-DD"
-				onChange={this.handleChange}
-				style = {styles.prevInput}
-              />
-            </label>
-            <br />
-
-            <button onSubmit={this.handleSubmit} style = {styles.prevButton} >Submit</button>
-          </form>
+              <button onSubmit={this.handleSubmit} className="prevButton">
+                Submit
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     );
