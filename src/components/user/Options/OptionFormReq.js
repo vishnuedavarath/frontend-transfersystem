@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { userActions } from "../../../__actions/userActions";
 import { connect } from "react-redux";
 import { userService } from "../../../__services/userService";
+import "../../../assets/optionform/optionform.css";
 // import moment from "moment";
 class OptionFormGen extends Component {
   constructor(props) {
@@ -57,9 +58,9 @@ class OptionFormGen extends Component {
     // console.log(value);
     console.log(name);
     console.log(value);
-    this.setState({opt1: value}, function () {
+    this.setState({ opt1: value }, function() {
       console.log(this.state.opt1);
-      console.log('hrllloo')
+      console.log("hrllloo");
     });
     console.log(this.state);
   }
@@ -78,7 +79,7 @@ class OptionFormGen extends Component {
     // console.log(value);
     console.log(name);
     console.log(value);
-    this.setState({ opt3 : value });
+    this.setState({ opt3: value });
     console.log(this.state);
   }
 
@@ -87,58 +88,70 @@ class OptionFormGen extends Component {
     e.preventDefault();
     console.log(this.state);
     // this.setState({ submitted: true });
-    const {opt1, opt2, opt3} = this.state;
+    const { opt1, opt2, opt3 } = this.state;
     const { dispatch } = this.props;
     dispatch(userActions.submitStationsReq(opt1, opt2, opt3));
   }
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Select Stations
-            <br />
-            <select
-              name="opt1"
-              value={this.state.opt1}
-              onChange={this.handleChange1}
-            >
-              {this.state.stations.map(station => (
-                <option key={station.code} value={station.value}>
-                  {station.display}
-                </option>
-              ))}
-            </select>
-            <br />
-            <select
-              name="opt2"
-              value={this.state.opt2}
-              onChange={this.handleChange2}
-            >
-              {this.state.stations.map(station => (
-                <option key={station.code} value={station.value}>
-                  {station.display}
-                </option>
-              ))}
-            </select>
-            <br />
-            <select
-              name="opt3"
-              value={this.state.opt3}
-              onChange={this.handleChange3}
-            >
-              {this.state.stations.map(station => (
-                <option key={station.code} value={station.value}>
-                  {station.display}
-                </option>
-              ))}
-            </select>
-            <br />
-            <br />
-          </label>
+      <div className = "optionMain">
+        <header className="profileHeader">
+          <h3 className="profileHeaderHead">Kerala Police</h3>
+          <div className="profileRight">
+            <button className="profileLogout" onClick={this.handleclick}>
+              Logout
+            </button>
+          </div>
+        </header>
+        <div className = "optionDiv1">
+          <div className = "optionDiv2">
+            <form onSubmit={this.handleSubmit}>
+              <label className = "optionHead">
+                Select Stations
+                <br />
+                <select
+                  name="opt1"
+                  value={this.state.opt1}
+                  onChange={this.handleChange1}
+                >
+                  {this.state.stations.map(station => (
+                    <option key={station.code} value={station.value}>
+                      {station.display}
+                    </option>
+                  ))}
+                </select>
+                <br />
+                <select
+                  name="opt2"
+                  value={this.state.opt2}
+                  onChange={this.handleChange2}
+                >
+                  {this.state.stations.map(station => (
+                    <option key={station.code} value={station.value}>
+                      {station.display}
+                    </option>
+                  ))}
+                </select>
+                <br />
+                <select
+                  name="opt3"
+                  value={this.state.opt3}
+                  onChange={this.handleChange3}
+                >
+                  {this.state.stations.map(station => (
+                    <option key={station.code} value={station.value}>
+                      {station.display}
+                    </option>
+                  ))}
+                </select>
+                <br />
+                <br />
+              </label>
 
-          <button onSubmit={this.handleSubmit}>Submit</button>
-        </form>
+              <button className = "optionButton" onSubmit={this.handleSubmit}>Submit</button>
+            </form>
+          </div>
+        </div>
       </div>
     );
   }

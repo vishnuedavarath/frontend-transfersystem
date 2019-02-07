@@ -1,0 +1,67 @@
+.optionMainDiv {
+	display: flex;
+	flex-direction: column;
+	background-color: #ecf0f1;
+	height: 100vh;
+}
+
+.optionDiv1 {
+	display: flex;
+	justify-content: space-around;
+	align-content: center;
+	margin-top: 70px;
+}
+
+.optionDiv2 {
+	padding: 30px 30px;
+	background: #FFF;
+	border-radius: 25px;
+	box-shadow: 8px 6px 62px -9px rgba(0, 0, 0, 0.45);
+
+	text-align: center;
+}
+
+.optionHead {
+	font-family: Montserrat-Regular;
+	font-size: 32px;
+	;
+	line-height: 1.2;
+	text-align: center;
+
+	width: 100%;
+	display: block;
+}
+
+.optionButton {
+	font-family: Montserrat-Bold;
+	font-size: 15px;
+	line-height: 1.5;
+	color: #FFF;
+
+	width: 100%;
+	height: 50px;
+	border-radius: 25px;
+	background: #34495e;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 25px;
+
+	-webkit-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	transition: all 0.4s;
+
+	position: relative;
+	z-index: 1;
+}
+
+.optionButton:hover {
+	background: #fff;
+	color: #34495e;
+	border: 1.5px solid #34495e;
+}

@@ -3,8 +3,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { adminActions } from "../../../__actions/adminActions";
-// require('../../../assets/changepass/css/chngpwform.css')
-import styles from "../../../assets/adminpass/css/adminpassform";
+require("../../../assets/changepass/css/chngpwform.css");
+// import "../../../assets/adminpass/css/adminpassform";
 
 class ChangePwFormAdmin extends Component {
   constructor(props) {
@@ -42,50 +42,69 @@ class ChangePwFormAdmin extends Component {
   render() {
     const { password, newPassword, rePassword } = this.state;
     return (
-      <div style={styles.ChngPgDiv1}>
-        <div style={styles.ChngPgDiv2}>
-          <h1 style={styles.ChngPgH}>Change Password </h1><br/>
-          <form name="form" styles={styles.ChngPgForm1} onSubmit={this.handleSubmit}>
-            <div>
-              {/* <label htmlFor="password">Current Password</label> */}
-              <input
-                type="password"
-                style={styles.ChngPgInput}
-                name="password"
-                value={password}
-                placeholder = "Current Password"
-                onChange={this.handleChange}
-              />
-            </div>
+      <div className="ChngPgDiv1">
+        <header className="profileHeader">
+          <h3 className="profileHeaderHead">Kerala Police</h3>
+          <div className="profileRight">
+            <span className="profileHeaderSpan">
+              Hello, &nbsp;&nbsp;{this.state.name}
+            </span>
+            &nbsp;&nbsp;
+            <button className="profileLogout" onClick={this.handleclick}>
+              Logout
+            </button>
+          </div>
+        </header>
+        <div className="ChngPgContent">
+          <div className = "ChngPgDiv2">
+            <h1 className="ChngPgH">Change Password </h1>
+            <br />
+            <form
+              name="form"
+              classNames="ChngPgForm1"
+              onSubmit={this.handleSubmit}
+            >
+              <div>
+                {/* <label htmlFor="password">Current Password</label> */}
+                <input
+                  type="password"
+                  className="ChngPgInput"
+                  name="password"
+                  value={password}
+                  placeholder="Current Password"
+                  onChange={this.handleChange}
+                />
+              </div>
 
-            <div>
-              {/* <label htmlFor="newPassword">New Password</label> */}
-              <input
-                type="password"
-                style={styles.ChngPgInput}
-                name="newPassword"
-                value={newPassword}
-                placeholder = "New Password"
-                onChange={this.handleChange}
-              />
-            </div>
+              <div>
+                {/* <label htmlFor="newPassword">New Password</label> */}
+                <input
+                  type="password"
+                  className="ChngPgInput"
+                  name="newPassword"
+                  value={newPassword}
+                  placeholder="New Password"
+                  onChange={this.handleChange}
+                />
+              </div>
 
-            <div>
-              {/* <label htmlFor="rePassword">Retype New Password</label> */}
-              <input
-                type="password"
-                style={styles.ChngPgInput}
-                name="rePassword"
-                value={rePassword}
-                placeholder = "Retype New Password"
-                onChange={this.handleChange}
-              />
-            </div>
+              <div>
+                {/* <label htmlFor="rePassword">Retype New Password</label> */}
+                <input
+                  type="password"
+                  className="ChngPgInput"
+                  name="rePassword"
+                  value={rePassword}
+                  placeholder="Retype New Password"
+                  onChange={this.handleChange}
+                />
+              </div>
 
-            <div>
-              <button style = {styles.ChngPgButton}>Submit</button>
-            </div>
-          </form>
+              <div>
+                <button className="ChngPgButton">Submit</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     );
