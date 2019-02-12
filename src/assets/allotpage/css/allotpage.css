@@ -8,10 +8,17 @@
 
 .allotContent {
 	display: flex;
+	flex-direction: column;
 	justify-content: space-around;
 	align-content: center;
-	margin-top: 70px;
+	align-items: center;
+	margin-top: 30px;
 }
 .allotDiv1 {
-	
+	padding: 30px 30px;
+	background: #FFF;
+	border-radius: 25px;
+	box-shadow: 8px 6px 62px -9px rgba(0, 0, 0, 0.45);
+
+	text-align: center;
 }

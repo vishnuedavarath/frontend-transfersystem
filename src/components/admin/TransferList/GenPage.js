@@ -103,7 +103,7 @@ export default class GenPage extends Component {
                   </option>
                 ))}
               </select>
-              <button onClick={this.handleClick}>Submit</button>
+              <button className = "allotButton" onClick={this.handleClick}>Submit</button>
             </div>
           </div>
           <div>
