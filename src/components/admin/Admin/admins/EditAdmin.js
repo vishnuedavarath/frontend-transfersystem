@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { adminService } from "../../../../__services/adminService";
 import Popup from "reactjs-popup";
+import '../../../../assets/editpage/css/editpage.css'
 
 export default class EditAdmin extends Component {
   constructor() {
@@ -74,21 +75,22 @@ export default class EditAdmin extends Component {
         </header>
 
         <div className="editContent">
-          <div className = "editSearch">
+          <div className="editSearch">
             <form onSubmit={this.handleSubmitAdminSearch}>
               <input
-			  className = "editInput"
+                className="editInput"
                 type="admin"
                 name="penno"
-                value={this.state.penno}
+				value={this.state.penno}
+				placeholder = "PEN Number"
                 onChange={this.handleChangeAdmin}
               />
-              <button>Submit</button>
+              <button className = "editButton">Submit</button>
             </form>
           </div>
-          <div>
+          <div className = "editResults">
             {this.state.adminId && (
-              <div>
+              <div className = "editResult">
                 <span>PEN Number:{this.state.adminPenno}</span>
                 <br />
                 <span>Name:{this.state.adminName}</span>
@@ -99,7 +101,7 @@ export default class EditAdmin extends Component {
                 <br />
                 <Popup
                   trigger={
-                    <button onClick={this.handleClickEdit}>
+                    <button className = "editButton1" onClick={this.handleClickEdit}>
                       Edit Admin Details
                     </button>
                   }
@@ -139,7 +141,7 @@ export default class EditAdmin extends Component {
                     </form>
                   </div>
                 </Popup>
-                <button onClick={this.handleClickDelete}>Delete Admin</button>
+                <button className = "editButton2" onClick={this.handleClickDelete}>Delete Admin</button>
               </div>
             )}
           </div>
