@@ -116,7 +116,7 @@ export default class EditStation extends Component {
           <h3 className="profileHeaderHead">Kerala Police</h3>
           <div className="profileRight">
             <span className="profileHeaderSpan">
-              Hello, &nbsp;&nbsp;{this.state.name}
+              Hello, Admin&nbsp;&nbsp;
             </span>
             &nbsp;&nbsp;
             <button className="profileLogout" onClick={this.handleclickLogout}>
@@ -124,109 +124,114 @@ export default class EditStation extends Component {
             </button>
           </div>
         </header>
-        <div>
-          <form onSubmit={this.handleSubmitStationSearch}>
-            <input
-              type="station"
-              name="name"
-              value={this.state.name}
-              onChange={this.handleChangeStation}
-            />
-            <button>Submit</button>
-          </form>
-        </div>
-        <div>
-          {this.state.stations.map(station => (
-            <div>
-              <span>Station Code:{station.statCode}</span>
-              <br />
-              <span>Station Name:{station.name}</span>
-              <br />
-              <button
-                onClick={this.handleClickEdit}
-                value={JSON.stringify(station)}
-              >
-                Edit station Details
-              </button>
-              <button
-                onClick={this.handleClickDelete}
-                value={JSON.stringify(station)}
-              >
-                Delete station
-              </button>
-              <Modal open={this.state.openPopup} onClose={this.onCloseModal}>
-                <div>
-                  <form onSubmit={this.handleSubmitStation}>
-                    Station Code:
-                    <br />
-                    <input
-                      name="stationCode"
-                      value={this.state.stationCode}
-                      onChange={this.handleChangeStation}
-                    />
-                    Station Name:
-                    <br />
-                    <input
-                      name="stationName"
-                      value={this.state.stationName}
-                      onChange={this.handleChangeStation}
-                    />
-                    <br />
-                    Vacancy for SI:
-                    <br />
-                    <input
-                      name="stationVacancySI"
-                      value={this.state.stationVacancySI}
-                      onChange={this.handleChangeStation}
-                    />
-                    <br />
-                    Vacancy for ASI:
-                    <br />
-                    <input
-                      name="stationVacancyASI"
-                      value={this.state.stationVacancyASI}
-                      onChange={this.handleChangeStation}
-                    />
-                    <br />
-                    Vacancy for SCPO:
-                    <br />
-                    <input
-                      name="stationVacancySCPO"
-                      value={this.state.stationVacancySCPO}
-                      onChange={this.handleChangeStation}
-                    />
-                    <br />
-                    Vacancy for TSCPO:
-                    <br />
-                    <input
-                      name="stationVacancyTSCPO"
-                      value={this.state.stationVacancyTSCPO}
-                      onChange={this.handleChangeStation}
-                    />
-                    <br />
-                    Vacancy for CPO:
-                    <br />
-                    <input
-                      name="stationVacancyCPO"
-                      value={this.state.stationVacancyCPO}
-                      onChange={this.handleChangeStation}
-                    />
-                    <br />
-                    Vacancy for WCPO:
-                    <br />
-                    <input
-                      name="stationVacancyWCPO"
-                      value={this.state.stationVacancyWCPO}
-                      onChange={this.handleChangeStation}
-                    />
-                    <br />
-                    <button>Submit</button>
-                    <button onClick={this.onCloseModal}>Close</button>
-                  </form>
-                </div>
-              </Modal>
-            </div>
-          ))}
+        <div className="editContent">
+          <div className="editSearch">
+            <form onSubmit={this.handleSubmitStationSearch}>
+              <input
+                type="station"
+                className="editInput"
+                name="name"
+                value={this.state.name}
+                onChange={this.handleChangeStation}
+              />
+              <button className="editButton">Submit</button>
+            </form>
+          </div>
+          <div className="editResults">
+            {this.state.stations.map(station => (
+              <div className="editResult">
+                <span>Station Code:{station.statCode}</span>
+                <br />
+                <span>Station Name:{station.name}</span>
+                <br />
+                <button
+                  className="editButton1"
+                  onClick={this.handleClickEdit}
+                  value={JSON.stringify(station)}
+                >
+                  Edit station Details
+                </button>
+                <button
+                  className="editButton2"
+                  onClick={this.handleClickDelete}
+                  value={JSON.stringify(station)}
+                >
+                  Delete station
+                </button>
+                <Modal open={this.state.openPopup} onClose={this.onCloseModal}>
+                  <div>
+                    <form onSubmit={this.handleSubmitStation}>
+                      Station Code:
+                      <br />
+                      <input
+                        name="stationCode"
+                        value={this.state.stationCode}
+                        onChange={this.handleChangeStation}
+                      />
+                      Station Name:
+                      <br />
+                      <input
+                        name="stationName"
+                        value={this.state.stationName}
+                        onChange={this.handleChangeStation}
+                      />
+                      <br />
+                      Vacancy for SI:
+                      <br />
+                      <input
+                        name="stationVacancySI"
+                        value={this.state.stationVacancySI}
+                        onChange={this.handleChangeStation}
+                      />
+                      <br />
+                      Vacancy for ASI:
+                      <br />
+                      <input
+                        name="stationVacancyASI"
+                        value={this.state.stationVacancyASI}
+                        onChange={this.handleChangeStation}
+                      />
+                      <br />
+                      Vacancy for SCPO:
+                      <br />
+                      <input
+                        name="stationVacancySCPO"
+                        value={this.state.stationVacancySCPO}
+                        onChange={this.handleChangeStation}
+                      />
+                      <br />
+                      Vacancy for TSCPO:
+                      <br />
+                      <input
+                        name="stationVacancyTSCPO"
+                        value={this.state.stationVacancyTSCPO}
+                        onChange={this.handleChangeStation}
+                      />
+                      <br />
+                      Vacancy for CPO:
+                      <br />
+                      <input
+                        name="stationVacancyCPO"
+                        value={this.state.stationVacancyCPO}
+                        onChange={this.handleChangeStation}
+                      />
+                      <br />
+                      Vacancy for WCPO:
+                      <br />
+                      <input
+                        name="stationVacancyWCPO"
+                        value={this.state.stationVacancyWCPO}
+                        onChange={this.handleChangeStation}
+                      />
+                      <br />
+                      <button>Submit</button>
+                      <button onClick={this.onCloseModal}>Close</button>
+                    </form>
+                  </div>
+                </Modal>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );

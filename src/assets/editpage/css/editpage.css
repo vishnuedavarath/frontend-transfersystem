@@ -90,6 +90,7 @@
 	align-items: center;
 	padding: 0px 20px;
 	width: 90%;
+	height: 70px;
 	background: #FFF;
 	border-radius: 5px;
 	box-shadow: 8px 6px 62px -9px rgba(0, 0, 0, 0.45);
@@ -102,9 +103,9 @@
 	line-height: 1.5;
 	color: #FFF;
 
-	width: 100%;
+	width: 150px;
 	height: 50px;
-	border-radius: 25px;
+	border-radius: 5px;
 	background: #40ad3d;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -134,9 +135,9 @@
 	line-height: 1.5;
 	color: #FFF;
 
-	width: 100%;
+	width: 150px;
 	height: 50px;
-	border-radius: 25px;
+	border-radius: 5px;
 	background: #c92c2c;
 	display: -webkit-box;
 	display: -webkit-flex;
