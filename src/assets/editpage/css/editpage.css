@@ -86,7 +86,7 @@
 	/* align-content: center; */
 	align-items: center;
 	padding: 0px 20px;
-	/* width: 90%; */
+	width: 90%;
 	background: #FFF;
 	border-radius: 5px;
 	box-shadow: 8px 6px 62px -9px rgba(0, 0, 0, 0.45);
@@ -101,7 +101,7 @@
 
 	width: 100%;
 	height: 50px;
-	border-radius: 5px;
+	border-radius: 25px;
 	background: #40ad3d;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -133,7 +133,7 @@
 
 	width: 100%;
 	height: 50px;
-	border-radius: 5px;
+	border-radius: 25px;
 	background: #c92c2c;
 	display: -webkit-box;
 	display: -webkit-flex;

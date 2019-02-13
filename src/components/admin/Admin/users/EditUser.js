@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { adminService } from "../../../../__services/adminService";
 import Popup from "reactjs-popup";
 
+import '../../../../assets/editpage/css/editpage.css'
+
 export default class EditUser extends Component {
   constructor() {
     super();
