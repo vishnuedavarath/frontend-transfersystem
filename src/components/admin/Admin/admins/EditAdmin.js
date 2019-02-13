@@ -11,12 +11,12 @@ export default class EditAdmin extends Component {
       adminName: "",
       adminPenno: "",
       adminPrivilege: "",
-	  adminDesignation: "",
-	  adminId:"",
-	  privilege:{
-		"1": "Super Admin",
-		"2":"Admin"
-	  }
+      adminDesignation: "",
+      adminId: "",
+      privilege: {
+        "1": "Super Admin",
+        "2": "Admin"
+      }
     };
     this.handleChangeAdmin = this.handleChangeAdmin.bind(this);
     this.handleSubmitAdminSearch = this.handleSubmitAdminSearch.bind(this);
@@ -29,7 +29,7 @@ export default class EditAdmin extends Component {
     this.setState({ [name]: value });
   }
   handleSubmitAdminSearch(e) {
-	e.preventDefault();
+    e.preventDefault();
     const { penno } = this.state;
     adminService.searchAdmin(penno).then(admin => {
       this.setState({
@@ -37,8 +37,8 @@ export default class EditAdmin extends Component {
         adminName: admin.admins.name,
         adminPenno: admin.admins.penno,
         adminPrivilege: admin.admins.privilege,
-		adminDesignation: admin.admins.designation,
-		adminId: admin.admins._id,
+        adminDesignation: admin.admins.designation,
+        adminId: admin.admins._id
       });
     });
   }
@@ -46,101 +46,103 @@ export default class EditAdmin extends Component {
     this.setState({ openPopup: true });
   }
   handleSubmitAdmin(e) {
-	  e.preventDefault();
-    const {
-      adminPenno,
-      adminName,
-      adminPrivilege,
-      adminId
-    } = this.state;
-    adminService.editAdmin(
-      adminPenno,
-      adminName,
-      adminPrivilege,
-	  adminId,
-    );
+    e.preventDefault();
+    const { adminPenno, adminName, adminPrivilege, adminId } = this.state;
+    adminService.editAdmin(adminPenno, adminName, adminPrivilege, adminId);
   }
-  handleClickDelete(){
-	  adminService.adminDelete(this.state.adminId)
-	  .then(
-		  data=>{
-			  window.location.reload(true);
-		  },
-		  error=>{
-			  
-		  }
-	  )
-	  window.location.reload(true);
+  handleClickDelete() {
+    adminService.adminDelete(this.state.adminId).then(
+      data => {
+        window.location.reload(true);
+      },
+      error => {}
+    );
+    window.location.reload(true);
   }
 
   render() {
     return (
-      <div>
-        <div>
-          <form onSubmit={this.handleSubmitAdminSearch}>
-            <input
-              type="admin"
-              name="penno"
-              value={this.state.penno}
-              onChange={this.handleChangeAdmin}
-            />
-            <button>Submit</button>
-          </form>
-        </div>
-        <div>
-          {this.state.adminId&&(
-            <div>
-              <span>PEN Number:{this.state.adminPenno}</span>
-              <br />
-              <span>Name:{this.state.adminName}</span>
-              <br />
-              <span>Privilege:{this.state.privilege[this.state.adminPrivilege]}</span>
-              <br />
-              <Popup
-                trigger={
-                  <button onClick={this.handleClickEdit}>
-                    Edit Admin Details
-                  </button>
-                }
-                position="bottom center"
-                open={this.state.openPopup}
-                on="click"
-              >
-                <div>
-                  <form onSubmit={this.handleSubmitAdmin}>
-                    PEN Number:
-                    <br />
-                    <input
-                      name="adminPenno"
-                      value={this.state.adminPenno}
-                      onChange={this.handleChangeAdmin}
-                    />
-                    Name:
-                    <br />
-                    <input
-                      name="adminName"
-                      value={this.state.adminName}
-                      onChange={this.handleChangeAdmin}
-                    />
-                    <br />
-					Privilege:
-					<br/>
-                    <select
-					name="adminPrivilege"
-					value={this.state.adminPrivilege}
-                      onChange={this.handleChangeAdmin}
-                    >
-                      <option value="1">Super</option>
-                      <option value="2">Admin</option>
-                    </select>
-                    <br />
-                    <button>Submit</button>
-                  </form>
-                </div>
-              </Popup>
-              <button onClick={this.handleClickDelete}>Delete Admin</button>
-            </div>
-          )}
+      <div className="editMain">
+        <header className="profileHeader">
+          <h3 className="profileHeaderHead">Kerala Police</h3>
+          <div className="profileRight">
+            &nbsp;&nbsp;
+            <button className="profileLogout" onClick={this.handleclick}>
+              Logout
+            </button>
+          </div>
+        </header>
+
+        <div className="editContent">
+          <div className = "editSearch">
+            <form onSubmit={this.handleSubmitAdminSearch}>
+              <input
+			  className = "editInput"
+                type="admin"
+                name="penno"
+                value={this.state.penno}
+                onChange={this.handleChangeAdmin}
+              />
+              <button>Submit</button>
+            </form>
+          </div>
+          <div>
+            {this.state.adminId && (
+              <div>
+                <span>PEN Number:{this.state.adminPenno}</span>
+                <br />
+                <span>Name:{this.state.adminName}</span>
+                <br />
+                <span>
+                  Privilege:{this.state.privilege[this.state.adminPrivilege]}
+                </span>
+                <br />
+                <Popup
+                  trigger={
+                    <button onClick={this.handleClickEdit}>
+                      Edit Admin Details
+                    </button>
+                  }
+                  position="bottom center"
+                  open={this.state.openPopup}
+                  on="click"
+                >
+                  <div>
+                    <form onSubmit={this.handleSubmitAdmin}>
+                      PEN Number:
+                      <br />
+                      <input
+                        name="adminPenno"
+                        value={this.state.adminPenno}
+                        onChange={this.handleChangeAdmin}
+                      />
+                      Name:
+                      <br />
+                      <input
+                        name="adminName"
+                        value={this.state.adminName}
+                        onChange={this.handleChangeAdmin}
+                      />
+                      <br />
+                      Privilege:
+                      <br />
+                      <select
+                        name="adminPrivilege"
+                        value={this.state.adminPrivilege}
+                        onChange={this.handleChangeAdmin}
+                      >
+                        <option value="1">Super</option>
+                        <option value="2">Admin</option>
+                      </select>
+                      <br />
+                      <button>Submit</button>
+                    </form>
+                  </div>
+                </Popup>
+                <button onClick={this.handleClickDelete}>Delete Admin</button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );
