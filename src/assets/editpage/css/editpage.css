@@ -12,6 +12,7 @@
 	align-content: center;
 	align-items: center;
 	margin-top: 30px;
+	width: 100%;
 }
 
 .editInput {
@@ -77,6 +78,8 @@
 .editResults {
 	display: flex;
 	flex-direction: column;
+	width: 100%;
+	align-items: center;
 }
 
 .editResult {

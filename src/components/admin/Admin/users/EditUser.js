@@ -59,28 +59,40 @@ export default class EditUser extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <div className = "editMain">
+        <header className="profileHeader">
+          <h3 className="profileHeaderHead">Kerala Police</h3>
+          <div className="profileRight">
+            &nbsp;&nbsp;
+            <button className="profileLogout" onClick={this.handleclick}>
+              Logout
+            </button>
+          </div>
+        </header>
+
+        <div className="editContent">
+          <div className="editSearch">
           <form onSubmit={this.handleSubmitUserSearch}>
             <input
+            className = "editInput"
               type="user"
               name="penno"
               value={this.state.penno}
               onChange={this.handleChangeUser}
             />
-            <button>Submit</button>
+            <button className = "editButton">Submit</button>
           </form>
         </div>
-        <div>
+        <div className = "editResults">
           {this.state.userId && (
-            <div>
+            <div className = "editResult">
               <span>PEN Number:{this.state.userPenno}</span>
               <br />
               <span>Name:{this.state.userName}</span>
               <br />
               <Popup
                 trigger={
-                  <button onClick={this.handleClickEdit}>
+                  <button className = "editButton1" onClick={this.handleClickEdit}>
                     Edit user Details
                   </button>
                 }
@@ -124,9 +136,10 @@ export default class EditUser extends Component {
                   </form>
                 </div>
               </Popup>
-              <button onClick={this.handleClickDelete}>Delete user</button>
+              <button className = "editButton2" onClick={this.handleClickDelete}>Delete user</button>
             </div>
           )}
+        </div>
         </div>
       </div>
     );
