@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { adminService } from "../../../__services/adminService";
 import Modal from "react-responsive-modal";
+import "../../../assets/allotpage/css/allotpage.css";
 
 export default class ReqPage extends Component {
   constructor() {
     super();
     this.state = {
-      designations: ["si", "asi", "scpo","tscpo","cpo","wcpo"],
+      designations: ["si", "asi", "scpo", "tscpo", "cpo", "wcpo"],
       des: "si",
       users: [],
       open: false,
@@ -78,40 +79,67 @@ export default class ReqPage extends Component {
   render() {
     return (
       <div>
-        <div>
-          <h2>Request Transfer Applications</h2>
-          <span>Select Designation:</span>
-          <select
-            name="des"
-            value={this.state.opt1}
-            onChange={this.handleChange}
-          >
-            {this.state.designations.map(des => (
-              <option key={des} value={des}>
-                {des}
-              </option>
-            ))}
-          </select>
-          <button onClick={this.handleClick}>Submit</button>
+        <header className="profileHeader">
+          <h3 className="profileHeaderHead">Kerala Police</h3>
+          <div className="profileRight">
+            <span className="profileHeaderSpan">
+              Hello, &nbsp;&nbsp;{this.state.name}
+            </span>
+            &nbsp;&nbsp;
+            <button className="profileLogout" onClick={this.handleclickLogout}>
+              Logout
+            </button>
+          </div>
+        </header>
+        <div className="allotContent">
+          <div className="allotDiv1">
+            <h2>Request Transfer Applications</h2>
+            <div className="allotSearchDiv">
+              <span>Select Designation:</span>
+              <select
+                name="des"
+                value={this.state.opt1}
+                onChange={this.handleChange}
+              >
+                {this.state.designations.map(des => (
+                  <option key={des} value={des}>
+                    {des}
+                  </option>
+                ))}
+              </select>
+              <button className="allotButton" onClick={this.handleClick}>
+                Submit
+              </button>
+            </div>
+          </div>
         </div>
         <div>
           {this.state.users.map(user => (
-            <div>
-              <div>
+            <div className="allotDiv1">
+              <div className="allotResultDiv">
                 <br />
-                _________________________________________________
+                {/* _________________________________________________ */}
                 <br />
                 <span>PEN Number:{user.penno}</span>
                 <br />
                 <span>Name:{user.name}</span>
                 <br />
-                <span>Joining Date:{user.joinDate}</span>
+                <span>
+                  Joining Date:
+                  {`${new Date(user.joinDate).getFullYear()}-${new Date(
+                    user.joinDate
+                  ).getMonth() + 1}-${new Date(user.joinDate).getDate()}`}
+                </span>
                 <br />
-                <button onClick={this.onOpenModal} value={JSON.stringify(user)}>
+                <button
+                  className="allotButton"
+                  onClick={this.onOpenModal}
+                  value={JSON.stringify(user)}
+                >
                   Check
                 </button>
                 <br />
-                ___________________________________________________
+                {/* ___________________________________________________ */}
                 <br />
               </div>
               <Modal open={this.state.open} onClose={this.onCloseModal} center>

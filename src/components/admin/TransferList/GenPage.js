@@ -90,8 +90,8 @@ export default class GenPage extends Component {
         <div className="allotContent">
           <div className="allotDiv1">
             <h2>General Transfer Applications</h2>
-            <div>
-              <span>Select Designation:</span>
+            <div className = "allotSearchDiv">
+              <span className = "allotDesigSpan">Select Designation:</span>
               <select
                 name="des"
                 value={this.state.opt1}
@@ -108,10 +108,10 @@ export default class GenPage extends Component {
           </div>
           <div>
             {this.state.users.map(user => (
-              <div>
-                <div>
+              <div className = "allotDiv1">
+                <div className = "allotResultDiv">
                   <br />
-                  _________________________________________________
+                  {/* _________________________________________________ */}
                   <br />
                   <span>PEN Number:{user.penno}</span>
                   <br />
@@ -126,7 +126,7 @@ export default class GenPage extends Component {
                     Check
                   </button>
                   <br />
-                  ___________________________________________________
+                  {/* ___________________________________________________ */}
                   <br />
                 </div>
                 <Modal
