@@ -94,7 +94,7 @@ export default class UserPassword extends Component {
                     onChange={this.handleChangeUser}
                   />
                   <br />
-                  <button>Submit</button>
+                  <button className = "passwordButton">Submit</button>
                 </form>
               </div>
             )}
