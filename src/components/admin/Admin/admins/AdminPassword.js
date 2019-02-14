@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { adminService } from "../../../../__services/adminService";
+import '../../../../assets/password/css/password.css'
 
 export default class AdminPassword extends Component {
   constructor() {
@@ -39,7 +40,7 @@ export default class AdminPassword extends Component {
   }
   render() {
     return (
-      <div className="passswordMain">
+      <div className="passwordMain">
         <header className="profileHeader">
           <h3 className="profileHeaderHead">Kerala Police</h3>
           <div className="profileRight">
@@ -50,22 +51,22 @@ export default class AdminPassword extends Component {
             </button>
           </div>
         </header>
-        <div className="passwordDiv">
-          <div className = "passwordSearchDiv">
+        <div className="passwordContent">
+          <div className="passwordSearchDiv">
             <form onSubmit={this.handleSubmitAdminSearch}>
               <input
-                className = "passswordInput"
+                className="passwordInput"
                 type="admin"
                 name="penno"
                 value={this.state.penno}
                 onChange={this.handleChangeAdmin}
               />
-              <button className = "passwordButton">Submit</button>
+              <button className="passwordButton">Submit</button>
             </form>
           </div>
-          <div>
+          <div className="passwordResults">
             {this.state.adminId && (
-              <div>
+              <div className="passwordResult">
                 <span>PEN Number:{this.state.adminPenno}</span>
                 <br />
                 <span>Name:{this.state.adminName}</span>
@@ -76,6 +77,7 @@ export default class AdminPassword extends Component {
                   <span>New Password:</span>
                   <br />
                   <input
+                    className="passwordInput"
                     type="password"
                     name="newpassword"
                     value={this.state.newpassword}
@@ -85,13 +87,14 @@ export default class AdminPassword extends Component {
                   <span>Retype New Password:</span>
                   <br />
                   <input
+                    className="passwordInput"
                     type="password"
                     name="repassword"
                     value={this.state.repassword}
                     onChange={this.handleChangeAdmin}
                   />
                   <br />
-                  <button>Submit</button>
+                  <button className = "passwordButton">Submit</button>
                 </form>
               </div>
             )}
