@@ -52,9 +52,10 @@ export default class UserPassword extends Component {
           </div>
         </header>
         <div className="passwordContent">
-          <div>
+          <div className="passwordSearchDiv">
             <form onSubmit={this.handleSubmitUserSearch}>
               <input
+                className="passwordInput"
                 type="user"
                 name="penno"
                 value={this.state.penno}
