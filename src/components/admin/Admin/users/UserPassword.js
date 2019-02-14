@@ -61,12 +61,12 @@ export default class UserPassword extends Component {
                 value={this.state.penno}
                 onChange={this.handleChangeUser}
               />
-              <button>Submit</button>
+              <button className="passwordButton">Submit</button>
             </form>
           </div>
-          <div>
+          <div className = "passwordResults">
             {this.state.userId && (
-              <div>
+              <div className = "passwordResult">
                 <span>PEN Number:{this.state.userPenno}</span>
                 <br />
                 <span>Name:{this.state.userName}</span>
