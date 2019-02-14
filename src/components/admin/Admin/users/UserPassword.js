@@ -64,9 +64,9 @@ export default class UserPassword extends Component {
               <button className="passwordButton">Submit</button>
             </form>
           </div>
-          <div className = "passwordResults">
+          <div className="passwordResults">
             {this.state.userId && (
-              <div className = "passwordResult">
+              <div className="passwordResult">
                 <span>PEN Number:{this.state.userPenno}</span>
                 <br />
                 <span>Name:{this.state.userName}</span>
@@ -77,6 +77,7 @@ export default class UserPassword extends Component {
                   <span>New Password:</span>
                   <br />
                   <input
+                    className="passwordInput"
                     type="password"
                     name="newpassword"
                     value={this.state.newpassword}
@@ -86,6 +87,7 @@ export default class UserPassword extends Component {
                   <span>Retype New Password:</span>
                   <br />
                   <input
+                    className="passwordInput"
                     type="password"
                     name="repassword"
                     value={this.state.repassword}
