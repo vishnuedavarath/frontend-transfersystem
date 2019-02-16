@@ -108,7 +108,7 @@ class ProfilePage extends Component {
             <h2 className="profileHead2">PROFILE</h2>
             <div className="profileProfile">
               <div className = "profileDetail">
-                <span className="profileSpan">{this.state.name}</span>
+                <h4 >{this.state.name}</h4>
                 <br />
                 <span className="profileSpan">
                   PEN Number:{this.state.penno}
