@@ -3,12 +3,13 @@ import { userActions } from "../../../__actions/userActions";
 import { connect } from "react-redux";
 import { userService } from "../../../__services/userService";
 import "../../../assets/optionform/optionform.css";
+import Select from "react-select";
 // import moment from "moment";
 class OptionFormGen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stations: [{ value: "", display: "(Select Station)" }],
+      stations: [{ value: "", label: "(Select Station)" }],
       cur: "",
       opt1: "",
       opt2: "",
@@ -21,7 +22,19 @@ class OptionFormGen extends Component {
     this.handleChange2 = this.handleChange2.bind(this);
     this.handleChange3 = this.handleChange3.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChangeOp1 = this.handleChangeOp1.bind(this);
+    this.handleChangeOp2 = this.handleChangeOp2.bind(this);
+    this.handleChangeOp3 = this.handleChangeOp3.bind(this);
   }
+  handleChangeOp1 = e => {
+    this.setState({ opt1: e });
+  };
+  handleChangeOp2 = e => {
+    this.setState({ opt2: e });
+  };
+  handleChangeOp3 = e => {
+    this.setState({ opt3: e });
+  };
   componentDidMount() {
     // const { dispatch } = this.props;
     userService
@@ -36,7 +49,7 @@ class OptionFormGen extends Component {
 
             arr.push({
               value: stations.stations[station]._id,
-              display: stations.stations[station].name,
+              label: stations.stations[station].name,
               code: stations.stations[station].statCode
             });
           }
@@ -44,9 +57,9 @@ class OptionFormGen extends Component {
         };
 
         this.setState({
-          stations: [
-            { value: "", display: "(Select station)", code: "" }
-          ].concat(stationsFromApi(stations))
+          stations: [{ value: "", label: "(Select station)", code: "" }].concat(
+            stationsFromApi(stations)
+          )
         });
         console.log(this.state);
       });
@@ -90,11 +103,11 @@ class OptionFormGen extends Component {
     // this.setState({ submitted: true });
     const { opt1, opt2, opt3 } = this.state;
     const { dispatch } = this.props;
-    dispatch(userActions.submitStationsReq(opt1, opt2, opt3));
+    dispatch(userActions.submitStationsReq(opt1.value, opt2.value, opt3.value));
   }
   render() {
     return (
-      <div className = "optionMain">
+      <div className="optionMain">
         <header className="profileHeader">
           <h3 className="profileHeaderHead">Kerala Police</h3>
           <div className="profileRight">
@@ -103,52 +116,34 @@ class OptionFormGen extends Component {
             </button>
           </div>
         </header>
-        <div className = "optionDiv1">
-          <div className = "optionDiv2">
+        <div className="optionDiv1">
+          <div className="optionDiv2">
             <form onSubmit={this.handleSubmit}>
-              <label className = "optionHead">
-                Select Stations
-                <br />
-                <select
-                  name="opt1"
-                  value={this.state.opt1}
-                  onChange={this.handleChange1}
-                >
-                  {this.state.stations.map(station => (
-                    <option key={station.code} value={station.value}>
-                      {station.display}
-                    </option>
-                  ))}
-                </select>
-                <br />
-                <select
-                  name="opt2"
-                  value={this.state.opt2}
-                  onChange={this.handleChange2}
-                >
-                  {this.state.stations.map(station => (
-                    <option key={station.code} value={station.value}>
-                      {station.display}
-                    </option>
-                  ))}
-                </select>
-                <br />
-                <select
-                  name="opt3"
-                  value={this.state.opt3}
-                  onChange={this.handleChange3}
-                >
-                  {this.state.stations.map(station => (
-                    <option key={station.code} value={station.value}>
-                      {station.display}
-                    </option>
-                  ))}
-                </select>
-                <br />
-                <br />
-              </label>
+              <label className="optionHead">Select Stations</label>
+              <br />
+              <Select
+                options={this.state.stations}
+                onChange={this.handleChangeOp1}
+                value={this.state.opt1}
+              />
+              <br />
+              <Select
+                options={this.state.stations}
+                onChange={this.handleChangeOp2}
+                value={this.state.opt2}
+              />
+              <br/>
+              <Select
+                options={this.state.stations}
+                onChange={this.handleChangeOp3}
+                value={this.state.opt3}
+              />
+              <br />
+              <br />
 
-              <button className = "optionButton" onSubmit={this.handleSubmit}>Submit</button>
+              <button className="optionButton" onSubmit={this.handleSubmit}>
+                Submit
+              </button>
             </form>
           </div>
         </div>
