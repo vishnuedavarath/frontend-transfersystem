@@ -47,6 +47,18 @@ export default class AdminPage extends Component {
     this.handleSubmitStation = this.handleSubmitStation.bind(this);
     this.handleClickStationEdit = this.handleClickStationEdit.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.handleOpenAdmin = this.handleOpenAdmin.bind(this);
+    this.handleOpenUser = this.handleOpenUser.bind(this);
+    this.handleOpenStation = this.handleOpenStation.bind(this);
+  }
+  handleOpenAdmin(){
+    this.setState({adminPopup : true})
+  }
+  handleOpenUser(){
+    this.setState({userPopup : true})
+  }
+  handleOpenStation(){
+    this.setState({stationPopup : true})
   }
   handleClickGen() {
     history.push("/admin/general");
@@ -61,10 +73,11 @@ export default class AdminPage extends Component {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   }
-  handleSubmitAdmin(e) {
+  handleSubmitAdmin=(e) =>{
     e.preventDefault();
     const { adminPenno, adminName, adminPassword, adminPrivilege } = this.state;
     adminService.addAdmin(adminPenno, adminName, adminPassword, adminPrivilege);
+    console.log(this.state);
     this.setState({ adminPopup: false });
 
     // window.location.reload(true);
@@ -79,6 +92,7 @@ export default class AdminPage extends Component {
     this.setState({ userPopup: true });
   }
   handleChangeUser(e) {
+    console.log(e.target);
     const { name, value } = e.target;
     this.setState({ [name]: value });
   }
@@ -193,6 +207,7 @@ export default class AdminPage extends Component {
                     }
                     position="bottom center"
                     open={this.state.adminPopup}
+                    onOpen = {this.handleOpenAdmin}
                     on="click"
                     className="adminPopup"
                   >
@@ -217,7 +232,6 @@ export default class AdminPage extends Component {
                           value={this.state.adminName}
                           onChange={this.handleChangeAdmin}
                         />
-                        <br />
                         Password:
                         <br />
                         <input
@@ -227,7 +241,6 @@ export default class AdminPage extends Component {
                           value={this.state.adminPassword}
                           onChange={this.handleChangeAdmin}
                         />
-                        <br />
                         Privilege:
                         <br />
                         <select
@@ -238,6 +251,7 @@ export default class AdminPage extends Component {
                           <option value="1">Super Admin</option>
                           <option value="2">Admin</option>
                         </select>
+                        <br />
                         <br />
                         <button className="adminButton">Submit</button>
                       </form>
@@ -278,6 +292,7 @@ export default class AdminPage extends Component {
                     }
                     position="bottom center"
                     open={this.state.userPopup}
+                    onOpen = {this.handleOpenUser}
                     on="click"
                   >
                     <div>
@@ -285,27 +300,27 @@ export default class AdminPage extends Component {
                         PEN Number:
                         <br />
                         <input
+                          className="adminInput"
                           name="userPenno"
                           value={this.state.userPenno}
                           onChange={this.handleChangeUser}
                         />
-                        <br />
                         Name:
                         <input
+                          className="adminInput"
                           name="userName"
                           value={this.state.userName}
                           onChange={this.handleChangeUser}
                         />
-                        <br />
                         Password:
                         <br />
                         <input
+                          className="adminInput"
                           type="password"
-                          name="adminPassword"
-                          value={this.state.adminPassword}
-                          onChange={this.handleChangeAdmin}
+                          name="userPassword"
+                          value={this.state.userPassword}
+                          onChange={this.handleChangeUser}
                         />
-                        <br />
                         Designation:
                         <br />
                         <select
@@ -320,6 +335,7 @@ export default class AdminPage extends Component {
                           <option value="cpo">CPO</option>
                           <option value="wcpo">WCPO</option>
                         </select>
+                        <br />
                         <br />
                         <button className="adminButton">Submit</button>
                       </form>
@@ -356,6 +372,7 @@ export default class AdminPage extends Component {
                       </button>
                     }
                     position="bottom center"
+                    onOpen = {this.handleOpenStation}
                     open={this.state.stationPopup}
                     on="click"
                   >
@@ -364,6 +381,7 @@ export default class AdminPage extends Component {
                         Station Code:
                         <br />
                         <input
+                          className="adminInput"
                           name="stationCode"
                           value={this.state.stationCode}
                           onChange={this.handleChangeStation}
@@ -371,54 +389,55 @@ export default class AdminPage extends Component {
                         Station Name:
                         <br />
                         <input
+                          className="adminInput"
                           name="stationName"
                           value={this.state.stationName}
                           onChange={this.handleChangeStation}
                         />
-                        <br />
                         Vacancy for SI:
                         <br />
                         <input
+                          className="adminInput"
                           name="stationVacancySI"
                           value={this.state.stationVacancySI}
                           onChange={this.handleChangeStation}
                         />
-                        <br />
                         Vacancy for ASI:
                         <br />
                         <input
+                          className="adminInput"
                           name="stationVacancyASI"
                           value={this.state.stationVacancyASI}
                           onChange={this.handleChangeStation}
                         />
-                        <br />
                         Vacancy for SCPO:
                         <br />
                         <input
+                          className="adminInput"
                           name="stationVacancySCPO"
                           value={this.state.stationVacancySCPO}
                           onChange={this.handleChangeStation}
                         />
-                        <br />
                         Vacancy for TSCPO:
                         <br />
                         <input
+                          className="adminInput"
                           name="stationVacancyTSCPO"
                           value={this.state.stationVacancyTSCPO}
                           onChange={this.handleChangeStation}
                         />
-                        <br />
                         Vacancy for CPO:
                         <br />
                         <input
+                          className="adminInput"
                           name="stationVacancyCPO"
                           value={this.state.stationVacancyCPO}
                           onChange={this.handleChangeStation}
                         />
-                        <br />
                         Vacancy for WCPO:
                         <br />
                         <input
+                          className="adminInput"
                           name="stationVacancyWCPO"
                           value={this.state.stationVacancyWCPO}
                           onChange={this.handleChangeStation}
@@ -436,22 +455,21 @@ export default class AdminPage extends Component {
                     Edit Station
                   </button>
                 </div>
-                
               </div>
               <footer className="footermob">
-            <center className="footerText">
-              &copy; Kerala Police Palakkad 2019-2020
-            </center>
-          </footer>
+                <center className="footerText">
+                  &copy; Kerala Police Palakkad 2019-2020
+                </center>
+              </footer>
             </div>
             {/* _______________________________________________________________ */}
           </center>
         </div>
-          <footer className="footer">
-            <center className="footerText">
-              &copy; Kerala Police Palakkad 2019-2020
-            </center>
-          </footer>
+        <footer className="footer">
+          <center className="footerText">
+            &copy; Kerala Police Palakkad 2019-2020
+          </center>
+        </footer>
       </div>
     );
   }

@@ -217,7 +217,30 @@
     background: #e74c3c;
     color: #fff;
 }
+.adminInput {
+    font-family: Montserrat-Bold;
+	font-size: 15px;
+	line-height: 1.2;
+	color: #34495e;
+	display: block;
+	width: 100%;
+	background: transparent;
 
+	height: 20px;
+	border-radius: 5px;
+	border: 1px solid #34495e;
+	padding: 0 30px 0px 53px;
+	margin-bottom: 5px;
+}
+.adminInput:focus {
+    /* background-color: aliceblue; */
+    /* border-radius: 5px;
+    border: 1px solid #34495e; */
+    box-shadow: 0 0 5px rgb(58, 101, 194);
+    padding: 3px 15px 3px 15px;
+    /* margin: 5px 1px 3px 0px; */
+    border: 1px solid rgba(58, 101, 194, 1);
+}
 @media (max-width : 576px) {
     .adminDivMain{
         width : 100vw !important;

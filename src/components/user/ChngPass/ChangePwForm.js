@@ -13,7 +13,8 @@ class ChangePwForm extends Component {
       password: "",
       newPassword: "",
       rePassword: "",
-      submitted: false
+      submitted: false,
+      error: ""
     };
     // console.log(this.state);
     this.handleChange = this.handleChange.bind(this);
@@ -32,7 +33,12 @@ class ChangePwForm extends Component {
     const { password, newPassword, rePassword } = this.state;
     const { dispatch } = this.props;
     if (password && newPassword && rePassword) {
-      dispatch(userActions.passchng(newPassword));
+      if (newPassword === rePassword) {
+        dispatch(userActions.passchng(newPassword));
+      }
+      else {
+        this.setState({error : "Retyped and New passwords should be same"})
+      }
       // dispatch(userActions.getfirst());
     }
   }
@@ -51,7 +57,7 @@ class ChangePwForm extends Component {
             </button>
           </div>
         </header>
-        <div className = "ChngPgContent">
+        <div className="ChngPgContent">
           <div className="ChngPgDiv2">
             <h1 className="ChngPgH">Change Password </h1>
             <br />
