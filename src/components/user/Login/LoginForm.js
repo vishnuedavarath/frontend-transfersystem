@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { history } from "../../../__helpers/history";
 
 import { alertActions } from "../../../__actions/alertActions";
-import '../../../assets/loginpage/css/loginform.css';
+import "../../../assets/loginpage/css/loginform.css";
 import { userActions } from "../../../__actions/userActions";
 
 class LoginForm extends Component {
@@ -25,6 +25,12 @@ class LoginForm extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    // const { dispatch } = this.props;
+    history.listen((location, action) => {
+      // clear alert on location change
+      dispatch(alertActions.clear());
+    });
   }
 
   handleChange(e) {
@@ -44,6 +50,7 @@ class LoginForm extends Component {
   }
 
   render() {
+    const { alert } = this.props;
     const { penNum, password, submitted } = this.state;
     return (
       <div className="wrap-login100 p-t-190 p-b-30">
@@ -88,10 +95,11 @@ class LoginForm extends Component {
           )}
           <br />
 
-          {/* </div> */}
-          {alert.message && (
-            <div className={`alert ${alert.type}`}>{alert.message}</div>
-          )}
+          <div className="help-input100 m-b-10">
+            {alert.message && (
+              <div className={`alert ${alert.type}`}>{alert.message}</div>
+            )}
+          </div>
           <div className="container-login100-form-btn p-t-10">
             <button className="login100-form-btn">Login</button>
           </div>
