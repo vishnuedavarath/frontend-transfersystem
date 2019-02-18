@@ -78,7 +78,7 @@ export default class ReqPage extends Component {
   };
   render() {
     return (
-      <div className = "allotMainDiv">
+      <div className="allotMainDiv">
         <header className="profileHeader">
           <h3 className="profileHeaderHead">Kerala Police</h3>
           <div className="profileRight">
@@ -95,7 +95,7 @@ export default class ReqPage extends Component {
           <div className="allotDiv1">
             <h2>Request Transfer Applications</h2>
             <div className="allotSearchDiv">
-              <span className = "allotDesigSpan">Select Designation:</span>
+              <span className="allotDesigSpan">Select Designation:</span>
               <select
                 className="allotSelect"
                 name="des"
@@ -144,7 +144,7 @@ export default class ReqPage extends Component {
                 <br />
               </div>
               <Modal open={this.state.open} onClose={this.onCloseModal} center>
-                <div>
+                <div classNames="allotModal">
                   <span>Pen Number: {this.state.openPenno}</span>
                   <br />
                   <span>Name: {this.state.openName}</span>
@@ -155,34 +155,39 @@ export default class ReqPage extends Component {
                     <strong>Applied Option</strong>
                     <br />
                     <button
+                      className="allotModalButton"
                       value={this.state.op1.id}
                       onClick={this.handleclick}
                     >
                       {this.state.op1.name}
                     </button>
-                    <br />
                     <span>Vacancy:{this.state.op1.vacancy}</span>
                     <br />
                     <button
+                      className="allotModalButton"
                       value={this.state.op2.id}
                       onClick={this.handleclick}
                     >
                       {this.state.op2.name}
                     </button>
-                    <br />
                     <span>Vacancy:{this.state.op2.vacancy}</span>
                     <br />
                     <button
+                      className="allotModalButton"
                       value={this.state.op3.id}
                       onClick={this.handleclick}
                     >
                       {this.state.op3.name}
                     </button>
-                    <br />
                     <span>Vacancy:{this.state.op3.vacancy}</span>
                     <br />
                   </div>
-                  <button onClick={this.onCloseModal}>Close</button>
+                  {/* <button
+                    className="allotModalButton"
+                    onClick={this.onCloseModal}
+                  >
+                    Close
+                  </button> */}
                 </div>
               </Modal>
             </div>

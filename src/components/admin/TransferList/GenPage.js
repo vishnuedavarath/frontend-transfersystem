@@ -116,11 +116,11 @@ export default class GenPage extends Component {
                   <br />
                   {/* _________________________________________________ */}
                   <br />
-                  <span>PEN Number:{user.penno}</span>
+                  <span>PEN Number : {user.penno}</span>
                   <br />
-                  <span>Name:{user.name}</span>
+                  <span>Name : {user.name}</span>
                   <br />
-                  <span>Joining Date:{user.joinDate}</span>
+                  <span>Joining Date : {user.joinDate}</span>
                   <br />
                   <button
                     onClick={this.onOpenModal}
@@ -133,11 +133,12 @@ export default class GenPage extends Component {
                   <br />
                 </div>
                 <Modal
+                  classNames="allotModal"
                   open={this.state.open}
                   onClose={this.onCloseModal}
                   center
                 >
-                  <div>
+                  <div className="allotModal">
                     <span>Pen Number: {this.state.openPenno}</span>
                     <br />
                     <span>Name: {this.state.openName}</span>
@@ -148,6 +149,7 @@ export default class GenPage extends Component {
                       <strong>Applied Option</strong>
                       <br />
                       <button
+                        className="allotModalButton"
                         value={this.state.op1.id}
                         onClick={this.handleclick}
                       >
@@ -157,6 +159,7 @@ export default class GenPage extends Component {
                       <span>Vacancy:{this.state.op1.vacancy}</span>
                       <br />
                       <button
+                        className="allotModalButton"
                         value={this.state.op2.id}
                         onClick={this.handleclick}
                       >
@@ -166,6 +169,7 @@ export default class GenPage extends Component {
                       <span>Vacancy:{this.state.op2.vacancy}</span>
                       <br />
                       <button
+                        className="allotModalButton"
                         value={this.state.op3.id}
                         onClick={this.handleclick}
                       >
@@ -175,7 +179,12 @@ export default class GenPage extends Component {
                       <span>Vacancy:{this.state.op3.vacancy}</span>
                       <br />
                     </div>
-                    <button onClick={this.onCloseModal}>Close</button>
+                    <button
+                      className="allotModalButton"
+                      onClick={this.onCloseModal}
+                    >
+                      Close
+                    </button>
                   </div>
                 </Modal>
               </div>
