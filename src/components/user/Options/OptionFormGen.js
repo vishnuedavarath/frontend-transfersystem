@@ -91,7 +91,7 @@ class OptionFormGen extends Component {
     // this.setState({ submitted: true });
     const { opt1, opt2, opt3 } = this.state;
     const { dispatch } = this.props;
-    dispatch(userActions.submitStationsGen(opt1, opt2, opt3));
+    dispatch(userActions.submitStationsGen(opt1.value, opt2.value, opt3.value));
   }
   render() {
     return (

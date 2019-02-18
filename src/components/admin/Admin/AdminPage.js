@@ -51,14 +51,14 @@ export default class AdminPage extends Component {
     this.handleOpenUser = this.handleOpenUser.bind(this);
     this.handleOpenStation = this.handleOpenStation.bind(this);
   }
-  handleOpenAdmin(){
-    this.setState({adminPopup : true})
+  handleOpenAdmin() {
+    this.setState({ adminPopup: true });
   }
-  handleOpenUser(){
-    this.setState({userPopup : true})
+  handleOpenUser() {
+    this.setState({ userPopup: true });
   }
-  handleOpenStation(){
-    this.setState({stationPopup : true})
+  handleOpenStation() {
+    this.setState({ stationPopup: true });
   }
   handleClickGen() {
     history.push("/admin/general");
@@ -73,7 +73,7 @@ export default class AdminPage extends Component {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   }
-  handleSubmitAdmin=(e) =>{
+  handleSubmitAdmin = e => {
     e.preventDefault();
     const { adminPenno, adminName, adminPassword, adminPrivilege } = this.state;
     adminService.addAdmin(adminPenno, adminName, adminPassword, adminPrivilege);
@@ -81,7 +81,7 @@ export default class AdminPage extends Component {
     this.setState({ adminPopup: false });
 
     // window.location.reload(true);
-  }
+  };
   handleClickAdminEdit() {
     history.push("/admin/editadmin");
   }
@@ -207,7 +207,7 @@ export default class AdminPage extends Component {
                     }
                     position="bottom center"
                     open={this.state.adminPopup}
-                    onOpen = {this.handleOpenAdmin}
+                    onOpen={this.handleOpenAdmin}
                     on="click"
                     className="adminPopup"
                   >
@@ -244,6 +244,7 @@ export default class AdminPage extends Component {
                         Privilege:
                         <br />
                         <select
+                          className="adminSelect"
                           name="adminPrivilege"
                           value={this.state.adminPrivilege}
                           onChange={this.handleChangeAdmin}
@@ -251,7 +252,6 @@ export default class AdminPage extends Component {
                           <option value="1">Super Admin</option>
                           <option value="2">Admin</option>
                         </select>
-                        <br />
                         <br />
                         <button className="adminButton">Submit</button>
                       </form>
@@ -292,7 +292,7 @@ export default class AdminPage extends Component {
                     }
                     position="bottom center"
                     open={this.state.userPopup}
-                    onOpen = {this.handleOpenUser}
+                    onOpen={this.handleOpenUser}
                     on="click"
                   >
                     <div>
@@ -323,19 +323,21 @@ export default class AdminPage extends Component {
                         />
                         Designation:
                         <br />
-                        <select
-                          name="userDesignation"
-                          value={this.state.userDesignation}
-                          onChange={this.handleChangeUser}
-                        >
-                          <option value="si">SI</option>
-                          <option value="asi">ASI</option>
-                          <option value="scpo">SCPO</option>
-                          <option value="tscpo">TSCPO</option>
-                          <option value="cpo">CPO</option>
-                          <option value="wcpo">WCPO</option>
-                        </select>
-                        <br />
+                        <div>
+                          <select
+                            className="adminSelect"
+                            name="userDesignation"
+                            value={this.state.userDesignation}
+                            onChange={this.handleChangeUser}
+                          >
+                            <option value="si">SI</option>
+                            <option value="asi">ASI</option>
+                            <option value="scpo">SCPO</option>
+                            <option value="tscpo">TSCPO</option>
+                            <option value="cpo">CPO</option>
+                            <option value="wcpo">WCPO</option>
+                          </select>
+                        </div>
                         <br />
                         <button className="adminButton">Submit</button>
                       </form>
@@ -372,7 +374,7 @@ export default class AdminPage extends Component {
                       </button>
                     }
                     position="bottom center"
-                    onOpen = {this.handleOpenStation}
+                    onOpen={this.handleOpenStation}
                     open={this.state.stationPopup}
                     on="click"
                   >

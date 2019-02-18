@@ -3,12 +3,13 @@ import { userActions } from "../../../__actions/userActions";
 import { connect } from "react-redux";
 import { userService } from "../../../__services/userService";
 import "../../../assets/prevstations/css/prevstation.css";
+import Select from "react-select";
 // import moment from "moment";
 class PrevStationForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stations: [{ value: "", display: "(Select Station)" }],
+      stations: [{ value: "", label: "(Select Station)" }],
       cur: "",
       opt1: "",
       opt2: "",
@@ -19,6 +20,10 @@ class PrevStationForm extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChangeOp1 = this.handleChangeOp1.bind(this);
+    this.handleChangeOp2 = this.handleChangeOp2.bind(this);
+    this.handleChangeOp3 = this.handleChangeOp3.bind(this);
+    this.handleChangeCur = this.handleChangeCur.bind(this);
   }
   componentDidMount() {
     // const { dispatch } = this.props;
@@ -34,7 +39,7 @@ class PrevStationForm extends Component {
 
             arr.push({
               value: stations.stations[station]._id,
-              display: stations.stations[station].name,
+              label: stations.stations[station].name,
               code: stations.stations[station].statCode
             });
           }
@@ -42,13 +47,25 @@ class PrevStationForm extends Component {
         };
 
         this.setState({
-          stations: [
-            { value: "", display: "(Select station)", code: "" }
-          ].concat(stationsFromApi(stations))
+          stations: [{ value: "", label: "(Select station)", code: "" }].concat(
+            stationsFromApi(stations)
+          )
         });
         console.log(this.state);
       });
   }
+  handleChangeOp1 = e => {
+    this.setState({ opt1: e });
+  };
+  handleChangeOp2 = e => {
+    this.setState({ opt2: e });
+  };
+  handleChangeOp3 = e => {
+    this.setState({ opt3: e });
+  };
+  handleChangeCur = e => {
+    this.setState({ cur: e });
+  };
 
   handleChange(e) {
     //   console.log(e)
@@ -65,7 +82,7 @@ class PrevStationForm extends Component {
     const { cur, opt1, opt2, opt3, joindate, lastdate } = this.state;
     const { dispatch } = this.props;
     dispatch(
-      userActions.submitPrevStations(cur, opt1, opt2, opt3, joindate, lastdate)
+      userActions.submitPrevStations(cur.value, opt1.value, opt2.value, opt3.value, joindate, lastdate)
     );
   }
   render() {
@@ -80,64 +97,38 @@ class PrevStationForm extends Component {
             </button>
           </div>
         </header>
-        <div className = "prevContent">
+        <div className="prevContent">
           <div className="prevDiv2">
             <h2 className="prevH">Edit Details</h2>
-            <form className="prevForm" onSubmit={this.handleSubmit}>
-              <label>
-                Select Previous Stations
-                <br />
-                <select
-                  name="opt1"
-                  value={this.state.opt1}
-                  onChange={this.handleChange}
-                >
-                  {this.state.stations.map(station => (
-                    <option key={station.code} value={station.value}>
-                      {station.display}
-                    </option>
-                  ))}
-                </select>
-                <br />
-                <select
-                  name="opt2"
-                  value={this.state.opt2}
-                  onChange={this.handleChange}
-                >
-                  {this.state.stations.map(station => (
-                    <option key={station.code} value={station.value}>
-                      {station.display}
-                    </option>
-                  ))}
-                </select>
-                <br />
-                <select
-                  name="opt3"
-                  value={this.state.opt3}
-                  onChange={this.handleChange}
-                >
-                  {this.state.stations.map(station => (
-                    <option key={station.code} value={station.value}>
-                      {station.display}
-                    </option>
-                  ))}
-                </select>
-                <br />
-                Enter Current Station
-                <br />
-                <select
-                  name="cur"
-                  value={this.state.cur}
-                  onChange={this.handleChange}
-                >
-                  {this.state.stations.map(station => (
-                    <option key={station.code} value={station.value}>
-                      {station.display}
-                    </option>
-                  ))}
-                </select>
-                <br />
-              </label>
+            <form onSubmit={this.handleSubmit}>
+              <label>Select Previous Stations</label>
+              <br />
+              <Select
+                options={this.state.stations}
+                onChange={this.handleChangeOp1}
+                value={this.state.opt1}
+              />
+              <br />
+              <Select
+                options={this.state.stations}
+                onChange={this.handleChangeOp2}
+                value={this.state.opt2}
+              />
+              <br />
+              <Select
+                options={this.state.stations}
+                onChange={this.handleChangeOp3}
+                value={this.state.opt3}
+              />
+              <br />
+              Enter Current Station
+              <br />
+              <Select
+                options={this.state.stations}
+                onChange={this.handleChangeCur}
+                value={this.state.cur}
+              />
+              <br />
               <label>
                 Joining Date(YYYY-MM-DD):
                 <input
@@ -162,7 +153,6 @@ class PrevStationForm extends Component {
                 />
               </label>
               <br />
-
               <button onSubmit={this.handleSubmit} className="prevButton">
                 Submit
               </button>
