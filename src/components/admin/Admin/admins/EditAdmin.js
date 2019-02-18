@@ -114,6 +114,7 @@ export default class EditAdmin extends Component {
                       PEN Number:
                       <br />
                       <input
+                      className = "editInput1"
                         name="adminPenno"
                         value={this.state.adminPenno}
                         onChange={this.handleChangeAdmin}
@@ -121,23 +122,24 @@ export default class EditAdmin extends Component {
                       Name:
                       <br />
                       <input
+                      className = "editInput1"
                         name="adminName"
                         value={this.state.adminName}
                         onChange={this.handleChangeAdmin}
                       />
-                      <br />
                       Privilege:
                       <br />
                       <select
+                      className = "editSelect"
                         name="adminPrivilege"
                         value={this.state.adminPrivilege}
                         onChange={this.handleChangeAdmin}
                       >
-                        <option value="1">Super</option>
+                        <option value="1">Super Admin</option>
                         <option value="2">Admin</option>
                       </select>
                       <br />
-                      <button>Submit</button>
+                      <button className = "editButton3">Submit</button>
                     </form>
                   </div>
                 </Popup>

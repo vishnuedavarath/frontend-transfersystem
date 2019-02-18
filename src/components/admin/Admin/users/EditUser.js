@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { adminService } from "../../../../__services/adminService";
 import Popup from "reactjs-popup";
 
-import '../../../../assets/editpage/css/editpage.css'
+import "../../../../assets/editpage/css/editpage.css";
 
 export default class EditUser extends Component {
   constructor() {
@@ -41,15 +41,15 @@ export default class EditUser extends Component {
     this.setState({ openPopup: true });
   }
   handleSubmitUser(e) {
-	e.preventDefault();
-    const {userId,userPenno, userName, userDesignation } = this.state;
-	adminService.editUser(userId,userPenno, userName, userDesignation).then(
-		success => {
-			this.setState({openPopup:false});
-			window.location.reload(true);
-			return success;
-		}
-	)
+    e.preventDefault();
+    const { userId, userPenno, userName, userDesignation } = this.state;
+    adminService
+      .editUser(userId, userPenno, userName, userDesignation)
+      .then(success => {
+        this.setState({ openPopup: false });
+        window.location.reload(true);
+        return success;
+      });
   }
   handleClickDelete(e) {
     e.preventDefault();
@@ -59,7 +59,7 @@ export default class EditUser extends Component {
 
   render() {
     return (
-      <div className = "editMain">
+      <div className="editMain">
         <header className="profileHeader">
           <h3 className="profileHeaderHead">Kerala Police</h3>
           <div className="profileRight">
@@ -72,74 +72,84 @@ export default class EditUser extends Component {
 
         <div className="editContent">
           <div className="editSearch">
-          <form onSubmit={this.handleSubmitUserSearch}>
-            <input
-            className = "editInput"
-              type="user"
-              name="penno"
-              value={this.state.penno}
-              onChange={this.handleChangeUser}
-            />
-            <button className = "editButton">Submit</button>
-          </form>
-        </div>
-        <div className = "editResults">
-          {this.state.userId && (
-            <div className = "editResult">
-              <span>PEN Number:{this.state.userPenno}</span>
-              <br />
-              <span>Name:{this.state.userName}</span>
-              <br />
-              <Popup
-                trigger={
-                  <button className = "editButton1" onClick={this.handleClickEdit}>
-                    Edit user Details
-                  </button>
-                }
-                position="bottom center"
-                open={(this.state.openPopup)}
-                on="click"
-              >
-                <div>
-                  <form onSubmit={this.handleSubmitUser}>
-                    PEN Number:
-                    <br />
-                    <input
-                      name="userPenno"
-                      value={this.state.userPenno}
-                      onChange={this.handleChangeUser}
-                    />
-                    Name:
-                    <br />
-                    <input
-                      name="userName"
-                      value={this.state.userName}
-                      onChange={this.handleChangeUser}
-                    />
-                    <br />
-                    Designation:
-                    <br />
-                    <select
-                      name="userDesignation"
-                      value={this.state.userDesignation}
-                      onChange={this.handleChangeUser}
+            <form onSubmit={this.handleSubmitUserSearch}>
+              <input
+                className="editInput"
+                type="user"
+                name="penno"
+                value={this.state.penno}
+                onChange={this.handleChangeUser}
+              />
+              <button className="editButton">Submit</button>
+            </form>
+          </div>
+          <div className="editResults">
+            {this.state.userId && (
+              <div className="editResult">
+                <span>PEN Number:{this.state.userPenno}</span>
+                <br />
+                <span>Name:{this.state.userName}</span>
+                <br />
+                <Popup
+                  trigger={
+                    <button
+                      className="editButton1"
+                      onClick={this.handleClickEdit}
                     >
-                      <option value="si">SI</option>
-                      <option value="asi">ASI</option>
-                      <option value="scpo">SCPO</option>
-                      <option value="tscpo">TSCPO</option>
-                      <option value="cpo">CPO</option>
-                      <option value="wcpo">WCPO</option>
-                    </select>
-                    <br />
-                    <button>Submit</button>
-                  </form>
-                </div>
-              </Popup>
-              <button className = "editButton2" onClick={this.handleClickDelete}>Delete user</button>
-            </div>
-          )}
-        </div>
+                      Edit user Details
+                    </button>
+                  }
+                  position="bottom center"
+                  open={this.state.openPopup}
+                  on="click"
+                >
+                  <div>
+                    <form onSubmit={this.handleSubmitUser}>
+                      PEN Number:
+                      <br />
+                      <input
+                        className="editInput1"
+                        name="userPenno"
+                        value={this.state.userPenno}
+                        onChange={this.handleChangeUser}
+                      />
+                      Name:
+                      <br />
+                      <input
+                        className="editInput1"
+                        name="userName"
+                        value={this.state.userName}
+                        onChange={this.handleChangeUser}
+                      />
+                      Designation:
+                      <br />
+                      <select
+                        className="editSelect"
+                        name="userDesignation"
+                        value={this.state.userDesignation}
+                        onChange={this.handleChangeUser}
+                      >
+                        <option value="si">SI</option>
+                        <option value="asi">ASI</option>
+                        <option value="scpo">SCPO</option>
+                        <option value="tscpo">TSCPO</option>
+                        <option value="cpo">CPO</option>
+                        <option value="wcpo">WCPO</option>
+                      </select>
+                      <br />
+                      <button className="editButton3">Submit</button>
+                    </form>
+                  </div>
+                </Popup>
+                <button
+                  className="editButton2"
+                  onClick={this.handleClickDelete}
+                >
+                  Delete user
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );
