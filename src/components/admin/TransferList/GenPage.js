@@ -90,26 +90,29 @@ export default class GenPage extends Component {
         <div className="allotContent">
           <div className="allotDiv1">
             <h2>General Transfer Applications</h2>
-            <div className = "allotSearchDiv">
-              <span className = "allotDesigSpan">Select Designation:</span>
+            <div className="allotSearchDiv">
+              <span className="allotDesigSpan">Select Designation:</span>
               <select
+                className="allotSelect"
                 name="des"
                 value={this.state.opt1}
                 onChange={this.handleChange}
               >
                 {this.state.designations.map(des => (
                   <option key={des} value={des}>
-                    {des}
+                    {des.toUpperCase()}
                   </option>
                 ))}
               </select>
-              <button className = "allotButton" onClick={this.handleClick}>Submit</button>
+              <button className="allotButton" onClick={this.handleClick}>
+                Submit
+              </button>
             </div>
           </div>
           <div>
             {this.state.users.map(user => (
-              <div className = "allotDiv1">
-                <div className = "allotResultDiv">
+              <div className="allotDiv1">
+                <div className="allotResultDiv">
                   <br />
                   {/* _________________________________________________ */}
                   <br />

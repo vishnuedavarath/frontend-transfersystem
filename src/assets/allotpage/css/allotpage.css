@@ -1,4 +1,4 @@
-.prevMainDiv {
+.allotMainDiv {
 
 	display: flex;
 	flex-direction: column;
@@ -14,11 +14,13 @@
 	align-items: center;
 	margin-top: 30px;
 }
+
 .allotDiv1 {
 	display: flex;
-	flex-direction: column;
+	/* flex-direction: column; */
 	align-items: center;
-	
+	justify-content: center;
+	width: 100%;
 	/* padding: 30px 30px;
 	background: #FFF;
 	border-radius: 25px;
@@ -26,16 +28,24 @@
 
 	text-align: center; */
 }
-.allotSearchDiv{
+
+.allotSearchDiv {
 	display: flex;
-	align-content: center;
+	flex-direction: row;
+	justify-content: center;
+	/* align-items: center; */
 	margin-top: 20px;
+	width: 100%;
 }
+
 .allotDesigSpan {
 	/* text-align: center; */
-	padding: 5px 0px;
-	margin: 5px;
+	padding: 5px 10px;
+	/* margin: 5px; */
+	text-align: center;
+	/* width: 100px; */
 }
+
 .allotButton {
 	font-family: Montserrat-Bold;
 	font-size: 15px;
@@ -59,19 +69,22 @@
 	-o-transition: all 0.4s;
 	-moz-transition: all 0.4s;
 	transition: all 0.4s;
-
+	margin: 0px 5px;
 	position: relative;
 	z-index: 1;
 }
+
 .allotButton:hover {
 	background: #fff;
 	color: #34495e;
 	border: 1.5px solid #34495e;
 }
+
 .allotDiv1 {
 	display: flex;
 	flex-direction: column;
 }
+
 .allotResultDiv {
 	display: flex;
 	/* flex-direction: column; */
@@ -85,4 +98,19 @@
 	box-shadow: 8px 6px 62px -9px rgba(0, 0, 0, 0.45);
 	margin: 20px 0;
 	text-align: center;
+}
+
+.allotSelect {
+	font-family: Montserrat-Regular;
+	font-size: 15px;
+	line-height: 1.2;
+	color: #34495e;
+	display: block;
+	width: 150px;
+	background: transparent;
+
+	height: 30px;
+	border-radius: 5px;
+	border: 1px solid #34495e;
+	padding: 0 30px 0px 30px;
 }

@@ -78,7 +78,7 @@ export default class ReqPage extends Component {
   };
   render() {
     return (
-      <div>
+      <div className = "allotMainDiv">
         <header className="profileHeader">
           <h3 className="profileHeaderHead">Kerala Police</h3>
           <div className="profileRight">
@@ -95,15 +95,16 @@ export default class ReqPage extends Component {
           <div className="allotDiv1">
             <h2>Request Transfer Applications</h2>
             <div className="allotSearchDiv">
-              <span>Select Designation:</span>
+              <span className = "allotDesigSpan">Select Designation:</span>
               <select
+                className="allotSelect"
                 name="des"
                 value={this.state.opt1}
                 onChange={this.handleChange}
               >
                 {this.state.designations.map(des => (
                   <option key={des} value={des}>
-                    {des}
+                    {des.toUpperCase()}
                   </option>
                 ))}
               </select>
