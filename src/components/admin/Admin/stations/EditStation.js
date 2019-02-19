@@ -115,9 +115,7 @@ export default class EditStation extends Component {
         <header className="profileHeader">
           <h3 className="profileHeaderHead">Kerala Police</h3>
           <div className="profileRight">
-            <span className="profileHeaderSpan">
-              Hello, Admin&nbsp;&nbsp;
-            </span>
+            <span className="profileHeaderSpan">Hello, Admin&nbsp;&nbsp;</span>
             &nbsp;&nbsp;
             <button className="profileLogout" onClick={this.handleclickLogout}>
               Logout
@@ -158,74 +156,77 @@ export default class EditStation extends Component {
                 >
                   Delete station
                 </button>
-                <Modal open={this.state.openPopup} onClose={this.onCloseModal}>
+                <Modal
+                  classNames={{
+                    overlay: "editOverlay",
+                    modal: "editModal",
+                    closeIcon: "editClose"
+                  }}
+                  open={this.state.openPopup}
+                  onClose={this.onCloseModal}
+                >
                   <div>
-                    <form onSubmit={this.handleSubmitStation}>
-                      Station Code:
-                      <br />
+                    <form className = "editForm"
+                    onSubmit={this.handleSubmitStation}>
+                      <span>Station Code:</span>
                       <input
+                        className="editInput2"
                         name="stationCode"
                         value={this.state.stationCode}
                         onChange={this.handleChangeStation}
                       />
-                      Station Name:
-                      <br />
+                      <span>Station Name:</span>
                       <input
+                        className="editInput2"
                         name="stationName"
                         value={this.state.stationName}
                         onChange={this.handleChangeStation}
                       />
-                      <br />
-                      Vacancy for SI:
-                      <br />
+                      <span>Vacancy for SI:</span>
                       <input
+                        className="editInput2"
                         name="stationVacancySI"
                         value={this.state.stationVacancySI}
                         onChange={this.handleChangeStation}
                       />
-                      <br />
-                      Vacancy for ASI:
-                      <br />
+                      <span>Vacancy for ASI:</span>
                       <input
+                        className="editInput2"
                         name="stationVacancyASI"
                         value={this.state.stationVacancyASI}
                         onChange={this.handleChangeStation}
                       />
-                      <br />
-                      Vacancy for SCPO:
-                      <br />
+                      <span>Vacancy for SCPO:</span>
                       <input
+                        className="editInput2"
                         name="stationVacancySCPO"
                         value={this.state.stationVacancySCPO}
                         onChange={this.handleChangeStation}
                       />
-                      <br />
-                      Vacancy for TSCPO:
-                      <br />
+                      <span>Vacancy for TSCPO:</span>
                       <input
+                        className="editInput2"
                         name="stationVacancyTSCPO"
                         value={this.state.stationVacancyTSCPO}
                         onChange={this.handleChangeStation}
                       />
-                      <br />
-                      Vacancy for CPO:
-                      <br />
+                      <span>Vacancy for CPO:</span>
                       <input
+                        className="editInput2"
                         name="stationVacancyCPO"
                         value={this.state.stationVacancyCPO}
                         onChange={this.handleChangeStation}
                       />
-                      <br />
-                      Vacancy for WCPO:
-                      <br />
+                      <span>Vacancy for WCPO:</span>
                       <input
+                        className="editInput2"
                         name="stationVacancyWCPO"
                         value={this.state.stationVacancyWCPO}
                         onChange={this.handleChangeStation}
                       />
                       <br />
-                      <button>Submit</button>
-                      <button onClick={this.onCloseModal}>Close</button>
+                      <button className="editButton4">Submit</button>
+                      {/* <button onClick={this.onCloseModal}>Close</button> */}
                     </form>
                   </div>
                 </Modal>

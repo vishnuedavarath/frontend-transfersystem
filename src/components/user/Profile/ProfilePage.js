@@ -107,20 +107,18 @@ class ProfilePage extends Component {
           <div className="profileDiv2">
             <h2 className="profileHead2">PROFILE</h2>
             <div className="profileProfile">
-              <div className = "profileDetail">
-                <h4 >{this.state.name}</h4>
+              <div className="profileDetail">
+                <h4>{this.state.name}</h4>
                 <br />
                 <span className="profileSpan">
-                  PEN Number:{this.state.penno}
+                  PEN Number : {this.state.penno}
                 </span>
                 <br />
                 <span className="profileSpan">
-                  Designation :{this.state.designation}
+                  Designation : {this.state.designation.toUpperCase()}
                 </span>
                 <br />
-                <span className="profileSpan">
-                  Joining Date :{this.state.joindate}
-                </span>
+
                 <br />
               </div>
               <button className="profileButtonEdit1" onClick={this.handleClick}>
@@ -129,9 +127,12 @@ class ProfilePage extends Component {
             </div>
             <div className="profileDiv6">
               <span className="profileSpan">
-                Current Station :{this.state.currentstattion}
+                Joining Date : {this.state.joindate}
+              </span><br/><br/>
+              <span className="profileSpan">
+                Current Station : {this.state.currentstattion}
               </span>
-              <br />
+              <br /><br/>
             </div>
             <div className="profileDiv4">
               Previous Stations
@@ -151,14 +152,14 @@ class ProfilePage extends Component {
               <br />
             </div>
             <span className="profileSpan">
-              LAST TRANSFER DATE:{this.state.lasttransfer}
+              LAST TRANSFER DATE : {this.state.lasttransfer}
             </span>
             <br />
           </div>
           {/* <button>< Link To = '/optionpage'>GENERAL TRANSFER</ Link></button>
         <button> <Link To = '/optionpage'>REQUEST TRANSFER</Link></button> */}
           <div className="profileDiv3">
-            <div >
+            <div>
               {console.log(this.state.reqtransfer.op1)}
               {this.state.gentransfer.op1 && (
                 <div className="profileDiv5">
@@ -166,18 +167,18 @@ class ProfilePage extends Component {
                   <h4>Applied Options</h4>
                   {console.log(this.state.gentransfer)}
                   <br />
-                  <div className = "profileOptions">
-                  <span className="profileSpan">
-                    1.{this.state.gentransfer.op1}
-                  </span>
-                  <br />
-                  <span className="profileSpan">
-                    2.{this.state.gentransfer.op2}
-                  </span>
-                  <br />
-                  <span className="profileSpan">
-                    3.{this.state.gentransfer.op3}
-                  </span>
+                  <div className="profileOptions">
+                    <span className="profileSpan">
+                      1.{this.state.gentransfer.op1}
+                    </span>
+                    <br />
+                    <span className="profileSpan">
+                      2.{this.state.gentransfer.op2}
+                    </span>
+                    <br />
+                    <span className="profileSpan">
+                      3.{this.state.gentransfer.op3}
+                    </span>
                   </div>
                   <br />
                   <button
@@ -190,25 +191,25 @@ class ProfilePage extends Component {
                 </div>
               )}
             </div>
-            <div >
+            <div>
               {console.log(this.state.reqtransfer.op1)}
               {this.state.reqtransfer.op1 && (
-                <div className="profileDiv5" >
+                <div className="profileDiv5">
                   <h3 className="profileHead3">REQUEST TRANSFER</h3>
                   <h4>Applied Options</h4>
                   <br />
-                  <div className = "profileOptions">
-                  <span className="profileSpan">
-                    1.{this.state.reqtransfer.op1}
-                  </span>
-                  <br />
-                  <span className="profileSpan">
-                    2.{this.state.reqtransfer.op2}
-                  </span>
-                  <br />
-                  <span className="profileSpan">
-                    3.{this.state.reqtransfer.op3}
-                  </span>
+                  <div className="profileOptions">
+                    <span className="profileSpan">
+                      1.{this.state.reqtransfer.op1}
+                    </span>
+                    <br />
+                    <span className="profileSpan">
+                      2.{this.state.reqtransfer.op2}
+                    </span>
+                    <br />
+                    <span className="profileSpan">
+                      3.{this.state.reqtransfer.op3}
+                    </span>
                   </div>
                   <br />
                   <button

@@ -67,9 +67,9 @@ export default class AdminPassword extends Component {
           <div className="passwordResults">
             {this.state.adminId && (
               <div className="passwordResult">
-                <span>PEN Number:{this.state.adminPenno}</span>
+                <span>PEN Number : {this.state.adminPenno}</span>
                 <br />
-                <span>Name:{this.state.adminName}</span>
+                <span>Name : <strong>{this.state.adminName}</strong></span>
                 <br />
                 <h3>Change Password</h3>
                 <br />
